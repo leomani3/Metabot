@@ -1,0 +1,13 @@
+<behavior>
+  <teamName>TestTeam</teamName>
+  <unit name="Explorer">
+    <instruction>
+      <parameters />
+      <message>
+        <ACTN_MESSAGE_POSITION>
+          <All />
+        </ACTN_MESSAGE_POSITION>
+      </message>
+    </instruction>
+  </unit>
+</behavior>
