@@ -11,7 +11,7 @@ public abstract class Unit {
 	float angleSight;
 	int maxBagSize;
 	int currentBagSize;
-    Ressource[] bag;
+    ArrayList bag;
     int team;
     float heading;
     GameObject unit; // Pour bouger les unité dans une méthode de la classe
@@ -25,7 +25,7 @@ public abstract class Unit {
 		this.maxBagSize = maxBagSize;
 		this.currentBagSize = 0;
         this.heading = heading;
-        this.bag = new Ressource[maxBagSize];
+        this.bag = new ArrayList(maxBagSize);
 	}
 
 	public bool isFullBag(){
@@ -41,7 +41,7 @@ public abstract class Unit {
     {
         if(!isFullBag())
         {
-            this.bag[currentBagSize] = r;
+            this.bag.Add(r);
             currentBagSize++;
         }
         else
@@ -50,11 +50,22 @@ public abstract class Unit {
         }
     }
 
-    public void use(string nameRessource)
+    public bool use(string nameRessource)
     {
         if (!isEmptyBag())
         {
+            for (int i = 0; i < currentBagSize ; i++)
+            {
+                Ressource r = (Ressource) bag[i];
+                if (r.Name.Equals(nameRessource))
+                {
+                    bag.RemoveAt(i);
+                    currentBagSize--;
+                    return true;
+                }
+            }
         }
+        return false;
     }
 
     public void move(Vector3 direction)

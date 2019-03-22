@@ -16,5 +16,10 @@ public abstract class Ressource
         this.respawnTime = respawnTime;
     }
 
+    public string Name
+    {
+        get { return this.name; }
+    } 
+
 }
 
