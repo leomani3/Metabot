@@ -7,19 +7,26 @@ public abstract class Ressource
 
     string name;
     int weight;
-    float respawnTime;
+    public static float respawnTime;
+    GameObject ressouce_go;
 
-    public Ressource(string name, int weight, float respawnTime)
+    public Ressource(string name, int weight)
     {
         this.name = name;
         this.weight = weight;
-        this.respawnTime = respawnTime;
     }
 
     public string Name
     {
         get { return this.name; }
     } 
+
+    public GameObject Ressource_go
+    {
+        get { return ressouce_go; }
+    }
+
+    public abstract void UseRessource();
 
 }
 

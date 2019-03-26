@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Unit {
+public abstract class Unit : Percepts {
 
-	float maxHealth;
+    readonly static float MAX_DISTANCE_GIVE = 5.0f;
+    readonly static float MAX_DISTANCE_TAKE = 5.0f;
+
+    readonly float maxHealth;
 	float currentHealth;
-	float speed;
-	float distanceSight;
-	float angleSight;
-	int maxBagSize;
+    readonly float speed;
+    readonly float distanceSight;
+    readonly float angleSight;
+    readonly int maxBagSize;
 	int currentBagSize;
     ArrayList bag;
-    int team;
     float heading;
-    GameObject unit; // Pour bouger les unité dans une méthode de la classe
+    protected GameObject unit_go;
 
 	public Unit(float maxHealth, float speed, float distanceSight, float angleSight, int maxBagSize, float heading) {
 		this.maxHealth = maxHealth;
@@ -28,21 +30,22 @@ public abstract class Unit {
         this.bag = new ArrayList(maxBagSize);
 	}
 
-	public bool isFullBag(){
+	public bool IsFullBag(){
 		return this.currentBagSize == this.maxBagSize;
 	}
 
-    public bool isEmptyBag()
+    public bool IsEmptyBag()
     {
         return this.currentBagSize == 0;
     }
 
     public void take(Ressource r)
     {
-        if(!isFullBag())
+        if (!IsFullBag() && Vector3.Distance(unit_go.transform.position, r.Ressource_go.transform.position) < MAX_DISTANCE_TAKE)
         {
             this.bag.Add(r);
             currentBagSize++;
+            GameObject.Destroy(r.Ressource_go);
         }
         else
         {
@@ -50,9 +53,9 @@ public abstract class Unit {
         }
     }
 
-    public bool use(string nameRessource)
+    public bool Use(string nameRessource)
     {
-        if (!isEmptyBag())
+        if (!IsEmptyBag())
         {
             for (int i = 0; i < currentBagSize ; i++)
             {
@@ -61,6 +64,7 @@ public abstract class Unit {
                 {
                     bag.RemoveAt(i);
                     currentBagSize--;
+                    r.UseRessource();
                     return true;
                 }
             }
@@ -68,23 +72,41 @@ public abstract class Unit {
         return false;
     }
 
-    public void move(Vector3 direction)
+    public void Move(Vector3 direction)
     {
-        if (!isBlocked())
-            unit.transform.position += speed * direction.normalized * 0.2f;
+        if (!IsBlocked())
+            unit_go.transform.position += speed * direction.normalized * 0.2f;
         else
-            unit.transform.position *= 1;//Faire quelque chose
+            unit_go.transform.position *= -1;//Faire quelque chose
     }
     
-    public bool isBlocked()
+    public bool IsBlocked()
     {
-        return true; // A faire
+        return false; // A faire
     }
 
     public float Heading
     {
         get { return this.heading; }
         set { this.heading = value; }
+    }
+
+    public float CurrentHealth
+    {
+        get { return currentHealth; }
+        set { this.currentHealth = value; }
+    }
+
+    public GameObject Unit_go
+    {
+        get { return unit_go; }
+        set { this.unit_go = value; }
+    }
+
+    public int Team
+    {
+        get { return this.team; }
+        set { this.team = value; }
     }
 
 
