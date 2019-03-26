@@ -1,18 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Projectile
+public abstract class Projectile
 {
-    public static Projectile LIGHT_BULLET = new Projectile(10.0f, 20.0f, 0.5f, 3.0f);
+    //public static Projectile LIGHT_BULLET = new Projectile(10.0f, 20.0f, 0.5f, 3.0f);
 
     readonly float speed;
     readonly float damage;
     readonly float explosionRadius;
-    readonly float autonomy;
+    float autonomy;
     GameObject projectile_go;
     Vector3 direction;
-    
-    public Projectile(float speed, float damage, float explosionRadius, float autonomy)
+
+    protected Projectile(float speed, float damage, float explosionRadius, float autonomy)
     {
         this.speed = speed;
         this.damage = damage;
@@ -23,6 +22,7 @@ public class Projectile
     public GameObject Projectile_go
     {
         get { return projectile_go; }
+        set { this.projectile_go = value; }
     }
 
     public Vector3 Direction
@@ -33,6 +33,23 @@ public class Projectile
 
     public void Move()
     {
-        this.projectile_go.transform.position += speed * direction.normalized * 0.2f;
+        autonomy -= Time.deltaTime;
+        if (autonomy <= 0)
+        {
+            Object.Destroy(projectile_go);
+            Debug.Log("Bullet détruit " + autonomy);
+        }
+        else 
+            this.projectile_go.transform.position += speed * direction.normalized * 0.2f;
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Object.Destroy(Projectile_go);
+    }
+}
+
+public class LightBullet : Projectile
+{
+    public LightBullet(float speed = 10.0f, float damage = 20.0f, float explosionRadius = 0.5f, float autonomy = 3.0f) : base(speed, damage, explosionRadius, autonomy){}
 }

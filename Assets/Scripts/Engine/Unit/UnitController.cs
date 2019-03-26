@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour {
 
-    Unit unit;
+    WarUnit unit;
+
 	// Use this for initialization
 	void Start () {
-        unit = WarLight.WAR_LIGHT;
-        unit.Unit_go = gameObject;
-        foreach(MeshRenderer meshRenderer in unit.Unit_go.GetComponentsInChildren<MeshRenderer>())
+        unit = new WarLight
+        {
+            Unit_go = gameObject
+        };
+
+        foreach (MeshRenderer meshRenderer in unit.Unit_go.GetComponentsInChildren<MeshRenderer>())
         {
             meshRenderer.material.color = Color.red;
         }
@@ -18,5 +22,6 @@ public class UnitController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         unit.Move(new Vector3(1, 0, 0));
+        unit.shoot();
 	}
 }

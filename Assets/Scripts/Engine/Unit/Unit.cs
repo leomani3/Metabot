@@ -45,7 +45,7 @@ public abstract class Unit : Percepts {
         {
             this.bag.Add(r);
             currentBagSize++;
-            GameObject.Destroy(r.Ressource_go);
+            Object.Destroy(r.Ressource_go);
         }
         else
         {
@@ -103,10 +103,10 @@ public abstract class Unit : Percepts {
         set { this.unit_go = value; }
     }
 
-    public int Team
+    public Color TeamColor
     {
-        get { return this.team; }
-        set { this.team = value; }
+        get { return this.teamColor; }
+        set { this.teamColor = value; }
     }
 
 
