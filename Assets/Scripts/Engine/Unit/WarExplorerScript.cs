@@ -11,11 +11,13 @@ public class WarExplorerScript : UnitController {
         {
             Unit_go = gameObject
         };
+
         //unit.Unit_go.transform.Rotate(Quaternion.Euler(0, unit.Heading, 0).eulerAngles);
         foreach (MeshRenderer meshRenderer in unit.Unit_go.GetComponentsInChildren<MeshRenderer>())
         {
             meshRenderer.material.color = Color.blue;
         }
+        
     }
 
     // Update is called once per frame

@@ -25,8 +25,11 @@ public class UnitController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        unit.Move();
-        unit.Shoot();
+        unit.GetAllPerceptsInRadius();
+        if(unit.PerpecptsInSight.Count > 0)
+            unit.Shoot();
+        else
+            unit.Move();
 	}
 
     void OnCollisionStay(Collision other)

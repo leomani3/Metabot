@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Unit : Percepts {
+public abstract class Unit : Percepts
+{
 
     readonly static float MAX_DISTANCE_GIVE = 5.0f;
     readonly static float MAX_DISTANCE_TAKE = 5.0f;
@@ -18,22 +19,26 @@ public abstract class Unit : Percepts {
     protected float heading;
     protected GameObject unit_go;
     GameObject collisionObject;
+    ArrayList perpecptsInSight;
 
-    public Unit(float maxHealth, float speed, float distanceSight, float angleSight, int maxBagSize, float heading) {
-		this.maxHealth = maxHealth;
-		this.currentHealth = maxHealth;
-		this.speed = speed;
-		this.distanceSight = distanceSight;
-		this.angleSight = angleSight;
-		this.maxBagSize = maxBagSize;
-		this.currentBagSize = 0;
+    protected Unit(float maxHealth, float speed, float distanceSight, float angleSight, int maxBagSize, float heading)
+    {
+        this.maxHealth = maxHealth;
+        this.currentHealth = maxHealth;
+        this.speed = speed;
+        this.distanceSight = distanceSight;
+        this.angleSight = angleSight;
+        this.maxBagSize = maxBagSize;
+        this.currentBagSize = 0;
         this.heading = heading;
         this.bag = new ArrayList(maxBagSize);
-	}
+        this.perpecptsInSight = new ArrayList();
+    }
 
-	public bool IsFullBag(){
-		return this.currentBagSize == this.maxBagSize;
-	}
+    public bool IsFullBag()
+    {
+        return this.currentBagSize == this.maxBagSize;
+    }
 
     public bool IsEmptyBag()
     {
@@ -58,9 +63,9 @@ public abstract class Unit : Percepts {
     {
         if (!IsEmptyBag())
         {
-            for (int i = 0; i < currentBagSize ; i++)
+            for (int i = 0; i < currentBagSize; i++)
             {
-                Ressource r = (Ressource) bag[i];
+                Ressource r = (Ressource)bag[i];
                 if (r.Name.Equals(nameRessource))
                 {
                     bag.RemoveAt(i);
@@ -102,6 +107,20 @@ public abstract class Unit : Percepts {
         }
     }
 
+    public void GetAllPerceptsInRadius()
+    {
+        perpecptsInSight.Clear();
+        Collider[] colliders = Physics.OverlapSphere(unit_go.transform.position, distanceSight);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
+            {
+                perpecptsInSight.Add(collider);
+                Debug.DrawLine(collider.transform.position, unit_go.transform.position);
+            }
+        }
+    }
+
     public void OnCollisionExit(Collision other)
     {
         collisionObject = null;
@@ -133,12 +152,26 @@ public abstract class Unit : Percepts {
     public Color TeamColor
     {
         get { return this.teamColor; }
-        set 
-        { 
+        set
+        {
             this.teamColor = value;
             unit_go.transform.Rotate(Quaternion.Euler(0, heading, 0).eulerAngles);
         }
     }
 
+    public float DistanceSight
+    {
+        get
+        {
+            return distanceSight;
+        }
+    }
 
+    public ArrayList PerpecptsInSight
+    {
+        get
+        {
+            return perpecptsInSight;
+        }
+    }
 }

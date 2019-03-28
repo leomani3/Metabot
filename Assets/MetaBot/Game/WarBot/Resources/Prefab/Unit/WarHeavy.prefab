@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4896676513053228}
   - component: {fileID: 33481418947288786}
   - component: {fileID: 23127402658897536}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4799834461274214}
   - component: {fileID: 331286887060058934}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New Sprite Mask (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4807350109661956}
   - component: {fileID: 331643976983823960}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New Sprite Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4584436217239334}
   - component: {fileID: 135022460162252836}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: BulletSpawn (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 114343108468061062}
   - component: {fileID: 54562417523299426}
   - component: {fileID: 65460466654846290}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: WarHeavy
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 212797563362183586}
   - component: {fileID: 210929832786372900}
   - component: {fileID: 114463085134216570}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sight
   m_TagString: Sight
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4537531416114584}
   - component: {fileID: 135068424782955868}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: BulletSpawn (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

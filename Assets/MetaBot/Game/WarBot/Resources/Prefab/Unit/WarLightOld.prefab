@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4952650944732024}
   - component: {fileID: 331088808039034408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New Sprite Mask (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 212304190777890138}
   - component: {fileID: 210936867846738608}
   - component: {fileID: 114023879666459980}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sight
   m_TagString: Sight
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4147898957323632}
   - component: {fileID: 135978105125924454}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4322539581971542}
   - component: {fileID: 33468538999176548}
   - component: {fileID: 23746911628488620}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4238772040262428}
   - component: {fileID: 33362884721541244}
   - component: {fileID: 23575125747343686}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: canon
   m_TagString: Canon
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 54843381128564592}
   - component: {fileID: 114573528652718816}
   - component: {fileID: 65506265236136686}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: WarLightOld
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4289309480600154}
   - component: {fileID: 331706915398849254}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New Sprite Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -43,7 +43,7 @@ public abstract class Projectile
     public void OnTriggerEnter(Collider other)
     {
         other.GetComponent<UnitController>().Unit.CurrentHealth -= damage;
-        Debug.Log(other.GetComponent<UnitController>().Unit.CurrentHealth);
+        //Debug.Log(other.GetComponent<UnitController>().Unit.CurrentHealth);
         Object.Destroy(Projectile_go);
     }
 }

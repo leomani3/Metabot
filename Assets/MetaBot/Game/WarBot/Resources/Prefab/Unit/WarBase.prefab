@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4001098663993526}
   - component: {fileID: 135284674726962912}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: GameObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4943464102314282}
   - component: {fileID: 135955718012159544}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4066797114629726}
   - component: {fileID: 135769109990229584}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: GameObject (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4348519884093386}
   - component: {fileID: 331520359920760216}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New Sprite Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4776315091629224}
   - component: {fileID: 331790225520675512}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New Sprite Mask (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4448659812584334}
   - component: {fileID: 135125073695165066}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 212398101407106180}
   - component: {fileID: 210836468280509540}
   - component: {fileID: 114163131069189492}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sight
   m_TagString: Sight
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 4728507547241420}
   - component: {fileID: 33796931369996670}
   - component: {fileID: 23064433396448068}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 114228995306872970}
   - component: {fileID: 64834784456306956}
   - component: {fileID: 114192518917336672}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: WarBase
   m_TagString: Unit
   m_Icon: {fileID: 0}

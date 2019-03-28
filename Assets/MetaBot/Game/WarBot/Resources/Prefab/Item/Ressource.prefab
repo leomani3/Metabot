@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114091383958803966}
   - component: {fileID: 114970978441410672}
   - component: {fileID: 54398883446343544}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ressource
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4450064870446784}
   - component: {fileID: 198900217988544496}
   - component: {fileID: 199511616691876394}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 33519130321449690}
   - component: {fileID: 23855168969714602}
   - component: {fileID: 135769837960741682}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Heal (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
