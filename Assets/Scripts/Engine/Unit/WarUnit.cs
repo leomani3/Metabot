@@ -15,13 +15,16 @@ public abstract class WarUnit : Unit
         this.reloading = 0;
     }
 
-    public void shoot()
+    public void Shoot()
     {
-        reloading -= Time.fixedDeltaTime;
-        if(reloading <= 0)
+        if(projectile != null)
         {
-            Object.Instantiate(projectile, unit_go.transform.GetChild(2));
-            reloading = timeReload;
+            reloading -= Time.fixedDeltaTime;
+            if(reloading <= 0)
+            {
+                Object.Instantiate(projectile, unit_go.transform.GetChild(2).position,Quaternion.Euler(0,45.0f,0));
+                reloading = timeReload;
+            }
         }
     }
 }

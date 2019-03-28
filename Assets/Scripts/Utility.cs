@@ -35,4 +35,12 @@ public class Utility{
         float A = (360 - angle) * Mathf.Deg2Rad;
         return new Vector3(Mathf.Cos(A), 0, Mathf.Sin(A)).normalized;
     }
+
+    static public Vector3 vectorFromAngle2(float angle)
+    {
+        float A = (360 - angle) * Mathf.Deg2Rad;
+        Debug.Log("Angle de " + (360-angle) + " en radian = " + A);
+        return new Vector3(Mathf.Cos(A), 0, Mathf.Sin(A));
+    }
+
 }

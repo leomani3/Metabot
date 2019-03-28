@@ -10,9 +10,9 @@ public class ProjectileScript : MonoBehaviour {
     {
         projectile = new LightBullet()
         {
-            Projectile_go = gameObject,
-            Direction = new Vector3(1, 0, 0)
+            Projectile_go = gameObject
         };
+        projectile.Direction = Utility.vectorFromAngle(projectile.Projectile_go.transform.eulerAngles.y);
     }
 
     // Update is called once per frame
@@ -24,5 +24,10 @@ public class ProjectileScript : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         projectile.OnTriggerEnter(other);
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        OnCollisionExit(other);
     }
 }

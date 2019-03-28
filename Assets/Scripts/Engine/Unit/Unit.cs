@@ -7,18 +7,19 @@ public abstract class Unit : Percepts {
     readonly static float MAX_DISTANCE_GIVE = 5.0f;
     readonly static float MAX_DISTANCE_TAKE = 5.0f;
 
-    readonly float maxHealth;
-	float currentHealth;
-    readonly float speed;
-    readonly float distanceSight;
-    readonly float angleSight;
-    readonly int maxBagSize;
-	int currentBagSize;
+    protected readonly float maxHealth;
+    protected float currentHealth;
+    protected readonly float speed;
+    protected readonly float distanceSight;
+    protected readonly float angleSight;
+    protected readonly int maxBagSize;
+    protected int currentBagSize;
     ArrayList bag;
-    float heading;
+    protected float heading;
     protected GameObject unit_go;
+    GameObject collisionObject;
 
-	public Unit(float maxHealth, float speed, float distanceSight, float angleSight, int maxBagSize, float heading) {
+    public Unit(float maxHealth, float speed, float distanceSight, float angleSight, int maxBagSize, float heading) {
 		this.maxHealth = maxHealth;
 		this.currentHealth = maxHealth;
 		this.speed = speed;
@@ -36,10 +37,10 @@ public abstract class Unit : Percepts {
 
     public bool IsEmptyBag()
     {
-        return this.currentBagSize == 0;
+        return currentBagSize == 0;
     }
 
-    public void take(Ressource r)
+    public void Take(Ressource r)
     {
         if (!IsFullBag() && Vector3.Distance(unit_go.transform.position, r.Ressource_go.transform.position) < MAX_DISTANCE_TAKE)
         {
@@ -72,17 +73,43 @@ public abstract class Unit : Percepts {
         return false;
     }
 
-    public void Move(Vector3 direction)
+    public void Move()
     {
         if (!IsBlocked())
-            unit_go.transform.position += speed * direction.normalized * 0.2f;
+        {
+            unit_go.transform.position += speed * Utility.vectorFromAngle(heading).normalized * 0.2f;
+        }
         else
-            unit_go.transform.position *= -1;//Faire quelque chose
+            unit_go.transform.position *= 1;//Faire quelque chose
     }
-    
+
+    public void OnCollisionStay(Collision other)
+    {
+        collisionObject = null;
+        if (other.gameObject.tag != "Ground")
+        {
+            foreach (ContactPoint contact in other.contacts)
+            {
+                float a = Utility.getAngle(unit_go.transform.position, contact.point);
+                float A = Mathf.Abs(a - heading);
+                float B = Mathf.Abs(360 + Mathf.Min(a, heading) - Mathf.Max(a, heading));
+                if (Mathf.Min(A, B) < 90f)
+                {
+                    collisionObject = other.transform.gameObject;
+                    break;
+                }
+            }
+        }
+    }
+
+    public void OnCollisionExit(Collision other)
+    {
+        collisionObject = null;
+    }
+
     public bool IsBlocked()
     {
-        return false; // A faire
+        return collisionObject != null;
     }
 
     public float Heading
@@ -106,7 +133,11 @@ public abstract class Unit : Percepts {
     public Color TeamColor
     {
         get { return this.teamColor; }
-        set { this.teamColor = value; }
+        set 
+        { 
+            this.teamColor = value;
+            unit_go.transform.Rotate(Quaternion.Euler(0, heading, 0).eulerAngles);
+        }
     }
 
 

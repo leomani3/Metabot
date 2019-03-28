@@ -2,8 +2,6 @@
 
 public abstract class Projectile
 {
-    //public static Projectile LIGHT_BULLET = new Projectile(10.0f, 20.0f, 0.5f, 3.0f);
-
     readonly float speed;
     readonly float damage;
     readonly float explosionRadius;
@@ -37,7 +35,6 @@ public abstract class Projectile
         if (autonomy <= 0)
         {
             Object.Destroy(projectile_go);
-            Debug.Log("Bullet détruit " + autonomy);
         }
         else 
             this.projectile_go.transform.position += speed * direction.normalized * 0.2f;
@@ -45,6 +42,8 @@ public abstract class Projectile
 
     public void OnTriggerEnter(Collider other)
     {
+        other.GetComponent<UnitController>().Unit.CurrentHealth -= damage;
+        Debug.Log(other.GetComponent<UnitController>().Unit.CurrentHealth);
         Object.Destroy(Projectile_go);
     }
 }

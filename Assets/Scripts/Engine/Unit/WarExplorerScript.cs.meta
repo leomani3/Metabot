@@ -1,8 +1,6 @@
 fileFormatVersion: 2
-guid: 3a32b363463ca4b7f803f480b4232985
-labels:
-- Ground
-timeCreated: 1552720991
+guid: cdd8c7892488d43a995d78cd3896fbe8
+timeCreated: 1553759794
 licenseType: Free
 MonoImporter:
   externalObjects: {}
