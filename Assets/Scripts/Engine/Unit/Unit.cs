@@ -19,7 +19,6 @@ public abstract class Unit : Percepts
     protected ArrayList bag;
     protected GameObject collisionObject;
     protected ArrayList perpecptsInSight;
-    protected ArrayList equipments;
 
     protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading)
     {
@@ -32,15 +31,6 @@ public abstract class Unit : Percepts
         this.heading = heading;
         this.bag = new ArrayList(maxBagSize);
         this.perpecptsInSight = new ArrayList();
-        this.equipments = new ArrayList();
-    }
-
-    protected void AddEquipment(params Equipment[] list)
-    {
-        foreach (Equipment e in list)
-        {
-            equipments.Add(e);
-        }
     }
 
     public bool IsFullBag()
@@ -171,10 +161,5 @@ public abstract class Unit : Percepts
         {
             return perpecptsInSight;
         }
-    }
-
-    protected ArrayList Equipments
-    {
-        get { return equipments; }
     }
 }
