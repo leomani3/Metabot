@@ -163,9 +163,4 @@ public abstract class Unit : Percepts
             return perpecptsInSight;
         }
     }
-
-    protected ArrayList Equipments
-    {
-        get { return equipments; }
-    }
 }
