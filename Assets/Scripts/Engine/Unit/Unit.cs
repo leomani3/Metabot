@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Unit : Percepts
+public abstract class Unit
 {
 
     readonly static float MAX_DISTANCE_GIVE = 5.0f;
@@ -137,7 +137,8 @@ public abstract class Unit : Percepts
         set { this.unit_go = value; }
     }
 
-    public Color TeamColor
+    //Léo : J'ai mis ça en commentaire suite à la suppression de la classe Percept (qui gérait la couleur des équipe)
+    /*public Color TeamColor
     {
         get { return this.teamColor; }
         set
@@ -145,7 +146,7 @@ public abstract class Unit : Percepts
             this.teamColor = value;
             unit_go.transform.Rotate(Quaternion.Euler(0, heading, 0).eulerAngles);
         }
-    }
+    }*/
 
     public float DistanceSight
     {
