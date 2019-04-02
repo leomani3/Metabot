@@ -16,8 +16,8 @@ public class UnitController : MonoBehaviour {
         {
             Unit_go = gameObject
         };
-        unit.Unit_go.transform.Rotate(Quaternion.Euler(0,unit.Heading,0).eulerAngles);
-        foreach (MeshRenderer meshRenderer in unit.Unit_go.GetComponentsInChildren<MeshRenderer>())
+        gameObject.transform.Rotate(Quaternion.Euler(0,unit.Heading,0).eulerAngles);
+        foreach (MeshRenderer meshRenderer in gameObject.GetComponentsInChildren<MeshRenderer>())
         {
             meshRenderer.material.color = Color.red;
         }
@@ -26,10 +26,10 @@ public class UnitController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         unit.GetAllPerceptsInRadius();
-        if(unit.PerpecptsInSight.Count > 0)
-            unit.Shoot();
+        if (unit.PerpecptsInSight.Count > 0)
+            ;//unit.Shoot();
         else
-            unit.Move();
+            ;//unit.Move();
 	}
 
     void OnCollisionStay(Collision other)

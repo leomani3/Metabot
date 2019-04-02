@@ -10,22 +10,21 @@ public abstract class Unit : Percepts
 
     protected readonly float maxHealth;
     protected float currentHealth;
-    protected readonly float speed;
     protected readonly float distanceSight;
     protected readonly float angleSight;
     protected readonly int maxBagSize;
     protected int currentBagSize;
-    ArrayList bag;
     protected float heading;
     protected GameObject unit_go;
-    GameObject collisionObject;
-    ArrayList perpecptsInSight;
+    protected ArrayList bag;
+    protected GameObject collisionObject;
+    protected ArrayList perpecptsInSight;
+    protected ArrayList equipments;
 
-    protected Unit(float maxHealth, float speed, float distanceSight, float angleSight, int maxBagSize, float heading)
+    protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading)
     {
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
-        this.speed = speed;
         this.distanceSight = distanceSight;
         this.angleSight = angleSight;
         this.maxBagSize = maxBagSize;
@@ -33,11 +32,20 @@ public abstract class Unit : Percepts
         this.heading = heading;
         this.bag = new ArrayList(maxBagSize);
         this.perpecptsInSight = new ArrayList();
+        this.equipments = new ArrayList();
+    }
+
+    protected void AddEquipment(params Equipment[] list)
+    {
+        foreach (Equipment e in list)
+        {
+            equipments.Add(e);
+        }
     }
 
     public bool IsFullBag()
     {
-        return this.currentBagSize == this.maxBagSize;
+        return currentBagSize == maxBagSize;
     }
 
     public bool IsEmptyBag()
@@ -49,7 +57,7 @@ public abstract class Unit : Percepts
     {
         if (!IsFullBag() && Vector3.Distance(unit_go.transform.position, r.Ressource_go.transform.position) < MAX_DISTANCE_TAKE)
         {
-            this.bag.Add(r);
+            bag.Add(r);
             currentBagSize++;
             Object.Destroy(r.Ressource_go);
         }
@@ -76,16 +84,6 @@ public abstract class Unit : Percepts
             }
         }
         return false;
-    }
-
-    public void Move()
-    {
-        if (!IsBlocked())
-        {
-            unit_go.transform.position += speed * Utility.vectorFromAngle(heading).normalized * 0.2f;
-        }
-        else
-            unit_go.transform.position *= 1;//Faire quelque chose
     }
 
     public void OnCollisionStay(Collision other)
@@ -173,5 +171,10 @@ public abstract class Unit : Percepts
         {
             return perpecptsInSight;
         }
+    }
+
+    protected ArrayList Equipments
+    {
+        get { return equipments; }
     }
 }

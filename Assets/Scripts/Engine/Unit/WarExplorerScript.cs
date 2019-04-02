@@ -13,7 +13,7 @@ public class WarExplorerScript : UnitController {
         };
 
         //unit.Unit_go.transform.Rotate(Quaternion.Euler(0, unit.Heading, 0).eulerAngles);
-        foreach (MeshRenderer meshRenderer in unit.Unit_go.GetComponentsInChildren<MeshRenderer>())
+        foreach (MeshRenderer meshRenderer in gameObject.GetComponentsInChildren<MeshRenderer>())
         {
             meshRenderer.material.color = Color.blue;
         }
