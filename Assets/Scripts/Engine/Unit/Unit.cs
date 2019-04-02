@@ -22,7 +22,6 @@ public abstract class Unit
 
     protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading)
     {
-        ClassLoa
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
         this.distanceSight = distanceSight;
