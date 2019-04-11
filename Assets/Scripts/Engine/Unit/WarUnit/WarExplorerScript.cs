@@ -2,19 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarExplorerScript : MonoBehaviour
+public class WarExplorerScript : UnitScript
 {
-    protected WarUnit unit;
-
-    public WarUnit Unit
-    {
-        get { return unit; }
-    }
-
     // Use this for initialization
     void Start()
     {
-        unit = new WarLight
+        unit = new WarExplorer
         {
             Unit_go = gameObject
         };
@@ -28,11 +21,11 @@ public class WarExplorerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        unit.GetAllPerceptsInRadius();
+        Unit.GetAllPerceptsInRadius();
         if (unit.PerpecptsInSight.Count > 0)
-            ;//unit.Shoot();
+            ;
         else
-            ;//unit.Move();
+            ;
     }
 
     void OnCollisionStay(Collision other)

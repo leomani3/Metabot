@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vehicle : Feature
+public class Movable : Feature
 {
     protected readonly float speed;
 
-    public Vehicle(float speed, Unit unit) : base(unit)
+    public Movable(Unit unit, float speed) : base(unit)
     {
         this.speed = speed;
     }

@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarLightScript : MonoBehaviour
+public class WarLightScript : UnitScript
 {
-    protected WarUnit unit;
-
-    public WarUnit Unit
-    {
-        get { return unit; }
-    }
 
     // Use this for initialization
     void Start()
@@ -28,11 +22,19 @@ public class WarLightScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        unit.GetAllPerceptsInRadius();
+        Unit.GetAllPerceptsInRadius();
+        if (Input.GetMouseButtonDown(0))
+        {
+            ((WarLight)unit).CreatorFeature.Create(typeof(WarLight));
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            ((WarLight)unit).CreatorFeature.Create(typeof(WarExplorer));
+        }
         if (unit.PerpecptsInSight.Count > 0)
-            ;//unit.Shoot();
+            ((WarLight)unit).WeaponFeature.Shoot();
         else
-            ;//unit.Move();
+            ((WarLight)unit).MovableFeature.Move();
     }
 
     void OnCollisionStay(Collision other)

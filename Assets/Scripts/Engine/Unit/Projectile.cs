@@ -36,19 +36,20 @@ public abstract class Projectile
         {
             Object.Destroy(projectile_go);
         }
-        else 
+        else
             this.projectile_go.transform.position += speed * direction.normalized * 0.2f;
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<UnitController>().Unit.CurrentHealth -= damage;
-        //Debug.Log(other.GetComponent<UnitController>().Unit.CurrentHealth);
+        other.GetComponent<UnitScript>().Unit.CurrentHealth -= damage;
+        Debug.Log(other.GetComponent<UnitScript>().Unit.CurrentHealth);
+        Debug.Log(damage);
         Object.Destroy(Projectile_go);
     }
 }
 
 public class LightBullet : Projectile
 {
-    public LightBullet(float speed = 10.0f, float damage = 20.0f, float explosionRadius = 0.5f, float autonomy = 3.0f) : base(speed, damage, explosionRadius, autonomy){}
+    public LightBullet(float speed = 10.0f, float damage = 20.0f, float explosionRadius = 0.5f, float autonomy = 3.0f) : base(speed, damage, explosionRadius, autonomy) { }
 }

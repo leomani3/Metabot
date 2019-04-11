@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : Feature
+public class Weapon : Feature
 {
     protected float timeReload;
-    protected float timeBeforeReload;
     protected GameObject projectile_go;
 
-    protected Weapon(float timeReload, float timeBeforeReload, GameObject projectile_go, Unit unit) : base(unit)
+    private float timeBeforeReload;
+
+    public Weapon(Unit unit, float timeReload, GameObject projectile_go) : base(unit)
     {
         this.timeReload = timeReload;
-        this.timeBeforeReload = timeBeforeReload;
+        this.timeBeforeReload = 0;
         this.projectile_go = projectile_go;
     }
 

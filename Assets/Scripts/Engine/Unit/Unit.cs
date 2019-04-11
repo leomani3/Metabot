@@ -128,7 +128,14 @@ public abstract class Unit
     public float CurrentHealth
     {
         get { return currentHealth; }
-        set { this.currentHealth = value; }
+        set
+        {
+            this.currentHealth = value;
+            if (this.CurrentHealth <= 0)
+            {
+                Object.Destroy(Unit_go);
+            }
+        }
     }
 
     public GameObject Unit_go
