@@ -27,7 +27,7 @@ public class WarLightScript : UnitScript
         {
             ((WarLight)unit).CreatorFeature.Create(typeof(WarLight));
         }
-        else if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown("a"))
         {
             ((WarLight)unit).CreatorFeature.Create(typeof(WarExplorer));
         }

@@ -15,7 +15,7 @@ public class Brain
 	
 	public void decide(Unit unit){
 		//ORDONNER LES INSTRUCTIONS PAR PRIORITES
-		for(Instruction i in instructions){
+		foreach(Instruction i in instructions){
 			if(i.satisfied(unit)){
 				i.action.setup(unit);
 			}

@@ -8,16 +8,16 @@ public class Instruction
 	private Action action;
 	
 	//action c'est quoi comme type?
-	public Instruction(Brain b, string cond, string param, string meth){
+	public Instruction(string cond, string param, string meth){
 		condition = new Condition(cond);
 		if(meth == "create"){
-			action = new Create(b, meth, param);
+			action = new Create(meth, param);
 		}else{
-			action = new Action(b, meth, param);			
+			action = new Action(meth, param);			
 		}
 	}
 	
-	public boolean satisfied(Unit unit){	
-		condition.satisfied(unit);
+	public bool satisfied(Unit unit){	
+		return condition.satisfied(unit);
 	}
 }

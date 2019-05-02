@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public abstract class Unit
@@ -19,6 +21,7 @@ public abstract class Unit
     protected ArrayList bag;
     protected GameObject collisionObject;
     protected ArrayList perpecptsInSight;
+    protected Dictionary<string, float> dico;
 
     protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading)
     {
@@ -31,6 +34,17 @@ public abstract class Unit
         this.heading = heading;
         this.bag = new ArrayList(maxBagSize);
         this.perpecptsInSight = new ArrayList();
+        dico = new Dictionary<string, float>
+        {
+            { "maxHealth", maxHealth },
+            { "currentHealth", currentHealth },
+            { "distanceSight", distanceSight },
+            { "angleSight", angleSight },
+            { "maxBagSize", maxBagSize },
+            { "currentBagSize", currentBagSize },
+            { "heading", heading }
+        };
+
     }
 
     public bool IsFullBag()
@@ -107,6 +121,11 @@ public abstract class Unit
                 Debug.DrawLine(collider.transform.position, unit_go.transform.position);
             }
         }
+    }
+
+    public float LookUp(string key)
+    {
+        return dico[key];
     }
 
     public void OnCollisionExit(Collision other)
