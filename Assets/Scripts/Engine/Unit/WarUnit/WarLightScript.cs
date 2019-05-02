@@ -25,7 +25,7 @@ public class WarLightScript : UnitScript
         Unit.GetAllPerceptsInRadius();
         if (Input.GetMouseButtonDown(0))
         {
-            ((WarLight)unit).CreatorFeature.Type = typeof(WarLight);
+            ((WarLight)unit).CreatorFeature.Type = System.Type.GetType("WarLight");
             ((WarLight)unit).CreatorFeature.Create();
         }
         else if (Input.GetMouseButtonDown(1))
