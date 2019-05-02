@@ -5,17 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class Message
 {
-
+    public Object contenu;
     public string content;
     public GameObject sender;
     public GameObject receiver;
     public float heading;
 
-    public Message(GameObject sender, string content, GameObject receiver)
+    public Message(GameObject sender, string content, Object contenu)
     {
         this.content = content;
         this.sender = sender;
-        this.receiver = receiver;
+        this.contenu = contenu;
         heading = Utility.getAngle(receiver, sender);
     }
 
@@ -23,6 +23,7 @@ public class Message
     {
         this.sender = sender;
     }
+
 
     public Message(Message M)
     {

@@ -9,15 +9,15 @@ public class PlayButton : MonoBehaviour
 {
     public GameObject loadingScreenBar;
     public Slider sliderLoad;
-    public TeamMenuHUD[] _DropDownList;
-    public GameObject _numberplayerDropDown;
+    public TeamMenuHUD[] DropDownList;
+    public GameObject numberplayerDropDown;
     public Color[] playerColor;
     public int nbPlayers;
 
     public void StartGame()
     {
         
-        nbPlayers = int.Parse(_numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
+        nbPlayers = int.Parse(numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
 
         GameObject gameManager = GameObject.Find("GameManager");
@@ -27,17 +27,13 @@ public class PlayButton : MonoBehaviour
 
         for (int i = 0; i < nbPlayers; i++)
         {
-            Team team = new Team();
-            team._color = _DropDownList[i]._teamColor;
-            team._name = _DropDownList[i]._teamName;//.Replace("_", " ");
-            team._unitsBehaviour = interpreter.xmlToBehavior(gamePath + team._name, gamePath);
-            gameManager.GetComponent<TeamManager>()._teams.Add(team);
+            string name = DropDownList[i]._teamName;
+            MetaTeam team = new MetaTeam(name,gamePath + name + ".wbt" );
         }
 
         GameManager setting = gameManager.GetComponent<GameManager>();
         setting.SetSetting();
 
-        //
         StartCoroutine(AsynchronousLoad(setting._gameSettings._indexSceneMap));
     }
 
@@ -46,16 +42,12 @@ public class PlayButton : MonoBehaviour
         loadingScreenBar.SetActive(true);
         yield return null;
 
-        Debug.Log("BLBLBL : " + scene);
         AsyncOperation ao = SceneManager.LoadSceneAsync(scene);
         ao.allowSceneActivation = false;
 
         while (!ao.isDone)
         {
             sliderLoad.value = ao.progress;
-            // [0, 0.9] > [0, 1]
-            //float progress = Mathf.Clamp01(ao.progress / 0.9f);
-            //Debug.Log("Loading progress: " + (progress * 100) + "%");
 
             // Loading completed
             if (ao.progress == 0.9f)
