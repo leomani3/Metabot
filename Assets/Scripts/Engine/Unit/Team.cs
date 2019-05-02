@@ -17,7 +17,7 @@ public class MetaTeam
     {
         XmlDocument xml = new XmlDocument();
         xml.Load(fileName);
-        XmlNodeList units = xml.GetElementsByTagName("behavior").ChildNodes;
+        XmlNodeList units = xml.GetElementsByTagName("behavior")[0].ChildNodes;
 		ArrayList tmp = new ArrayList();
         foreach(XmlNode unit in units){
 			tmp.Clear();

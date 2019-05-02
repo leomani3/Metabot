@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public class MetaInstruction
 {
 	private Condition condition;
-	private Action action;
+	private MetaAction action;
 	
 	public MetaInstruction(Brain b, string cond, string param, string meth){
 		condition = new Condition(cond);
 		if(meth == "create"){
 			action = new Create(meth, param);
 		}else{
-			action = new Action(meth, param);			
+			action = new MetaAction(meth, param);			
 		}
 	}
 	
@@ -20,7 +20,7 @@ public class MetaInstruction
 		return condition.satisfied(unit);
 	}
 
-    public Action Action
+    public MetaAction Action
     {
         get
         {

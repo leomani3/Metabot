@@ -2,12 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Create : MetaAction
+public class MetaAction
 {	
-	public Create(string param, string meth): base(param, meth){}
+	protected string parametre;
+	protected string methode;
+
+	public MetaAction(string param, string meth){
+		parametre = param;
+		methode = meth;
+	}
 	
 	public void setup(Unit unit){
 		unit.NextAction = (Unit.Action)Delegate.CreateDelegate(typeof(Unit.Action), unit, methode);
-		((WarLight)unit).CreatorFeature.Type = System.Type.GetType(parametre);
 	}
 }
