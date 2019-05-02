@@ -10,6 +10,11 @@ public abstract class Unit
     readonly static float MAX_DISTANCE_GIVE = 5.0f;
     readonly static float MAX_DISTANCE_TAKE = 5.0f;
 
+    public delegate void Action();
+
+    protected GameObject collisionObject;
+    protected GameObject unit_go;
+
     protected readonly float maxHealth;
     protected float currentHealth;
     protected readonly float distanceSight;
@@ -17,11 +22,16 @@ public abstract class Unit
     protected readonly int maxBagSize;
     protected int currentBagSize;
     protected float heading;
-    protected GameObject unit_go;
     protected ArrayList bag;
+<<<<<<< HEAD
     protected GameObject collisionObject;
     protected ArrayList perpecptsInSight;
     protected Dictionary<string, float> dico;
+=======
+    protected ArrayList perpeptsInSight;
+
+    protected Action nextAction;
+>>>>>>> 2dfc69d3fd25afbea915b43422c2cd9a4fba0fed
 
     protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading)
     {
@@ -33,6 +43,7 @@ public abstract class Unit
         this.currentBagSize = 0;
         this.heading = heading;
         this.bag = new ArrayList(maxBagSize);
+<<<<<<< HEAD
         this.perpecptsInSight = new ArrayList();
         dico = new Dictionary<string, float>
         {
@@ -45,6 +56,9 @@ public abstract class Unit
             { "heading", heading }
         };
 
+=======
+        this.perpeptsInSight = new ArrayList();
+>>>>>>> 2dfc69d3fd25afbea915b43422c2cd9a4fba0fed
     }
 
     public bool IsFullBag()
@@ -111,13 +125,13 @@ public abstract class Unit
 
     public void GetAllPerceptsInRadius()
     {
-        perpecptsInSight.Clear();
+        perpeptsInSight.Clear();
         Collider[] colliders = Physics.OverlapSphere(unit_go.transform.position, distanceSight);
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
             {
-                perpecptsInSight.Add(collider);
+                perpeptsInSight.Add(collider);
                 Debug.DrawLine(collider.transform.position, unit_go.transform.position);
             }
         }
@@ -182,11 +196,23 @@ public abstract class Unit
         }
     }
 
-    public ArrayList PerpecptsInSight
+    public ArrayList PerpeptsInSight
     {
         get
         {
-            return perpecptsInSight;
+            return perpeptsInSight;
+        }
+    }
+
+    public Action NextAction
+    {
+        get
+        {
+            return nextAction;
+        }
+        set
+        {
+            nextAction = value;
         }
     }
 }

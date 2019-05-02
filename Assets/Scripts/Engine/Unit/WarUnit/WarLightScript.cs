@@ -25,13 +25,15 @@ public class WarLightScript : UnitScript
         Unit.GetAllPerceptsInRadius();
         if (Input.GetMouseButtonDown(0))
         {
-            ((WarLight)unit).CreatorFeature.Create(typeof(WarLight));
+            ((WarLight)unit).CreatorFeature.Type = System.Type.GetType("WarLight"); //GetType permet de créer un Type à partir d'un String.
+            ((WarLight)unit).CreatorFeature.Create();
         }
         else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown("a"))
         {
-            ((WarLight)unit).CreatorFeature.Create(typeof(WarExplorer));
+            ((WarLight)unit).CreatorFeature.Type = typeof(WarExplorer);
+            ((WarLight)unit).CreatorFeature.Create();
         }
-        if (unit.PerpecptsInSight.Count > 0)
+        if (unit.PerpeptsInSight.Count > 0)
             ((WarLight)unit).WeaponFeature.Shoot();
         else
             ((WarLight)unit).MovableFeature.Move();

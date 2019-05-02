@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: f9740132cd7454bd29681bdfaa763f34
-=======
-guid: 065ee9b8db0bcc74895d8627d6efa852
->>>>>>> 2dfc69d3fd25afbea915b43422c2cd9a4fba0fed
+guid: e0aa9bc24293eaf41971386b9b03d92a
+timeCreated: 1520541536
+licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

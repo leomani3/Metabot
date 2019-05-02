@@ -3,14 +3,12 @@ using System.Xml;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Team
+public class MetaTeam
 {
-	//-------------LE CODE CI DESSOUS DOIT SE TROUVER DANS LA CLASSE TEAM----------//
-
 	public string name;
-	public Dictionary brains;
+	public Dictionary<string, MetaBrain> brains;
 
-	public Team(string n, string fileName){
+	public MetaTeam(string n, string fileName){
 		name = n;
 		loadXML(fileName);
 	}
@@ -19,7 +17,7 @@ public class Team
     {
         XmlDocument xml = new XmlDocument();
         xml.Load(fileName);
-        XmlNodeList units = xml.GetElementsByTagName("behavior").ChildNodes;
+        XmlNodeList units = xml.GetElementsByTagName("behavior")[0].ChildNodes;
 		ArrayList tmp = new ArrayList();
         foreach(XmlNode unit in units){
 			tmp.Clear();
@@ -27,19 +25,20 @@ public class Team
 			foreach(XmlNode instruction in instructions){
 				tmp.Add(manageInstruction(instruction));
 			}
-			brains.Add(unit.name, new Brain(tmp));
+			brains.Add(typeof(Unit).ToString(), new MetaBrain(tmp));
 		}
     }
 	
-    public Instruction manageInstruction(XmlNode instruction)
+    public MetaInstruction manageInstruction(XmlNode instruction)
     {
-		XmlNodeList children = instruction.ChildNodes;
+        XmlNodeList children = instruction.ChildNodes;
 		XmlNode conditions = children[0];
 		XmlNode action = children[1];	
 		string condition = conditions.InnerText;
-		string param = action.GetElementsByTagName("parametre")[0].InnerText;
-		string methode = action.GetElementsByTagName("methode")[0].InnerText;
-		Instruction inst = new Instruction(condition, param, methode);
-		return inst;
+        //string param = action.GetElementsByTagName("parametre")[0].InnerText;
+        //string methode = action.GetElementsByTagName("methode")[0].InnerText;
+        //MetaInstruction inst = new MetaInstruction(param, methode);
+        //return inst;
+        return null;
 	}
 }
