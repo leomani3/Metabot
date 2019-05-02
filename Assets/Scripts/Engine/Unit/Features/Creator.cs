@@ -17,6 +17,7 @@ public class Creator : Feature
         if (creatableUnits.Contains(type))
         {
             GameObject go = Resources.Load<GameObject>("Prefab/Unit/" + type.Name);
+            Debug.Log(go);
             Object.Instantiate(go, unit.Unit_go.transform.position, Quaternion.identity);
         }
     }   

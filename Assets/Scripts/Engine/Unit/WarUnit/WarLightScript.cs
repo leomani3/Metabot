@@ -28,7 +28,7 @@ public class WarLightScript : UnitScript
             ((WarLight)unit).CreatorFeature.Type = System.Type.GetType("WarLight"); //GetType permet de créer un Type à partir d'un String.
             ((WarLight)unit).CreatorFeature.Create();
         }
-        else if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown("a"))
         {
             ((WarLight)unit).CreatorFeature.Type = typeof(WarExplorer);
             ((WarLight)unit).CreatorFeature.Create();

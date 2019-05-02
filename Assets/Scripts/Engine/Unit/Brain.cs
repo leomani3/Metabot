@@ -108,6 +108,17 @@ public class Brain : MonoBehaviour
 
         return flag;
     }
+<<<<<<< HEAD
+	
+	public void decide(Unit unit){
+		//ORDONNER LES INSTRUCTIONS PAR PRIORITES
+		foreach(Instruction i in instructions){
+			if(i.satisfied(unit)){
+				i.action.setup(unit);
+			}
+		}
+	}
+=======
 
 
 
@@ -119,4 +130,5 @@ public struct InstructionEditor
     public string[] _listeStringPerceptsVoulus;
     public MessageStruct[] _stringActionsNonTerminales;
     public string _stringAction;
+>>>>>>> 2dfc69d3fd25afbea915b43422c2cd9a4fba0fed
 }
