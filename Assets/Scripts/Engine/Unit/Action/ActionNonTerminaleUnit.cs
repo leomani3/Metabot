@@ -54,7 +54,7 @@ public class ActionNonTerminaleUnit : ActionNonTerminalCommon
         };
         _actionsNT["ACTN_ADD_ELIMINATION_CONTRACT"] = delegate ()
         {
-            EliminationContract newContract = new EliminationContract((GameObject)_tmpMessage._contenu);
+            EliminationContract newContract = new EliminationContract((GameObject)_tmpMessage.contenu);
             GetComponent<Stats>().AddContract(newContract);
         };
     }
