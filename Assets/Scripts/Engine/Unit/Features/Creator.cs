@@ -20,4 +20,16 @@ public class Creator : Feature
             Object.Instantiate(go, unit.Unit_go.transform.position, Quaternion.identity);
         }
     }   
+
+    public System.Type Type
+    {
+        get
+        {
+            return type;
+        }
+        set
+        {
+            type = value;
+        }
+    }
 }

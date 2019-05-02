@@ -19,4 +19,12 @@ public class MetaInstruction
 	public bool satisfied(Unit unit){	
 		return condition.satisfied(unit);
 	}
+
+    public Action Action
+    {
+        get
+        {
+            return action;
+        }
+    }
 }

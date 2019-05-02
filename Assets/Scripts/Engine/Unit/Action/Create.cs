@@ -8,6 +8,6 @@ public class Create : Action
 	
 	public void setup(Unit unit){
 		unit.NextAction = (Unit.Action)Delegate.CreateDelegate(typeof(Unit.Action), unit, methode);
-		unit.creator.type = parametre;
+		((WarLight)unit).CreatorFeature.Type = System.Type.GetType(parametre);
 	}
 }

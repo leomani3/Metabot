@@ -25,11 +25,13 @@ public class WarLightScript : UnitScript
         Unit.GetAllPerceptsInRadius();
         if (Input.GetMouseButtonDown(0))
         {
-            ((WarLight)unit).CreatorFeature.Create(typeof(WarLight));
+            ((WarLight)unit).CreatorFeature.Type = typeof(WarLight);
+            ((WarLight)unit).CreatorFeature.Create();
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            ((WarLight)unit).CreatorFeature.Create(typeof(WarExplorer));
+            ((WarLight)unit).CreatorFeature.Type = typeof(WarExplorer);
+            ((WarLight)unit).CreatorFeature.Create();
         }
         if (unit.PerpecptsInSight.Count > 0)
             ((WarLight)unit).WeaponFeature.Shoot();
