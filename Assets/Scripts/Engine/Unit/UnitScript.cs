@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class UnitScript : MonoBehaviour
 {
-    protected WarUnit unit;
+    protected Unit unit;
 
-    public WarUnit Unit
+    public Unit Unit
     {
         get { return unit; }
     }
