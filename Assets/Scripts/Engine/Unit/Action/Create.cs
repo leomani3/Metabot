@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public class Create : Action
 {	
-	public Create(string param, string meth): (param, meth){}
+	public Create(string param, string meth): base(param, meth){}
 	
 	public void setup(Unit unit){
-		unit.nextAction = Delegate.CreateDelegate(typeof(Unit.Action), unit, i.methode);
-		unit.creator.nextToCreate = param;
+		unit.NextAction = (Unit.Action)Delegate.CreateDelegate(typeof(Unit.Action), unit, methode);
+		unit.creator.type = parametre;
 	}
 }

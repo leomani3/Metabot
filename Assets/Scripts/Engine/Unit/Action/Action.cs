@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class Action
 {	
-	private string parametre;
-	private string methode;
+	protected string parametre;
+	protected string methode;
 
 	public Action(string param, string meth){
 		parametre = param;
@@ -13,6 +13,6 @@ public class Action
 	}
 	
 	public void setup(Unit unit){
-		unit.nextAction = Delegate.CreateDelegate(typeof(Unit.Action), unit, methode);
+		unit.NextAction = (Unit.Action)Delegate.CreateDelegate(typeof(Unit.Action), unit, methode);
 	}
 }

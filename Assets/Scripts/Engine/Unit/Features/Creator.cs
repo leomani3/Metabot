@@ -5,13 +5,14 @@ using UnityEngine;
 public class Creator : Feature
 {
     List<System.Type> creatableUnits = new List<System.Type>();
+    System.Type type;
 
     public Creator(Unit unit, List<System.Type> canCreateUnits) : base(unit)
     {
         creatableUnits = canCreateUnits;
     }
 
-    public void Create(System.Type type)
+    public void Create()
     {
         if (creatableUnits.Contains(type))
         {

@@ -8,6 +8,11 @@ public abstract class Unit
     readonly static float MAX_DISTANCE_GIVE = 5.0f;
     readonly static float MAX_DISTANCE_TAKE = 5.0f;
 
+    public delegate void Action();
+
+    protected GameObject collisionObject;
+    protected GameObject unit_go;
+
     protected readonly float maxHealth;
     protected float currentHealth;
     protected readonly float distanceSight;
@@ -15,10 +20,10 @@ public abstract class Unit
     protected readonly int maxBagSize;
     protected int currentBagSize;
     protected float heading;
-    protected GameObject unit_go;
     protected ArrayList bag;
-    protected GameObject collisionObject;
     protected ArrayList perpecptsInSight;
+
+    protected Action nextAction;
 
     protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading)
     {
@@ -170,4 +175,18 @@ public abstract class Unit
             return perpecptsInSight;
         }
     }
+
+    public Action NextAction
+    {
+        get
+        {
+            return nextAction;
+        }
+        set
+        {
+            nextAction = value;
+        }
+    }
+
+    public 
 }
