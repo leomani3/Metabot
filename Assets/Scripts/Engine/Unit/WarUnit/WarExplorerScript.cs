@@ -22,7 +22,7 @@ public class WarExplorerScript : UnitScript
     void Update()
     {
         Unit.GetAllPerceptsInRadius();
-        if (unit.PerpecptsInSight.Count > 0)
+        if (unit.PerpeptsInSight.Count > 0)
             ;
         else
             ;
