@@ -17,7 +17,7 @@ public abstract class Percept : MonoBehaviour
         // Generation des percepts liées aux messages.
         MessageManager mm = GetComponent<MessageManager>();
         mm.Init();
-        foreach (string messageType in mm._messageType)
+        foreach (string messageType in mm.messageType)
         {
             _percepts["PERCEPT_"+messageType] = delegate () 
             {

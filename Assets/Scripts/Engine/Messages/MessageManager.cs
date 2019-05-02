@@ -5,20 +5,20 @@ using UnityEngine;
 public abstract class MessageManager : MonoBehaviour {
 
     public GameObject sender;
-    public List<Message> _waitingMessages = new List<Message>();
-    public List<Message> _currentMessages = new List<Message>();
-    public string[] _messageType;
-    public GameObject _messageLineObject;
+    public List<Message> waitingMessages = new List<Message>();
+    public List<Message> currentMessages = new List<Message>();
+    public string[] messageType;
+    public GameObject messageLineObject;
 
-    private Dictionary<GameObject,GameObject> _messageLineObjects = new Dictionary<GameObject, GameObject>();
+    private Dictionary<GameObject,GameObject> messageLineObjects = new Dictionary<GameObject, GameObject>();
 
     public abstract void Init();
 
     public void UpdateMessage()
     {
-        _currentMessages = _waitingMessages;
+        currentMessages = waitingMessages;
 
-        _waitingMessages = new List<Message>();
+        waitingMessages = new List<Message>();
     }
     
 
@@ -33,9 +33,9 @@ public abstract class MessageManager : MonoBehaviour {
 
                 Message M = new Message(message);
                 CreateMessageLineObject(unit);
-                M._receiver = unit;
+                M.receiver = unit;
                 M.heading = Utility.getAngle(unit, gameObject);
-                unit.GetComponent<MessageManager>()._waitingMessages.Add(M);
+                unit.GetComponent<MessageManager>().waitingMessages.Add(M);
             }
         }
     }
@@ -43,12 +43,12 @@ public abstract class MessageManager : MonoBehaviour {
 
     public void CreateMessageLineObject(GameObject unit)
     {
-        if ((!_messageLineObjects.ContainsKey(unit)) || (_messageLineObjects.ContainsKey(unit) &&_messageLineObjects[unit] == null))
+        if ((!messageLineObjects.ContainsKey(unit)) || (messageLineObjects.ContainsKey(unit) &&messageLineObjects[unit] == null))
         { 
-            GameObject messageLine = Instantiate(_messageLineObject);
+            GameObject messageLine = Instantiate(messageLineObject);
             messageLine.GetComponent<MessageLineScript>()._sender = this.gameObject;
             messageLine.GetComponent<MessageLineScript>()._receiver = unit;
-            _messageLineObjects[unit] = messageLine;
+            messageLineObjects[unit] = messageLine;
         }
     }
 
@@ -58,16 +58,16 @@ public abstract class MessageManager : MonoBehaviour {
         {
             if (unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex && unit == dest)
             {
-                unit.GetComponent<MessageManager>()._waitingMessages.Add(message);
+                unit.GetComponent<MessageManager>().waitingMessages.Add(message);
             }
         }
     }
 
     public Message ContainsType(string type)
     {
-        foreach (Message m in _currentMessages)
+        foreach (Message m in currentMessages)
         {
-            if (m._titre == type) return m;
+            if (m.content == type) return m;
         }
         return null;
     }
