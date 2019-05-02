@@ -1,17 +1,18 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public abstract class Action : MonoBehaviour
-{
-    /*
-     * Cette classe abstraite permet de créer de nouvelle action.
-     * Pour cela, créer une classe qui dérive de celle-ci.
-     */
+public class Action
+{	
+	private string parametre;
+	private string methode;
 
-
-
-    public delegate void Act();
-    public Dictionary<string, Act> _actions = new Dictionary<string, Act>();
-    public abstract void InitAction(); // 
+	public Action(string param, string meth){
+		parametre = param;
+		methode = meth;
+	}
+	
+	public void setup(Unit unit){
+		unit.nextAction = Delegate.CreateDelegate(typeof(Unit.Action), unit, methode);
+	}
 }
