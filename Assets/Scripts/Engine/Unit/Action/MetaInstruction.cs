@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 public class MetaInstruction
 {
-	private Condition condition;
+	private ArrayList conditions;
 	private MetaAction action;
 	
-	public MetaInstruction(Brain b, string cond, string param, string meth){
-		condition = new Condition(cond);
+	public MetaInstruction(string param, string meth){
+		//conditions.Add(new Condition(cond));
 		if(meth == "create"){
 			action = new Create(meth, param);
 		}else{
@@ -16,8 +16,14 @@ public class MetaInstruction
 		}
 	}
 	
-	public bool satisfied(Unit unit){	
-		return condition.satisfied(unit);
+	public bool satisfied(Unit unit){
+        bool satisfied = true;
+        int i = 0;
+        while(satisfied && i < conditions.Count)
+        {
+
+        }
+        return satisfied;
 	}
 
     public MetaAction Action

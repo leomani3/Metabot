@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class MetaTeam
 {
 	public string name;
-	public Dictionary<string, Brain> brains;
+	public Dictionary<string, MetaBrain> brains;
 
 	public MetaTeam(string n, string fileName){
 		name = n;
@@ -25,19 +25,20 @@ public class MetaTeam
 			foreach(XmlNode instruction in instructions){
 				tmp.Add(manageInstruction(instruction));
 			}
-			brains.Add(typeof(Unit).ToString(), new Brain(tmp));
+			brains.Add(typeof(Unit).ToString(), new MetaBrain(tmp));
 		}
     }
 	
-    public Instruction manageInstruction(XmlNode instruction)
+    public MetaInstruction manageInstruction(XmlNode instruction)
     {
-		XmlNodeList children = instruction.ChildNodes;
+        XmlNodeList children = instruction.ChildNodes;
 		XmlNode conditions = children[0];
 		XmlNode action = children[1];	
 		string condition = conditions.InnerText;
-		string param = action.GetElementsByTagName("parametre")[0].InnerText;
-		string methode = action.GetElementsByTagName("methode")[0].InnerText;
-		Instruction inst = new Instruction(condition, param, methode);
-		return inst;
+        //string param = action.GetElementsByTagName("parametre")[0].InnerText;
+        //string methode = action.GetElementsByTagName("methode")[0].InnerText;
+        //MetaInstruction inst = new MetaInstruction(param, methode);
+        //return inst;
+        return null;
 	}
 }

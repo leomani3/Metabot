@@ -21,7 +21,7 @@ public abstract class Unit
     protected int currentBagSize;
     protected float heading;
     protected ArrayList bag;
-    protected ArrayList perpecptsInSight;
+    protected ArrayList perpeptsInSight;
 
     protected Action nextAction;
 
@@ -35,7 +35,7 @@ public abstract class Unit
         this.currentBagSize = 0;
         this.heading = heading;
         this.bag = new ArrayList(maxBagSize);
-        this.perpecptsInSight = new ArrayList();
+        this.perpeptsInSight = new ArrayList();
     }
 
     public bool IsFullBag()
@@ -102,13 +102,13 @@ public abstract class Unit
 
     public void GetAllPerceptsInRadius()
     {
-        perpecptsInSight.Clear();
+        perpeptsInSight.Clear();
         Collider[] colliders = Physics.OverlapSphere(unit_go.transform.position, distanceSight);
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
             {
-                perpecptsInSight.Add(collider);
+                perpeptsInSight.Add(collider);
                 Debug.DrawLine(collider.transform.position, unit_go.transform.position);
             }
         }
@@ -168,11 +168,11 @@ public abstract class Unit
         }
     }
 
-    public ArrayList PerpecptsInSight
+    public ArrayList PerpeptsInSight
     {
         get
         {
-            return perpecptsInSight;
+            return perpeptsInSight;
         }
     }
 
