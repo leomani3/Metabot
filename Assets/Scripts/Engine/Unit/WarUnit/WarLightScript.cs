@@ -33,7 +33,7 @@ public class WarLightScript : UnitScript
             ((WarLight)unit).CreatorFeature.Type = typeof(WarExplorer);
             ((WarLight)unit).CreatorFeature.Create();
         }
-        if (unit.PerpecptsInSight.Count > 0)
+        if (unit.PerpeptsInSight.Count > 0)
             ((WarLight)unit).WeaponFeature.Shoot();
         else
             ((WarLight)unit).MovableFeature.Move();

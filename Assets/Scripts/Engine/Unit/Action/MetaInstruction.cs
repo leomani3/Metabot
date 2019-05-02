@@ -4,11 +4,12 @@ using System.Collections.Generic;
 
 public class MetaInstruction
 {
-	private ArrayList conditions;
+	private List<Condition> conditions;
 	private MetaAction action;
 	
 	public MetaInstruction(string param, string meth){
-		//conditions.Add(new Condition(cond));
+        //conditions.Add(new Condition(cond));
+        conditions = new List<Condition>();
 		if(meth == "create"){
 			action = new Create(meth, param);
 		}else{
@@ -21,10 +22,16 @@ public class MetaInstruction
         int i = 0;
         while(satisfied && i < conditions.Count)
         {
-
+            satisfied = conditions[i].satisfied(unit);
+            i++;
         }
         return satisfied;
 	}
+
+    public void addCondition(Condition cond)
+    {
+        conditions.Add(cond);
+    }
 
     public MetaAction Action
     {

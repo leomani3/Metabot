@@ -33,12 +33,18 @@ public class MetaTeam
     {
         XmlNodeList children = instruction.ChildNodes;
 		XmlNode conditions = children[0];
-		XmlNode action = children[1];	
+		XmlNode action = children[1];
 		string condition = conditions.InnerText;
-        //string param = action.GetElementsByTagName("parametre")[0].InnerText;
-        //string methode = action.GetElementsByTagName("methode")[0].InnerText;
-        //MetaInstruction inst = new MetaInstruction(param, methode);
-        //return inst;
-        return null;
+
+        string param = instruction.ChildNodes[0].InnerText;
+        string methode = instruction.ChildNodes[1].InnerText;
+        MetaInstruction inst = new MetaInstruction(param, methode);
+        //PARCOURS LES CONDITIONS PUIS AJOUTE DANS inst
+        for (int i = 2; i < instruction.ChildNodes.Count; i++)
+        {
+            inst.addCondition(new Condition(instruction.ChildNodes[i].InnerText));
+        }
+
+        return inst;
 	}
 }
