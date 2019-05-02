@@ -3,14 +3,12 @@ using System.Xml;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Team
+public class MetaTeam
 {
-	//-------------LE CODE CI DESSOUS DOIT SE TROUVER DANS LA CLASSE TEAM----------//
-
 	public string name;
-	public Dictionary brains;
+	public Dictionary<string, Brain> brains;
 
-	public Team(string n, string fileName){
+	public MetaTeam(string n, string fileName){
 		name = n;
 		loadXML(fileName);
 	}
@@ -27,7 +25,7 @@ public class Team
 			foreach(XmlNode instruction in instructions){
 				tmp.Add(manageInstruction(instruction));
 			}
-			brains.Add(unit.name, new Brain(tmp));
+			brains.Add(typeof(Unit).ToString(), new Brain(tmp));
 		}
     }
 	
