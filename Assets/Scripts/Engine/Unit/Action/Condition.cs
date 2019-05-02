@@ -11,9 +11,9 @@ public class Condition
 		stringExpression = text;
 	}
 	
-	public boolean satisfied(Unit unit){	
+	public bool satisfied(Unit unit){	
 		//remplacer les variables ecrites en string par leur valeur
-		stringExpression.Replace("currenHealth", unit.currentHealth);
+		stringExpression.Replace("currenHealth", unit.CurrentHealth);
 		//--
 		
 		return evaluate(stringExpression);
