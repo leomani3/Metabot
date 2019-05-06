@@ -8,7 +8,7 @@ public class WarLightScript : UnitScript
     // Use this for initialization
     void Start()
     {
-        unit = new WarLight
+        unit = new WarLight(gameObject.GetComponentInParent<WorldTest>().TeamRed)
         {
             Unit_go = gameObject
         };
@@ -19,25 +19,25 @@ public class WarLightScript : UnitScript
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Unit.GetAllPerceptsInRadius();
-        if (Input.GetMouseButtonDown(0))
-        {
-            ((WarLight)unit).CreatorFeature.Type = System.Type.GetType("WarLight"); //GetType permet de créer un Type à partir d'un String.
-            ((WarLight)unit).CreatorFeature.Create();
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            ((WarLight)unit).CreatorFeature.Type = typeof(WarExplorer);
-            ((WarLight)unit).CreatorFeature.Create();
-        }
-        if (unit.PerpeptsInSight.Count > 0)
-            ((WarLight)unit).WeaponFeature.Shoot();
-        else
-            ((WarLight)unit).MovableFeature.Move();
-    }
+    //---- N'est plus utile, mais pertinent pour le rapport ? ----
+    //void Update()
+    //{
+    //    //Unit.GetAllPerceptsInRadius();
+    //    //if (Input.GetMouseButtonDown(0))
+    //    //{
+    //    //    ((WarLight)unit).CreatorFeature.Type = System.Type.GetType("WarLight"); //GetType permet de créer un Type à partir d'un String.
+    //    //    ((WarLight)unit).CreatorFeature.Create();
+    //    //}
+    //    //else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown("a"))
+    //    //{
+    //    //    ((WarLight)unit).CreatorFeature.Type = typeof(WarLight);
+    //    //    ((WarLight)unit).CreatorFeature.Create();
+    //    //}
+    //    //if (unit.PerpeptsInSight.Count > 0)
+    //    //    ((WarLight)unit).WeaponFeature.Shoot();
+    //    //else
+    //    //    ((WarLight)unit).MovableFeature.Move();
+    //}
 
     void OnCollisionStay(Collision other)
     {

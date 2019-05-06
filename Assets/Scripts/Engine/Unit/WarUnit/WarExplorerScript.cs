@@ -7,7 +7,7 @@ public class WarExplorerScript : UnitScript
     // Use this for initialization
     void Start()
     {
-        unit = new WarExplorer
+        unit = new WarExplorer(gameObject.GetComponentInParent<WorldTest>().TeamRed)
         {
             Unit_go = gameObject
         };

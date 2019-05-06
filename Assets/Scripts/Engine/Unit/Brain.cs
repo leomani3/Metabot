@@ -108,9 +108,6 @@ public class Brain : MonoBehaviour
 
         return flag;
     }
-
-
-
 }
 
 [System.Serializable]

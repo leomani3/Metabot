@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public abstract class Unit
@@ -21,12 +23,17 @@ public abstract class Unit
     protected int currentBagSize;
     protected float heading;
     protected ArrayList bag;
+    protected Dictionary<string, float> dico;
     protected ArrayList perpeptsInSight;
-
+    protected MetaTeam team;
+    protected MetaBrain brain;
     protected Action nextAction;
 
-    protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading)
+    protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading, MetaTeam team)
     {
+        this.team = team;
+        Debug.Log(this.GetType().ToString());
+        this.brain = team.brains[this.GetType().ToString()];
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
         this.distanceSight = distanceSight;
@@ -35,7 +42,22 @@ public abstract class Unit
         this.currentBagSize = 0;
         this.heading = heading;
         this.bag = new ArrayList(maxBagSize);
+        dico = new Dictionary<string, float>
+        {
+            { "maxHealth", maxHealth },
+            { "currentHealth", currentHealth },
+            { "distanceSight", distanceSight },
+            { "angleSight", angleSight },
+            { "maxBagSize", maxBagSize },
+            { "currentBagSize", currentBagSize },
+            { "heading", heading }
+        };
         this.perpeptsInSight = new ArrayList();
+    }
+
+    public void RunAction()
+    {
+        nextAction();
     }
 
     public bool IsFullBag()
@@ -114,6 +136,11 @@ public abstract class Unit
         }
     }
 
+    public float LookUp(string key)
+    {
+        return dico[key];
+    }
+
     public void OnCollisionExit(Collision other)
     {
         collisionObject = null;
@@ -185,6 +212,14 @@ public abstract class Unit
         set
         {
             nextAction = value;
+        }
+    }
+
+    public MetaBrain Brain
+    {
+        get
+        {
+            return brain;
         }
     }
 }

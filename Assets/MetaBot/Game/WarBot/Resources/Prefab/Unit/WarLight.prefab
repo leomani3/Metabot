@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 64423190320421150}
   - component: {fileID: 54502745028969666}
   - component: {fileID: 114245209861344868}
-  - component: {fileID: 4849330566821911737}
+  - component: {fileID: 2051343530621071764}
   m_Layer: 10
   m_Name: WarLight
   m_TagString: Unit
@@ -458,10 +458,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
-  waitingMessages: []
-  currentMessages: []
-  messageType: []
-  messageLineObject: {fileID: 0}
+  _waitingMessages: []
+  _currentMessages: []
+  _messageType:
+  - MESSAGE_HELP
+  - MESSAGE_POSITION
+  - MESSAGE_ATTACK
+  - MESSAGE_POSITION_RESOURCE
+  _messageLineObject: {fileID: 1570930958659960, guid: 369a6c66779f7494fbf20cd2d86e12f7,
+    type: 3}
 --- !u!114 &114902426276640464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,10 +481,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _messageDestinataire: 
   _tmpMessage:
-    contenu: {fileID: 0}
-    content: 
-    sender: {fileID: 0}
-    receiver: {fileID: 0}
+    _titre: 
+    _contenu: {fileID: 0}
+    _sender: {fileID: 0}
+    _receiver: {fileID: 0}
     heading: 0
 --- !u!114 &114565466221491422
 MonoBehaviour:
@@ -552,7 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Unit: 
---- !u!114 &4849330566821911737
+--- !u!114 &2051343530621071764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
