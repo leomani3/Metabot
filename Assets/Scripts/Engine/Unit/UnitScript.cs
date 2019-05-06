@@ -18,6 +18,7 @@ public class UnitScript : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("VIE ACTUELLE :" + unit.CurrentHealth);
         unit.Brain.decide(unit);
         unit.RunAction();
     }

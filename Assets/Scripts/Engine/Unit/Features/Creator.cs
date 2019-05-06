@@ -19,6 +19,7 @@ public class Creator : Feature
         {
             GameObject go = Resources.Load<GameObject>("Prefab/Unit/" + type.Name);
             Object.Instantiate(go, unit.Unit_go.transform.position + new Vector3(1,0,2), Quaternion.identity);
+            unit.CurrentHealth -= 100;
         }
     }   
 
