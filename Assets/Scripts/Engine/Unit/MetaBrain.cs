@@ -20,5 +20,19 @@ public class MetaBrain
 				i.Action.setup(unit);
 			}
 		}
+
+        //--------------------POUR TEST--------------------------
+        unit.NextAction = (Unit.Action)Delegate.CreateDelegate(typeof(Unit.Action), (WarLight)unit, "Create");
+        ((WarLight)unit).CreatorFeature.Type = typeof(WarLight);
 	}
+
+    override
+    public string ToString()
+    {
+        string s = "";
+        foreach(MetaInstruction instr in instructions) {
+            s += instr.ToString() + "\n";
+        }
+        return s;
+    }
 }

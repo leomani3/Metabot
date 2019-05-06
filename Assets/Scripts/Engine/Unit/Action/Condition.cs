@@ -28,4 +28,10 @@ public class Condition
         }
         return false;
     }
+
+    override
+    public string ToString()
+    {
+        return stringExpression;
+    }
 }

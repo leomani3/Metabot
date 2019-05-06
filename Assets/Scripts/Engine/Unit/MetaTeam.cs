@@ -1,7 +1,7 @@
-using System;
 using System.Xml;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class MetaTeam
 {
@@ -10,7 +10,8 @@ public class MetaTeam
 
 	public MetaTeam(string n, string fileName){
 		name = n;
-		loadXML(fileName);
+        brains = new Dictionary<string, MetaBrain>();
+        loadXML(fileName);
 	}
    
 	private void loadXML(string fileName)
@@ -20,27 +21,27 @@ public class MetaTeam
         XmlNodeList units = xml.GetElementsByTagName("behavior")[0].ChildNodes;
 		ArrayList tmp = new ArrayList();
         foreach(XmlNode unit in units){
-			tmp.Clear();
+            tmp.Clear();
 			XmlNodeList instructions = unit.ChildNodes;
 			foreach(XmlNode instruction in instructions){
 				tmp.Add(manageInstruction(instruction));
 			}
-			brains.Add(typeof(Unit).ToString(), new MetaBrain(tmp));
+			brains.Add(unit.Name, new MetaBrain(tmp));
 		}
     }
 	
     public MetaInstruction manageInstruction(XmlNode instruction)
     {
-        XmlNodeList children = instruction.ChildNodes;
-		XmlNode conditions = children[0];
-		XmlNode action = children[1];
-		string condition = conditions.InnerText;
-
-        string param = instruction.ChildNodes[0].InnerText;
-        string methode = instruction.ChildNodes[1].InnerText;
+        XmlNodeList action = instruction.ChildNodes[0].ChildNodes;
+        string param = "", methode = "";
+        methode = action[0].InnerText;
+        if (action.Count == 2)
+        {
+            param = action[1].InnerText;
+        }
         MetaInstruction inst = new MetaInstruction(param, methode);
         //PARCOURS LES CONDITIONS PUIS AJOUTE DANS inst
-        for (int i = 2; i < instruction.ChildNodes.Count; i++)
+        for (int i = 1; i < instruction.ChildNodes.Count; i++)
         {
             inst.addCondition(new Condition(instruction.ChildNodes[i].InnerText));
         }

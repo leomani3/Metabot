@@ -39,4 +39,16 @@ public class MetaInstruction
             return action;
         }
     }
+
+    override
+    public string ToString()
+    {
+        string s = "";
+        foreach(Condition c in conditions)
+        {
+            s += c.ToString() + "\n";
+        }
+        s += action.ToString();
+        return s;
+    }
 }

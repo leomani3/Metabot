@@ -25,11 +25,15 @@ public abstract class Unit
     protected ArrayList bag;
     protected Dictionary<string, float> dico;
     protected ArrayList perpeptsInSight;
-
+    protected MetaTeam team;
+    protected MetaBrain brain;
     protected Action nextAction;
 
-    protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading)
+    protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading, MetaTeam team)
     {
+        this.team = team;
+        Debug.Log(this.GetType().ToString());
+        this.brain = team.brains[this.GetType().ToString()];
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
         this.distanceSight = distanceSight;
@@ -49,6 +53,11 @@ public abstract class Unit
             { "heading", heading }
         };
         this.perpeptsInSight = new ArrayList();
+    }
+
+    public void RunAction()
+    {
+        nextAction();
     }
 
     public bool IsFullBag()
@@ -203,6 +212,14 @@ public abstract class Unit
         set
         {
             nextAction = value;
+        }
+    }
+
+    public MetaBrain Brain
+    {
+        get
+        {
+            return brain;
         }
     }
 }
