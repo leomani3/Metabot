@@ -13,7 +13,6 @@ public class Condition
 	}
     
     public bool satisfied(Unit unit) {
-
         switch (operateur)
         {
             case ">":

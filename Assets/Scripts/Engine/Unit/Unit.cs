@@ -23,15 +23,10 @@ public abstract class Unit
     protected int currentBagSize;
     protected float heading;
     protected ArrayList bag;
-<<<<<<< HEAD
-    protected GameObject collisionObject;
-    protected ArrayList perpecptsInSight;
     protected Dictionary<string, float> dico;
-=======
     protected ArrayList perpeptsInSight;
 
     protected Action nextAction;
->>>>>>> 2dfc69d3fd25afbea915b43422c2cd9a4fba0fed
 
     protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading)
     {
@@ -43,8 +38,6 @@ public abstract class Unit
         this.currentBagSize = 0;
         this.heading = heading;
         this.bag = new ArrayList(maxBagSize);
-<<<<<<< HEAD
-        this.perpecptsInSight = new ArrayList();
         dico = new Dictionary<string, float>
         {
             { "maxHealth", maxHealth },
@@ -55,10 +48,7 @@ public abstract class Unit
             { "currentBagSize", currentBagSize },
             { "heading", heading }
         };
-
-=======
         this.perpeptsInSight = new ArrayList();
->>>>>>> 2dfc69d3fd25afbea915b43422c2cd9a4fba0fed
     }
 
     public bool IsFullBag()

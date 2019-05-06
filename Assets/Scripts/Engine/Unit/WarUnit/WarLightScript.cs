@@ -30,7 +30,7 @@ public class WarLightScript : UnitScript
         }
         else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown("a"))
         {
-            ((WarLight)unit).CreatorFeature.Type = typeof(WarExplorer);
+            ((WarLight)unit).CreatorFeature.Type = typeof(WarLight);
             ((WarLight)unit).CreatorFeature.Create();
         }
         if (unit.PerpeptsInSight.Count > 0)
