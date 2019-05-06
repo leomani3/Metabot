@@ -8,9 +8,8 @@ public class MetaInstruction
 	private MetaAction action;
 	
 	public MetaInstruction(string param, string meth){
-        //conditions.Add(new Condition(cond));
         conditions = new List<Condition>();
-		if(meth == "create"){
+        if (meth == "create"){
 			action = new Create(meth, param);
 		}else{
 			action = new MetaAction(meth, param);			
