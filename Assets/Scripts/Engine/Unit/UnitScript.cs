@@ -11,14 +11,14 @@ public class UnitScript : MonoBehaviour
         get { return unit; }
     }
 
-    void OnCollisionStay(Collision other)
-    {
-        unit.OnCollisionStay(other);
-    }
-
     void Update()
     {
         unit.Brain.decide(unit);
         unit.RunAction();
+    }
+
+    void OnCollisionStay(Collision other)
+    {
+        unit.OnCollisionStay(other);
     }
 }
