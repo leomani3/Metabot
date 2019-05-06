@@ -13,6 +13,8 @@ public class UnitScript : MonoBehaviour
 
     void Update()
     {
+        //TODO : Gérer la mise à jour des percepts
+                //Gérer les messages
         unit.Brain.decide(unit);
         unit.RunAction();
     }
