@@ -25,4 +25,19 @@ public class WorldTest : MonoBehaviour
     {
         get { return red; }
     }
+
+    public MetaTeam TeamGreen
+    {
+        get { return green; }
+    }
+
+    public MetaTeam TeamBlue
+    {
+        get { return blue; }
+    }
+
+    public MetaTeam TeamPink
+    {
+        get { return pink; }
+    }
 }
