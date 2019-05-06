@@ -3,6 +3,7 @@
 		<instruction>
 			<action>
 				<methode>Shoot</methode>
+				<parametre></parametre>
 			</action>
 			<condition>currentHealth > 75</condition>
 		</instruction>

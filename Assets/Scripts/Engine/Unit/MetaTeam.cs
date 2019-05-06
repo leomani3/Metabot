@@ -40,7 +40,6 @@ public class MetaTeam
             param = action[1].InnerText;
         }
         MetaInstruction inst = new MetaInstruction(param, methode);
-        //PARCOURS LES CONDITIONS PUIS AJOUTE DANS inst
         for (int i = 1; i < instruction.ChildNodes.Count; i++)
         {
             inst.addCondition(new Condition(instruction.ChildNodes[i].InnerText));

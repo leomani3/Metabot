@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public abstract class Unit
@@ -32,7 +30,6 @@ public abstract class Unit
     protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading, MetaTeam team)
     {
         this.team = team;
-        Debug.Log(this.GetType().ToString());
         this.brain = team.brains[this.GetType().ToString()];
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
