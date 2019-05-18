@@ -34,6 +34,11 @@ public class WarLight : WarUnit
         creatorFeature.Create();
     }
 
+    public void Move()
+    {
+        movableFeature.Move();
+    }
+
     public Weapon WeaponFeature
     {
         get { return weaponFeature; }

@@ -19,6 +19,11 @@ public class WarLightScript : UnitScript
         }
     }
 
+    void OnCollisionStay(Collision other)
+    {
+        unit.OnCollisionStay(other);
+    }
+
     //---- N'est plus utile, mais pertinent pour le rapport ? ----
     //void Update()
     //{
@@ -38,9 +43,4 @@ public class WarLightScript : UnitScript
     //    //else
     //    //    ((WarLight)unit).MovableFeature.Move();
     //}
-
-    void OnCollisionStay(Collision other)
-    {
-        unit.OnCollisionStay(other);
-    }
 }
