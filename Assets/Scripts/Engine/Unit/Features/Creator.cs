@@ -14,12 +14,11 @@ public class Creator : Feature
 
     public void Create()
     {
-        //L'UNITE DOIT PERDRE DE LA VIE, TEST 
         if (creatableUnits.Contains(type))
         {
             GameObject go = Resources.Load<GameObject>("Prefab/Unit/" + type.Name);
             Object.Instantiate(go, unit.Unit_go.transform.position + new Vector3(1,0,2), Quaternion.identity);
-            unit.CurrentHealth -= 100;
+            unit.CurrentHealth -= 100; //Pour la perte de vie il faudrait regarder le cout d'une unité
         }
     }   
 
