@@ -128,7 +128,7 @@ public abstract class Unit
             if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
             {
                 perpeptsInSight.Add(collider);
-                Debug.DrawLine(collider.transform.position, unit_go.transform.position);
+                //Debug.DrawLine(collider.transform.position, unit_go.transform.position);
             }
         }
     }

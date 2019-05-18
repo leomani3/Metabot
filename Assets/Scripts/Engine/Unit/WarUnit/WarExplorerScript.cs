@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WarExplorerScript : UnitScript
 {
-    // Use this for initialization
     void Start()
     {
         unit = new WarExplorer(gameObject.GetComponentInParent<WorldTest>().TeamRed)
@@ -16,20 +15,5 @@ public class WarExplorerScript : UnitScript
         {
             meshRenderer.material.color = Color.red;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Unit.GetAllPerceptsInRadius();
-        if (unit.PerpeptsInSight.Count > 0)
-            ;
-        else
-            ;
-    }
-
-    void OnCollisionStay(Collision other)
-    {
-        unit.OnCollisionStay(other);
     }
 }

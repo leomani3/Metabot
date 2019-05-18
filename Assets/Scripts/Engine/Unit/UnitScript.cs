@@ -13,7 +13,12 @@ public class UnitScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("VIE ACTUELLE :" + unit.CurrentHealth);
+        Unit.GetAllPerceptsInRadius();
+        if (unit.PerpeptsInSight.Count > 0)
+            ;
+        else
+            ;
+        
         unit.Brain.decide(unit);
         unit.RunAction();
     }
