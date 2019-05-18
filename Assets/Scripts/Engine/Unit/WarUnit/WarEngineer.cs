@@ -8,7 +8,7 @@ public class WarEngineer : MovableUnit
         float maxHealth = 200, float speed = 1.8f, float distanceSight = 20.0f, 
         float angleSight = 180.0f, int maxBagSize = 5, float heading = 45.0f, 
         float armor = 1.0f) 
-        : base(team, maxHealth, speed, distanceSight, angleSight, maxBagSize, heading, armor)
+        : base(team, heading, maxHealth, speed, distanceSight, angleSight, maxBagSize, armor)
     {
         //On créé l'AgentList qui contient tous les type d'unité que je peux créer
         List<System.Type> al = new List<System.Type>();

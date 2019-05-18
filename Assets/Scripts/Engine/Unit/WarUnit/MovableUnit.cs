@@ -8,9 +8,9 @@ public abstract class MovableUnit : WarUnit
     private Movable movableFeature;
     private float heading;
     
-    public MovableUnit(MetaTeam team, float heading, 
-        float maxHealth, float speed, float distanceSight, 
-        float angleSight, int maxBagSize,
+    public MovableUnit(MetaTeam team, 
+        float heading, float maxHealth, float speed, 
+        float distanceSight, float angleSight, int maxBagSize,
         float armor)
         : base(team, maxHealth, distanceSight, angleSight, maxBagSize, armor)
     {
