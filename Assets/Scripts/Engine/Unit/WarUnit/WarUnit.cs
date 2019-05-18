@@ -6,7 +6,7 @@ public abstract class WarUnit : Unit
     protected GameObject projectile;
 
     protected WarUnit(MetaTeam team, float maxHealth, float distanceSight, float angleSight, 
-        int maxBagSize, float heading, float timeRoeload, 
+        int maxBagSize, float heading, 
         float armor ) 
         : base(maxHealth, distanceSight, angleSight, maxBagSize, heading, team)
     {
