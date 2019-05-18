@@ -14,7 +14,6 @@ public class WarBase : WarUnit
         al.Add(typeof(WarLight));
         al.Add(typeof(WarEngineer));
         creatorFeature = new Creator(this, al);    //permet à l'unite de pouvoir créer d'autre unités. Il faut lui passer une AL en paramètres.
-
     }
 
     public void Create()

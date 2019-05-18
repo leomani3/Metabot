@@ -19,7 +19,6 @@ public abstract class Unit
     protected readonly float angleSight;
     protected readonly int maxBagSize;
     protected int currentBagSize;
-    protected float heading;
     protected ArrayList bag;
     protected Dictionary<string, float> dico;
     protected ArrayList perpeptsInSight;
@@ -46,8 +45,7 @@ public abstract class Unit
             { "distanceSight", distanceSight },
             { "angleSight", angleSight },
             { "maxBagSize", maxBagSize },
-            { "currentBagSize", currentBagSize },
-            { "heading", heading }
+            { "currentBagSize", currentBagSize }
         };
         this.perpeptsInSight = new ArrayList();
     }
@@ -146,12 +144,6 @@ public abstract class Unit
     public bool IsBlocked()
     {
         return collisionObject != null;
-    }
-
-    public float Heading
-    {
-        get { return this.heading; }
-        set { this.heading = value; }
     }
 
     public float CurrentHealth

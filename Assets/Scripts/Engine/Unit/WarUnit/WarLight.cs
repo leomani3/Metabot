@@ -13,8 +13,8 @@ public class WarLight : MovableUnit
         float timeReload = 1.0f, float armor = 1.0f) 
         : base(team, maxHealth, speed, distanceSight, angleSight, maxBagSize, heading, armor)
     {
-        this.projectile = Resources.Load<GameObject>("Prefab/Item/Projectile/LightBullet");
-        this.weaponFeature = new Weapon(this, timeReload, projectile); //permet à l'unité de tirer
+        projectile = Resources.Load<GameObject>("Prefab/Item/Projectile/LightBullet");
+        weaponFeature = new Weapon(this, timeReload, projectile); //permet à l'unité de tirer
     }
 
     public void Shoot()
