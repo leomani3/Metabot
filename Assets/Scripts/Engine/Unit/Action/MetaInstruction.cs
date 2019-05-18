@@ -9,7 +9,7 @@ public class MetaInstruction
 	
 	public MetaInstruction(string param, string meth){
         conditions = new List<Condition>();
-        if (meth == "create"){
+        if (meth == "Create"){
 			action = new Create(meth, param);
 		}else{
 			action = new MetaAction(meth, param);			
