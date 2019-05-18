@@ -10,9 +10,10 @@ public class WorldTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        red = new MetaTeam("Red", "Assets/Resources/Team_Warbot/Test.wbt");
-        GameObject go = Resources.Load<GameObject>("Prefab/Unit/WarLight");
-        Object.Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity, gameObject.transform);
+        red = new MetaTeam("Red", "Assets/Resources/Team_Warbot/Test.wbt",gameObject);
+        green = new MetaTeam("Green", "Assets/Resources/Team_Warbot/Test.wbt", gameObject);
+        blue = new MetaTeam("Blue", "Assets/Resources/Team_Warbot/Test.wbt", gameObject);
+        pink = new MetaTeam("Pink", "Assets/Resources/Team_Warbot/Test.wbt", gameObject);
     }
 
     // Update is called once per frame
