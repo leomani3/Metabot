@@ -10,8 +10,8 @@ public abstract class MovableUnit : WarUnit
     public MovableUnit(MetaTeam team, float heading, 
         float maxHealth, float speed, float distanceSight, 
         float angleSight, int maxBagSize,
-        float armor) 
-        : base(team, maxHealth, distanceSight, angleSight, maxBagSize, heading, armor)
+        float armor)
+        : base(team, maxHealth, distanceSight, angleSight, maxBagSize, armor)
     {
         this.movableFeature = new Movable(this, speed);    //permet à l'unité de bouger
     }

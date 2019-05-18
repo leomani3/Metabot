@@ -27,7 +27,8 @@ public abstract class Unit
     protected MetaBrain brain;
     protected Action nextAction;
 
-    protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading, MetaTeam team)
+    protected Unit(MetaTeam team, float maxHealth, float distanceSight, float angleSight, 
+        int maxBagSize)
     {
         this.team = team;
         this.brain = team.brains[this.GetType().ToString()];
@@ -37,7 +38,6 @@ public abstract class Unit
         this.angleSight = angleSight;
         this.maxBagSize = maxBagSize;
         this.currentBagSize = 0;
-        this.heading = heading;
         this.bag = new ArrayList(maxBagSize);
         dico = new Dictionary<string, float>
         {

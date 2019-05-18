@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 
-public class WarEngineer : MovableUnit
+public class WarBase : WarUnit
 {
     private Creator creatorFeature;
 
-    public WarEngineer(MetaTeam team, 
-        float maxHealth = 200, float speed = 1.8f, float distanceSight = 20.0f, 
-        float angleSight = 180.0f, int maxBagSize = 5, float heading = 45.0f, 
-        float armor = 1.0f) 
-        : base(team, maxHealth, speed, distanceSight, angleSight, maxBagSize, heading, armor)
+    protected WarBase(MetaTeam team,
+        float maxHealth = 200, float distanceSight = 20.0f, float angleSight = 180.0f,
+        int maxBagSize = 10, float armor = 1.0f)
+        : base(team, maxHealth, distanceSight, angleSight, maxBagSize, armor)
     {
         //On créé l'AgentList qui contient tous les type d'unité que je peux créer
         List<System.Type> al = new List<System.Type>();
-        al.Add(typeof(WarWall));
-        al.Add(typeof(WarBase));
+        al.Add(typeof(WarLight));
+        al.Add(typeof(WarEngineer));
         creatorFeature = new Creator(this, al);    //permet à l'unite de pouvoir créer d'autre unités. Il faut lui passer une AL en paramètres.
+
     }
 
     public void Create()

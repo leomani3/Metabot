@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Engine.Unit.WarUnit
+public class WarEngineerScript : UnitScript
 {
-    class WarEngineerScript
+    void Start()
     {
+        unit = new WarEngineer(gameObject.GetComponentInParent<WorldTest>().TeamRed)
+        {
+            Unit_go = gameObject
+        };
+        gameObject.transform.Rotate(Quaternion.Euler(0, unit.Heading, 0).eulerAngles);
+        foreach (MeshRenderer meshRenderer in gameObject.GetComponentsInChildren<MeshRenderer>())
+        {
+            meshRenderer.material.color = Color.red;
+        }
     }
 }
