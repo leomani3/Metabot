@@ -1,0 +1,10 @@
+<behavior>
+    <WarLight>
+        <instruction>
+            <action>
+                <methode>Shoot</methode>
+            </action>
+            <condition>currentHealth > 75</condition>
+        </instruction>
+    </WarLight>
+</behavior>

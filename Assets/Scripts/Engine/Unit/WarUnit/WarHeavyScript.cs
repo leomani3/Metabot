@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarHeavyScrpit : UnitScript
+public class WarHeavyScript : UnitScript
 {
     // Start is called before the first frame update
     void Start()
@@ -11,7 +11,7 @@ public class WarHeavyScrpit : UnitScript
         {
             Unit_go = gameObject
         };
-        gameObject.transform.Rotate(Quaternion.Euler(0, unit.Heading, 0).eulerAngles);
+        gameObject.transform.Rotate(Quaternion.Euler(0, ((WarHeavy)unit).Heading, 0).eulerAngles);
         foreach (MeshRenderer meshRenderer in gameObject.GetComponentsInChildren<MeshRenderer>())
         {
             meshRenderer.material.color = Color.red;
