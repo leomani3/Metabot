@@ -6,6 +6,7 @@ public class BaseUnitScript : MonoBehaviour {
 
 	void Start ()
     {
+        /* Fais dans le script PlayButton.cs
         // Permet de créer les unités au début de la partie en fonction du nombre choisi dans le menu.
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -15,7 +16,7 @@ public class BaseUnitScript : MonoBehaviour {
             {
                 GetComponent<CreatorUnit>().Create(unit.Key);
             }
-        }
+        }*/
     }
 
     

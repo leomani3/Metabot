@@ -2,7 +2,7 @@
     <WarLight>
         <instruction>
             <action>
-                <methode>Shoot</methode>
+                <methode>Move</methode>
             </action>
             <condition>currentHealth > 75</condition>
         </instruction>

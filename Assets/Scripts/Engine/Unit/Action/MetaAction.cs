@@ -1,13 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine;
 
 public class MetaAction
 {	
 	protected string parametre;
 	protected string methode;
 
-	public MetaAction(string param, string meth){
+	public MetaAction(string meth, string param)
+    {
 		parametre = param;
 		methode = meth;
 	}

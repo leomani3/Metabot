@@ -135,7 +135,13 @@ public abstract class Unit
 
     public float LookUp(string key)
     {
+        float tmp;
+        if(float.TryParse(key, out tmp))
+        {
+            return tmp;
+        }
         return dico[key];
+
     }
 
     public void OnCollisionExit(Collision other)
