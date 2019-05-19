@@ -27,7 +27,7 @@ public class PlayButton : MonoBehaviour
         for (int i = 0; i < nbPlayers; i++)
         {
             string name = DropDownList[i]._teamName;
-            MetaTeam team = new MetaTeam(name,gamePath + name + ".wbt" );
+            //MetaTeam team = new MetaTeam(name,gamePath + name + ".wbt" );
         }
 
         //Créer les unités au début de la partie.
