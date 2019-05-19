@@ -7,7 +7,7 @@ public class WarBaseScript : UnitScript
     {
     }
 
-    public void Instanciate(MetaTeam team)
+    public void Instantiate(MetaTeam team)
     {
         unit = new WarBase(team)
         {

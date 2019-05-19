@@ -1,10 +1,10 @@
 <behavior>
-    <WarLight>
-        <instruction>
-            <action>
-                <methode>Move</methode>
-            </action>
-            <condition>currentHealth > 75</condition>
-        </instruction>
-    </WarLight>
+    <WarBase>
+	<instruction>
+	    <action>
+		<methode>Create</methode>
+	    </action>
+	    <condition>currentHealth > 75</condition>
+	</instruction>
+    </WarBase>
 </behavior>
