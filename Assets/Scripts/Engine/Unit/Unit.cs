@@ -12,7 +12,7 @@ public abstract class Unit
     protected GameObject collisionObject;
     protected GameObject unit_go;
 
-    protected MetaTeam team;
+    private MetaTeam team;
 
     protected readonly float maxHealth;
     protected float currentHealth;
@@ -32,7 +32,7 @@ public abstract class Unit
 
     protected Dictionary<string, float> dico;
 
-    protected Unit(MetaTeam team, float maxHealth, float distanceSight, float angleSight, 
+    protected Unit(MetaTeam team, float maxHealth, float distanceSight, float angleSight,
         int maxBagSize)
     {
         this.team = team;
@@ -79,10 +79,6 @@ public abstract class Unit
             bag.Add(r);
             currentBagSize++;
             Object.Destroy(r.Ressource_go);
-        }
-        else
-        {
-            Debug.Log("Sac plein");
         }
     }
 
@@ -133,7 +129,6 @@ public abstract class Unit
             if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
             {
                 perpeptsInSight.Add(collider);
-                //Debug.DrawLine(collider.transform.position, unit_go.transform.position);
             }
         }
     }
@@ -171,17 +166,6 @@ public abstract class Unit
         get { return unit_go; }
         set { this.unit_go = value; }
     }
-
-    //Léo : J'ai mis ça en commentaire suite à la suppression de la classe Percept (qui gérait la couleur des équipe)
-    /*public Color TeamColor
-    {
-        get { return this.teamColor; }
-        set
-        {
-            this.teamColor = value;
-            unit_go.transform.Rotate(Quaternion.Euler(0, heading, 0).eulerAngles);
-        }
-    }*/
 
     public float DistanceSight
     {
@@ -229,6 +213,14 @@ public abstract class Unit
         set
         {
             heading = value;
+        }
+    }
+
+    public MetaTeam Team
+    {
+        get
+        {
+            return team;
         }
     }
 }
