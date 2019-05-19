@@ -27,6 +27,7 @@ public class PlayButton : MonoBehaviour
         for (int i = 0; i < nbPlayers; i++)
         {
             string name = DropDownList[i]._teamName;
+            //Léo : J'ai mis la ligne ci dessous en commentaire car l'appel du constructeur de MetaTeam n'est pas correct
             //MetaTeam team = new MetaTeam(name,gamePath + name + ".wbt" );
         }
 

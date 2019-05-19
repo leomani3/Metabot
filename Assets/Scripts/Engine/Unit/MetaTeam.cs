@@ -9,15 +9,14 @@ public class MetaTeam
 	public Dictionary<string, MetaBrain> brains;
     public ArrayList unitsList;
 
-	public MetaTeam(string n, string fileName, GameObject world){
+	public MetaTeam(string n, string fileName){
 		name = n;
         brains = new Dictionary<string, MetaBrain>();
         loadXML(fileName);
-        GameObject go = Resources.Load<GameObject>("Prefab/Unit/WarBase");
-        Object.Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity, world.transform);
+        unitsList = new ArrayList();
     }
-   
-	private void loadXML(string fileName)
+
+    private void loadXML(string fileName)
     {
         XmlDocument xml = new XmlDocument();
         xml.Load(fileName);

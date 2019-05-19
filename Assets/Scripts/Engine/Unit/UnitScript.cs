@@ -11,14 +11,12 @@ public class UnitScript : MonoBehaviour
 
     void Update()
     {
-        Unit.GetAllPerceptsInRadius();
-        if (unit.PerpeptsInSight.Count > 0)
-            ;
-        else
-            ;
-        
-        unit.Brain.decide(unit);
-        unit.RunAction();
+        if(Unit != null)
+        {
+            Unit.GetAllPerceptsInRadius();
+            unit.Brain.decide(unit);
+            unit.RunAction();
+        }
     }
 
     void OnCollisionStay(Collision other)
@@ -26,3 +24,4 @@ public class UnitScript : MonoBehaviour
         unit.OnCollisionStay(other);
     }
 }
+
