@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Unit
 {
-
     readonly static float MAX_DISTANCE_GIVE = 5.0f;
     readonly static float MAX_DISTANCE_TAKE = 5.0f;
 
@@ -13,21 +12,28 @@ public abstract class Unit
     protected GameObject collisionObject;
     protected GameObject unit_go;
 
+    private MetaTeam team;
+
     protected readonly float maxHealth;
     protected float currentHealth;
+
     protected readonly float distanceSight;
     protected readonly float angleSight;
+    protected float heading;
+
     protected readonly int maxBagSize;
     protected int currentBagSize;
-    protected float heading;
     protected ArrayList bag;
-    protected Dictionary<string, float> dico;
+
     protected ArrayList perpeptsInSight;
-    protected MetaTeam team;
+
     protected MetaBrain brain;
     protected Action nextAction;
 
-    protected Unit(float maxHealth, float distanceSight, float angleSight, int maxBagSize, float heading, MetaTeam team)
+    protected Dictionary<string, float> dico;
+
+    protected Unit(MetaTeam team, float maxHealth, float distanceSight, float angleSight,
+        int maxBagSize)
     {
         this.team = team;
         this.brain = team.brains[this.GetType().ToString()];
@@ -37,7 +43,6 @@ public abstract class Unit
         this.angleSight = angleSight;
         this.maxBagSize = maxBagSize;
         this.currentBagSize = 0;
-        this.heading = heading;
         this.bag = new ArrayList(maxBagSize);
         dico = new Dictionary<string, float>
         {
@@ -74,10 +79,6 @@ public abstract class Unit
             bag.Add(r);
             currentBagSize++;
             Object.Destroy(r.Ressource_go);
-        }
-        else
-        {
-            Debug.Log("Sac plein");
         }
     }
 
@@ -128,14 +129,19 @@ public abstract class Unit
             if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
             {
                 perpeptsInSight.Add(collider);
-                Debug.DrawLine(collider.transform.position, unit_go.transform.position);
             }
         }
     }
 
     public float LookUp(string key)
     {
+        float tmp;
+        if(float.TryParse(key, out tmp))
+        {
+            return tmp;
+        }
         return dico[key];
+
     }
 
     public void OnCollisionExit(Collision other)
@@ -146,12 +152,6 @@ public abstract class Unit
     public bool IsBlocked()
     {
         return collisionObject != null;
-    }
-
-    public float Heading
-    {
-        get { return this.heading; }
-        set { this.heading = value; }
     }
 
     public float CurrentHealth
@@ -172,17 +172,6 @@ public abstract class Unit
         get { return unit_go; }
         set { this.unit_go = value; }
     }
-
-    //Léo : J'ai mis ça en commentaire suite à la suppression de la classe Percept (qui gérait la couleur des équipe)
-    /*public Color TeamColor
-    {
-        get { return this.teamColor; }
-        set
-        {
-            this.teamColor = value;
-            unit_go.transform.Rotate(Quaternion.Euler(0, heading, 0).eulerAngles);
-        }
-    }*/
 
     public float DistanceSight
     {
@@ -217,6 +206,27 @@ public abstract class Unit
         get
         {
             return brain;
+        }
+    }
+
+    public float Heading
+    {
+        get
+        {
+            return heading;
+        }
+
+        set
+        {
+            heading = value;
+        }
+    }
+
+    public MetaTeam Team
+    {
+        get
+        {
+            return team;
         }
     }
 }

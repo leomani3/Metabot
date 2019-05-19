@@ -1,11 +1,10 @@
 <behavior>
-	<WarLight>
-		<instruction>
-			<action>
-				<methode>Shoot</methode>
-				<parametre></parametre>
-			</action>
-			<condition>currentHealth > 75</condition>
-		</instruction>
-	</WarLight>
+    <WarLight>
+        <instruction>
+            <action>
+                <methode>Move</methode>
+            </action>
+            <condition>currentHealth > 75</condition>
+        </instruction>
+    </WarLight>
 </behavior>

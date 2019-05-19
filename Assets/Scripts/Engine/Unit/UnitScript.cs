@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UnitScript : MonoBehaviour
 {
@@ -13,8 +11,12 @@ public class UnitScript : MonoBehaviour
 
     void Update()
     {
-        //TODO : Gérer la mise à jour des percepts
-                //Gérer les messages
+        Unit.GetAllPerceptsInRadius();
+        if (unit.PerpeptsInSight.Count > 0)
+            ;
+        else
+            ;
+        
         unit.Brain.decide(unit);
         unit.RunAction();
     }

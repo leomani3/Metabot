@@ -7,12 +7,15 @@ public class MetaTeam
 {
 	public string name;
 	public Dictionary<string, MetaBrain> brains;
+    public ArrayList unitsList;
 
-	public MetaTeam(string n, string fileName){
+	public MetaTeam(string n, string fileName, GameObject world){
 		name = n;
         brains = new Dictionary<string, MetaBrain>();
         loadXML(fileName);
-	}
+        GameObject go = Resources.Load<GameObject>("Prefab/Unit/WarBase");
+        Object.Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity, world.transform);
+    }
    
 	private void loadXML(string fileName)
     {
@@ -40,7 +43,7 @@ public class MetaTeam
             param = action[1].InnerText;
         }
         MetaInstruction inst = new MetaInstruction(param, methode);
-        for (int i = 1; i < instruction.ChildNodes.Count; i++)
+        for (int i = action.Count; i < instruction.ChildNodes.Count; i++)
         {
             inst.addCondition(new Condition(instruction.ChildNodes[i].InnerText));
         }

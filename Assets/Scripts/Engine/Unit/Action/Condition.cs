@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-
+using UnityEngine;
 public class Condition
 {
 	private string stringExpression;
@@ -10,7 +7,11 @@ public class Condition
 	
 	public Condition(string text){
 		stringExpression = text;
-	}
+        string[] tmp = stringExpression.Split(' ');
+        param1 = tmp[0];
+        operateur = tmp[1];
+        param2 = tmp[2];
+    }
     
     public bool satisfied(Unit unit) {
         switch (operateur)

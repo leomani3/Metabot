@@ -20,21 +20,28 @@ public class PlayButton : MonoBehaviour
         nbPlayers = int.Parse(numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
 
-        GameObject gameManager = GameObject.Find("GameManager");
-        string gamePath = Application.streamingAssetsPath + "/teams/" + gameManager.GetComponent<GameManager>()._gameName + "/";
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        string gamePath = Application.streamingAssetsPath + "/teams/" + gameManager._gameName + "/";
         
-        gameManager.GetComponent<TeamManager>()._teams = new List<Team>();
-
+        //Créer les teams
         for (int i = 0; i < nbPlayers; i++)
         {
             string name = DropDownList[i]._teamName;
             MetaTeam team = new MetaTeam(name,gamePath + name + ".wbt" );
         }
 
-        GameManager setting = gameManager.GetComponent<GameManager>();
-        setting.SetSetting();
+        //Créer les unités au début de la partie.
+        foreach (KeyValuePair<string, int> unit in gameManager._gameSettings._initStartUnit)
+        {
+            for (int i = 0; i < unit.Value; i++)
+            {
+                GetComponent<CreatorUnit>().Create(unit.Key);
+            }
+        }
 
-        StartCoroutine(AsynchronousLoad(setting._gameSettings._indexSceneMap));
+        gameManager.SetSetting();
+
+        StartCoroutine(AsynchronousLoad(gameManager._gameSettings._indexSceneMap));
     }
 
     IEnumerator AsynchronousLoad(int scene)
