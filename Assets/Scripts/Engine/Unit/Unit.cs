@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Unit
 {
-
     readonly static float MAX_DISTANCE_GIVE = 5.0f;
     readonly static float MAX_DISTANCE_TAKE = 5.0f;
 
@@ -13,18 +12,25 @@ public abstract class Unit
     protected GameObject collisionObject;
     protected GameObject unit_go;
 
+    protected MetaTeam team;
+
     protected readonly float maxHealth;
     protected float currentHealth;
+
     protected readonly float distanceSight;
     protected readonly float angleSight;
+    protected float heading;
+
     protected readonly int maxBagSize;
     protected int currentBagSize;
     protected ArrayList bag;
-    protected Dictionary<string, float> dico;
+
     protected ArrayList perpeptsInSight;
-    protected MetaTeam team;
+
     protected MetaBrain brain;
     protected Action nextAction;
+
+    protected Dictionary<string, float> dico;
 
     protected Unit(MetaTeam team, float maxHealth, float distanceSight, float angleSight, 
         int maxBagSize)
@@ -45,7 +51,8 @@ public abstract class Unit
             { "distanceSight", distanceSight },
             { "angleSight", angleSight },
             { "maxBagSize", maxBagSize },
-            { "currentBagSize", currentBagSize }
+            { "currentBagSize", currentBagSize },
+            { "heading", heading }
         };
         this.perpeptsInSight = new ArrayList();
     }
@@ -209,6 +216,19 @@ public abstract class Unit
         get
         {
             return brain;
+        }
+    }
+
+    public float Heading
+    {
+        get
+        {
+            return heading;
+        }
+
+        set
+        {
+            heading = value;
         }
     }
 }

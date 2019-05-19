@@ -4,7 +4,7 @@ public class WarExplorerScript : UnitScript
 {
     void Start()
     {
-        unit = new WarExplorer(gameObject.GetComponentInParent<WorldTest>().TeamRed)
+        unit = new WarExplorer(gameObject.GetComponentInParent<UnitScript>().Unit.Team)
         {
             Unit_go = gameObject
         };

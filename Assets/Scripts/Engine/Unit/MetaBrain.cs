@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 
 public class MetaBrain
 {
@@ -20,10 +18,6 @@ public class MetaBrain
 				i.Action.setup(unit);
 			}
 		}
-
-        //--------------------POUR TEST--------------------------
-        unit.NextAction = (Unit.Action)Delegate.CreateDelegate(typeof(Unit.Action), (WarLight)unit, "Create");
-        ((WarLight)unit).CreatorFeature.Type = typeof(WarLight);
 	}
 
     override

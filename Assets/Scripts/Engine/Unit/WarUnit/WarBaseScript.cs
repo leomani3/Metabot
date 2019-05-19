@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class WarBaseScript : UnitScript
 {
     void Start()
     {
-        unit = new WarBase(gameObject.GetComponentInParent<WorldTest>().TeamRed)
+    }
+
+    public void Instanciate(MetaTeam team)
+    {
+        unit = new WarBase(team)
         {
             Unit_go = gameObject
         };
