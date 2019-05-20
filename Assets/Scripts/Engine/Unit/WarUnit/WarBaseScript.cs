@@ -8,7 +8,7 @@ public class WarBaseScript : UnitScript
     }
 
     //On créer la base de cette méthode car il lui faut la team en param (car c'est le première unité créée)
-    public void Instanciate(MetaTeam team)
+    public void Instanciate(MetaTeam team)//MAL ECRIT MAIS CONFLIT AVEC Instantiate DE Unity?
     {
         unit = new WarBase(team)
         {
