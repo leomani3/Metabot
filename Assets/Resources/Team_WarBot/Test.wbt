@@ -7,4 +7,12 @@
 	    <condition>currentHealth > 75</condition>
 	</instruction>
     </WarBase>
+    <WarLight>
+        <instruction>
+            <action>
+                <methode>Move</methode>
+            </action>
+            <condition>currentHealth > 75</condition>
+        </instruction>
+    </WarLight>
 </behavior>

@@ -18,7 +18,7 @@ public class WarBase : WarUnit
 
     public void Create()
     {
-        creatorFeature.Type = typeof(WarExplorer); //TODO : cette ligne à était mise pour les tests
+        creatorFeature.Type = typeof(WarLight); //TODO : cette ligne à était mise pour les tests
         creatorFeature.Create();
     }
 

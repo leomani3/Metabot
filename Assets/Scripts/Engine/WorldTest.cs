@@ -22,7 +22,7 @@ public class WorldTest : MonoBehaviour
         GameObject preloadPink = Resources.Load<GameObject>("Prefab/Unit/WarBase");
         pink = Instantiate(preloadPink, new Vector3(0, 0, 0), Quaternion.identity, gameObject.transform);*/
 
-        red.GetComponent<WarBaseScript>().Instantiate(new MetaTeam("Red", "Assets/Resources/Team_Warbot/Test.wbt"));
+        red.GetComponent<WarBaseScript>().Instanciate(new MetaTeam("Red", "Assets/Resources/Team_Warbot/Test.wbt"));
         /*green.GetComponent<WarBaseScript>().Instanciate(new MetaTeam("Green", "Assets/Resources/Team_Warbot/Test.wbt"));
         blue.GetComponent<WarBaseScript>().Instanciate(new MetaTeam("Blue", "Assets/Resources/Team_Warbot/Test.wbt"));
         pink.GetComponent<WarBaseScript>().Instanciate(new MetaTeam("Pink", "Assets/Resources/Team_Warbot/Test.wbt"));*/
