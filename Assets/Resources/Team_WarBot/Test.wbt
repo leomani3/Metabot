@@ -1,4 +1,12 @@
 <behavior>
+    <WarBase>
+	<instruction>
+	    <action>
+		<methode>Create</methode>
+	    </action>
+	    <condition>currentHealth > 75</condition>
+	</instruction>
+    </WarBase>
     <WarLight>
         <instruction>
             <action>
@@ -7,13 +15,4 @@
             <condition>currentHealth > 75</condition>
         </instruction>
     </WarLight>
-    <WarBase>
-        <instruction>
-            <action>
-                <methode>Create</methode>
-                <parametre>WarLight</parametre>
-            </action>
-            <condition>currentHealth > 75</condition>
-        </instruction>
-    </WarBase>
 </behavior>

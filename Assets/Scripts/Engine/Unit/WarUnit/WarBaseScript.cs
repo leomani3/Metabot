@@ -7,6 +7,7 @@ public class WarBaseScript : UnitScript
     {
     }
 
+    //On créer la base de cette méthode car il lui faut la team en param (car c'est le première unité créée)
     public void Instanciate(MetaTeam team)
     {
         unit = new WarBase(team)
