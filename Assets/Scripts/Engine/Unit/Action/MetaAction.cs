@@ -15,7 +15,7 @@ public class MetaAction
 	public void setup(Unit unit){
 		unit.NextAction = (Unit.Action)Delegate.CreateDelegate(typeof(Unit.Action), unit, methode);
 	}
-
+    
     override
     public string ToString()
     {

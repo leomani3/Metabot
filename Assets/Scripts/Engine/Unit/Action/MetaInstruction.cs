@@ -9,11 +9,17 @@ public class MetaInstruction
 	
 	public MetaInstruction(string param, string meth){
         conditions = new List<Condition>();
-        if (meth == "Create"){
-			action = new Create(meth, param);
-		}else{
-			action = new MetaAction(meth, param);			
-		}
+        switch (meth) {
+            case "Create":
+                action = new Create(meth, param);
+                break;
+            case "Move":
+                action = new Move(meth, param);
+                break;
+            default:
+                action = new MetaAction(meth, param);
+                break;
+        }
 	}
 	
 	public bool satisfied(Unit unit){
