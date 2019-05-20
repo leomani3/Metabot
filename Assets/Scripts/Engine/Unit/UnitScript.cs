@@ -15,7 +15,11 @@ public class UnitScript : MonoBehaviour
         {
             Unit.GetAllPerceptsInRadius();
             unit.Brain.decide(unit);
-            unit.RunAction();
+            if(unit.NextAction != null)
+            {
+                unit.RunAction();
+                unit.NextAction = null;
+            }
         }
     }
 
