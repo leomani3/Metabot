@@ -21,10 +21,10 @@ public class MetaTeam
         XmlDocument xml = new XmlDocument();
         xml.Load(fileName);
         XmlNodeList units = xml.GetElementsByTagName("behavior")[0].ChildNodes;
-		ArrayList tmp = new ArrayList();
-        foreach(XmlNode unit in units){
-            tmp.Clear();
-			XmlNodeList instructions = unit.ChildNodes;
+        foreach(XmlNode unit in units)
+        {
+            ArrayList tmp = new ArrayList();
+            XmlNodeList instructions = unit.ChildNodes;
 			foreach(XmlNode instruction in instructions){
 				tmp.Add(manageInstruction(instruction));
 			}
@@ -41,7 +41,7 @@ public class MetaTeam
         {
             param = action[1].InnerText;
         }
-        MetaInstruction inst = new MetaInstruction(param, methode);
+        MetaInstruction inst = new MetaInstruction(methode, param);
         for (int i = action.Count; i < instruction.ChildNodes.Count; i++)
         {
             inst.addCondition(new Condition(instruction.ChildNodes[i].InnerText));

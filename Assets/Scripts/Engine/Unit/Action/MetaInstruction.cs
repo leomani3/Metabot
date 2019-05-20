@@ -7,7 +7,8 @@ public class MetaInstruction
 	private List<Condition> conditions;
 	private MetaAction action;
 	
-	public MetaInstruction(string param, string meth){
+	public MetaInstruction(string meth, string param)
+    {
         conditions = new List<Condition>();
         switch (meth) {
             case "Create":

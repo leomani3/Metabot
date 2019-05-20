@@ -6,7 +6,6 @@ public class Move : MetaAction
 
     public void setup(MovableUnit unit)
     {
-        unit.NextAction = (Unit.Action)Delegate.CreateDelegate(typeof(Unit.Action), unit, methode);
-        
+        unit.NextAction = (Unit.Action)Delegate.CreateDelegate(typeof(Unit.Action), unit, methode);        
     }
 }
