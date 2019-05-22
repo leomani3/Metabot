@@ -1,35 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Creator : Feature
 {
-    List<System.Type> creatableUnits = new List<System.Type>();
-    System.Type type;
+    List<Type> creatableUnits = new List<Type>();
+    public Type Type { get; set; }
 
-    public Creator(Unit unit, List<System.Type> canCreateUnits) : base(unit)
+    public Creator(Unit unit, List<Type> canCreateUnits) : base(unit)
     {
         creatableUnits = canCreateUnits;
     }
 
     public void Create()
     {
-        if (creatableUnits.Contains(type))
+        if (creatableUnits.Contains(Type))
         {
-            GameObject go = Resources.Load<GameObject>("Prefab/Unit/" + type.Name);
-            GameObject created = Object.Instantiate(go, unit.Unit_go.transform.position + new Vector3(1,0,2), Quaternion.identity, unit.Unit_go.transform);
-            unit.CurrentHealth -= 50; //Pour la perte de vie il faudrait regarder le cout d'une unité
-        }
-    }   
-
-    public System.Type Type
-    {
-        get
-        {
-            return type;
-        }
-        set
-        {
-            type = value;
+            GameObject go = Resources.Load<GameObject>("Prefab/Unit/" + Type.Name);
+            GameObject created = UnityEngine.Object.Instantiate(go, new Vector3(unit.Unit_go.transform.position.x + 1,0, unit.Unit_go.transform.position.z + 5), Quaternion.identity, unit.Unit_go.GetComponentInParent<TeamScript>().gameObject.transform);
+            Debug.Log("Avant : " + unit.LookUp("currentHealth"));
+            unit.CurrentHealth -= 150; //Pour la perte de vie il faudrait regarder le cout d'une unité
+            Debug.Log("Apres : " + unit.LookUp("currentHealth"));
         }
     }
+
 }

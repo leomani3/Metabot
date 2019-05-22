@@ -13,12 +13,7 @@ public class Movable : Feature
 
     public void Move()
     {
-        if (!unit.IsBlocked())
-        {
-            unit.Unit_go.transform.position += speed * Utility.vectorFromAngle(((MovableUnit)unit).Heading).normalized * 0.2f;
-        }
-        else
-            unit.Unit_go.transform.position *= 1;//Faire quelque chose
+        unit.Unit_go.transform.position += speed * Utility.vectorFromAngle(((MovableUnit)unit).Heading).normalized * 0.2f;
     }
 
 }
