@@ -16,6 +16,7 @@ public class UnitScript : MonoBehaviour
             Unit.GetAllPerceptsInRadius();
             unit.Brain.decide(unit);
             unit.RunAction();
+            unit.NextAction = null;
         }
     }
 

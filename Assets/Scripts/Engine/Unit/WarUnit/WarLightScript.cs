@@ -4,7 +4,7 @@ public class WarLightScript : UnitScript
 {
     void Start()
     {
-        unit = new WarLight(gameObject.GetComponentInParent<UnitScript>().Unit.Team)
+        unit = new WarLight(transform.parent.GetComponent<UnitScript>().Unit.Team)
         {
             Unit_go = gameObject
         };
