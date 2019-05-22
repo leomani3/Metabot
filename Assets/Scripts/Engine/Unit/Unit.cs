@@ -12,7 +12,7 @@ public abstract class Unit
     protected GameObject collisionObject;
     protected GameObject unit_go;
 
-    private MetaTeam team;
+    protected MetaTeam team;
 
     protected readonly float maxHealth;
     protected float currentHealth;
@@ -46,13 +46,13 @@ public abstract class Unit
         this.bag = new ArrayList(maxBagSize);
         dico = new Dictionary<string, float>
         {
-            { "maxHealth", maxHealth },
-            { "currentHealth", currentHealth },
-            { "distanceSight", distanceSight },
-            { "angleSight", angleSight },
-            { "maxBagSize", maxBagSize },
-            { "currentBagSize", currentBagSize },
-            { "heading", heading }
+            { "maxHealth", MaxHealth },
+            { "currentHealth", CurrentHealth },
+            { "distanceSight", DistanceSight },
+            { "angleSight", AngleSight },
+            { "maxBagSize", MaxBagSize },
+            { "currentBagSize", CurrentBagSize },
+            { "heading", Heading }
         };
         this.perpeptsInSight = new ArrayList();
     }
@@ -223,6 +223,22 @@ public abstract class Unit
         }
     }
 
+    public float MaxHealth
+    {
+        get
+        {
+            return this.maxHealth;
+        }
+    }
+
+    public float AngleSight
+    {
+        get
+        {
+            return this.angleSight;
+        }
+    }
+
     public MetaTeam Team
     {
         get
@@ -231,8 +247,29 @@ public abstract class Unit
         }
     }
 
+    public float MaxBagSize
+    {
+        get
+        {
+            return this.maxBagSize;
+        }
+    }
+
     public GameObject CollisionObject
     {
         get { return collisionObject; }
+    }
+
+    public int CurrentBagSize
+    {
+        get
+        {
+            return this.currentBagSize;
+        }
+
+        set
+        {
+            this.currentBagSize = value;
+        }
     }
 }
