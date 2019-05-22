@@ -18,17 +18,21 @@ public class PlayButton : MonoBehaviour
     {
         
         nbPlayers = int.Parse(numberplayerDropDown.GetComponent<Dropdown>().captionText.text);
+        Debug.Log("nbplayer :" + nbPlayers);
+        Debug.Log("nblist :" + DropDownList.Length);
         XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
 
         GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        string gamePath = Application.streamingAssetsPath + "/teams/" + gameManager._gameName + "/";
-        
+        string gamePath = Application.dataPath + "/Resources/Team_WarBot/";
+            
+
         //Créer les teams
         for (int i = 0; i < nbPlayers; i++)
         {
             string name = DropDownList[i]._teamName;
             //Léo : J'ai mis la ligne ci dessous en commentaire car l'appel du constructeur de MetaTeam n'est pas correct
-            //MetaTeam team = new MetaTeam(name,gamePath + name + ".wbt" );
+            //normalement j'ai mis a jour le path donc c'est bon
+            MetaTeam team = new MetaTeam(name,gamePath + name + ".wbt" );
         }
 
         //Créer les unités au début de la partie.
