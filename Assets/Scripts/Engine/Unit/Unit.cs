@@ -114,6 +114,7 @@ public abstract class Unit
                 if (Mathf.Min(A, B) < 90f)
                 {
                     collisionObject = other.transform.gameObject;
+                    heading = (Mathf.Min(A, B) + 180.0f) % 360.0f;
                     break;
                 }
             }
@@ -228,5 +229,10 @@ public abstract class Unit
         {
             return team;
         }
+    }
+
+    public GameObject CollisionObject
+    {
+        get { return collisionObject; }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class MetaInstruction
 {
@@ -29,6 +30,7 @@ public class MetaInstruction
         while(satisfied && i < conditions.Count)
         {
             satisfied = conditions[i].satisfied(unit);
+            Debug.Log(conditions[i].ToString() + " is satisfied ? "+ satisfied);
             i++;
         }
         return satisfied;

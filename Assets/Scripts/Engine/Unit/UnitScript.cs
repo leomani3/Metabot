@@ -11,15 +11,12 @@ public class UnitScript : MonoBehaviour
 
     void Update()
     {
-        if(Unit != null)
+        Unit.GetAllPerceptsInRadius();
+        unit.Brain.decide(unit);
+        if(unit.NextAction != null)
         {
-            Unit.GetAllPerceptsInRadius();
-            unit.Brain.decide(unit);
-            if(unit.NextAction != null)
-            {
-                unit.RunAction();
-                unit.NextAction = null;
-            }
+            unit.RunAction();
+            unit.NextAction = null;
         }
     }
 
