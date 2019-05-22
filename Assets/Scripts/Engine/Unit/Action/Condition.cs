@@ -14,8 +14,6 @@ public class Condition
     }
     
     public bool satisfied(Unit unit) {
-
-        Debug.Log(param1 + " = " + unit.LookUp(param1));
         switch (operateur)
         {
             case ">":

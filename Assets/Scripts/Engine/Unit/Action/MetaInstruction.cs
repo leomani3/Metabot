@@ -30,7 +30,7 @@ public class MetaInstruction
         while(satisfied && i < conditions.Count)
         {
             satisfied = conditions[i].satisfied(unit);
-            Debug.Log(conditions[i].ToString() + " is satisfied ? "+ satisfied);
+            //Debug.Log(conditions[i].ToString() + " is satisfied ? "+ satisfied);
             i++;
         }
         return satisfied;

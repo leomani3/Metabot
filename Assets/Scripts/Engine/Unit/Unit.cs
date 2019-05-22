@@ -32,9 +32,10 @@ public abstract class Unit
 
     protected Dictionary<string, float> dico;
 
-    protected Unit(MetaTeam team, float maxHealth, float distanceSight, float angleSight,
+    protected Unit(MetaTeam team, float heading, float maxHealth, float distanceSight, float angleSight,
         int maxBagSize)
     {
+        this.heading = heading;
         this.team = team;
         this.brain = team.brains[this.GetType().ToString()];
         this.maxHealth = maxHealth;
@@ -104,21 +105,28 @@ public abstract class Unit
     public void OnCollisionStay(Collision other)
     {
         collisionObject = null;
-        if (other.gameObject.tag != "Ground")
+        if(other.collider.tag != "Ground")
         {
-            foreach (ContactPoint contact in other.contacts)
-            {
-                float a = Utility.getAngle(unit_go.transform.position, contact.point);
-                float A = Mathf.Abs(a - heading);
-                float B = Mathf.Abs(360 + Mathf.Min(a, heading) - Mathf.Max(a, heading));
-                if (Mathf.Min(A, B) < 90f)
-                {
-                    collisionObject = other.transform.gameObject;
-                    heading = (Mathf.Min(A, B) + 180.0f) % 360.0f;
-                    break;
-                }
-            }
+            Debug.Log(other.collider.name);
+            collisionObject = other.collider.transform.gameObject;
+            heading = (Utility.getAngle(unit_go, other.collider.gameObject) + 180) % 360;
         }
+        //--source--
+        //if (other.gameObject.tag != "Ground")
+        //{
+        //    foreach (ContactPoint contact in other.contacts)
+        //    {
+        //        float a = Utility.getAngle(unit_go.transform.position, contact.point);
+        //        float A = Mathf.Abs(a - heading);
+        //        float B = Mathf.Abs(360 + Mathf.Min(a, heading) - Mathf.Max(a, heading));
+        //        if (Mathf.Min(A, B) < 90f)
+        //        {
+        //            collisionObject = other.transform.gameObject;
+        //            heading = (Mathf.Min(A, B) + 180.0f) % 360.0f;
+        //            break;
+        //        }
+        //    }
+        //}
     }
 
     public void GetAllPerceptsInRadius()
@@ -161,6 +169,7 @@ public abstract class Unit
         set
         {
             this.currentHealth = value;
+            dico["currentHealth"] = value;
             if (this.CurrentHealth <= 0)
             {
                 Object.Destroy(Unit_go);
