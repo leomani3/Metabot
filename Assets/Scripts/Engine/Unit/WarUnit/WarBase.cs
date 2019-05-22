@@ -5,7 +5,7 @@ public class WarBase : WarUnit
     private Creator creatorFeature;
 
     public WarBase(MetaTeam team,
-        float maxHealth = 300, float distanceSight = 20.0f, float angleSight = 180.0f,
+        float maxHealth = 200, float distanceSight = 20.0f, float angleSight = 180.0f,
         int maxBagSize = 10, float armor = 1.0f)
         : base(team, maxHealth, distanceSight, angleSight, maxBagSize, armor)
     {

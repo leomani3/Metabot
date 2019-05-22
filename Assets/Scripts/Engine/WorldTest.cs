@@ -20,6 +20,10 @@ public class WorldTest : MonoBehaviour
         /*GameObject TeamRed = GameObject.Find("TeamRed");
         TeamRed.GetComponent<TeamScript>().Team = new MetaTeam("Red", "Assets/Resources/Team_Warbot/Test.wbt");*/
 
+        float angle = Utility.getAngle(new Vector3(0, 0, 0), new Vector3(0.5f, 0, -0.5f));
+        Debug.Log(angle);
+        Debug.Log(Utility.vectorFromAngle(angle));
+
         GameObject preloadRed = Resources.Load<GameObject>("Prefab/Unit/WarBase");
         red = Instantiate(preloadRed, new Vector3(30, 3, 30), Quaternion.identity, TeamRed.transform);
 

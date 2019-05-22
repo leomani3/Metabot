@@ -32,7 +32,7 @@ public class Utility{
 
     static public Vector3 vectorFromAngle(float angle)
     {
-        float A = (360 - angle) * Mathf.Deg2Rad;
+        float A = angle * Mathf.Deg2Rad;
         return new Vector3(Mathf.Cos(A), 0, Mathf.Sin(A)).normalized;
     }
 

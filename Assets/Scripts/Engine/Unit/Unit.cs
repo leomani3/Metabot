@@ -103,22 +103,6 @@ public abstract class Unit
 
     public void OnCollisionStay(Collision other)
     {
-        collisionObject = null;
-        if (other.gameObject.tag != "Ground")
-        {
-            foreach (ContactPoint contact in other.contacts)
-            {
-                float a = Utility.getAngle(unit_go.transform.position, contact.point);
-                float A = Mathf.Abs(a - heading);
-                float B = Mathf.Abs(360 + Mathf.Min(a, heading) - Mathf.Max(a, heading));
-                if (Mathf.Min(A, B) < 90f)
-                {
-                    collisionObject = other.transform.gameObject;
-                    heading = (Mathf.Min(A, B) + 180.0f) % 360.0f;
-                    break;
-                }
-            }
-        }
     }
 
     public void GetAllPerceptsInRadius()
@@ -157,10 +141,11 @@ public abstract class Unit
 
     public float CurrentHealth
     {
-        get { return currentHealth; }
+        get { return this.currentHealth; }
         set
         {
             this.currentHealth = value;
+            dico["currentHealth"] = value;
             if (this.CurrentHealth <= 0)
             {
                 Object.Destroy(Unit_go);
@@ -220,6 +205,7 @@ public abstract class Unit
         set
         {
             heading = value;
+            dico["heading"] = value;
         }
     }
 
@@ -270,6 +256,7 @@ public abstract class Unit
         set
         {
             this.currentBagSize = value;
+            dico["currentBagSize"] = value;
         }
     }
 }

@@ -14,21 +14,13 @@ public class MetaBrain
     }
 	
 	public void decide(Unit unit){
-		//ORDONNER LES INSTRUCTIONS PAR PRIORITES
-        if(unit.CollisionObject == null)
+        //ORDONNER LES INSTRUCTIONS PAR PRIORITES
+        foreach (MetaInstruction i in instructions)
         {
-            foreach (MetaInstruction i in instructions)
+            if (i.satisfied(unit))
             {
-                if (i.satisfied(unit))
-                {
-                    i.Action.setup(unit);
-                }
+                i.Action.setup(unit);
             }
-        }
-        else
-        {
-            //unit.Heading = unit.CollisionObject.
-            unit.NextAction = (Unit.Action)Delegate.CreateDelegate(typeof(Unit.Action), unit, "Move");
         }
 		
 	}
