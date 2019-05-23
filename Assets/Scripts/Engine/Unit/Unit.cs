@@ -107,9 +107,8 @@ public abstract class Unit
         collisionObject = null;
         if(other.collider.tag != "Ground")
         {
-            Debug.Log(other.collider.name);
             collisionObject = other.collider.transform.gameObject;
-            heading = (Utility.getAngle(unit_go, other.collider.gameObject) + 180) % 360;
+            heading = (heading + 180) % 360;// (Utility.getAngle(unit_go, other.collider.gameObject)) % 360;
         }
         //--source--
         //if (other.gameObject.tag != "Ground")

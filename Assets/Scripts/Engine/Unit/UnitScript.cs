@@ -11,7 +11,7 @@ public class UnitScript : MonoBehaviour
 
     void Update()
     {
-        Unit.GetAllPerceptsInRadius();
+        unit.GetAllPerceptsInRadius();
         unit.Brain.decide(unit);
         if(unit.NextAction != null)
         {
