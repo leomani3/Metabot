@@ -143,7 +143,9 @@ public abstract class Unit
         {
             if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
             {
-                perpeptsInSight.Add(collider);
+                float angle = Utility.getAngle(unit_go, collider.gameObject);
+                if (angle < angleSight/2 && angle > (360-(angle/2)))
+                    perpeptsInSight.Add(collider);
             }
         }
     }

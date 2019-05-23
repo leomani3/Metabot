@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveGameFile()
     {
+        Debug.Log("BLBLBLBLBLBL" +Application.streamingAssetsPath);
         string path = Application.streamingAssetsPath + "/Warbot/" + _gameName + ".gameset";
         //Write some text to the test.txt file
         StreamWriter writer = new StreamWriter(path, false);
