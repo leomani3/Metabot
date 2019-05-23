@@ -14,6 +14,7 @@ public class WarEngineerScript : UnitScript
         switch (unit.Team.name)
         {
             case "Red":
+                //TODO : à la place de changer la couleur il faut load le bon asset
                 color = Color.red;
                 break;
             case "Blue":
