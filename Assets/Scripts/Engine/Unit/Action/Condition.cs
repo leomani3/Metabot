@@ -10,7 +10,10 @@ public class Condition
         string[] tmp = stringExpression.Split(' ');
         param1 = tmp[0];
         operateur = tmp[1];
-        param2 = tmp[2];
+        for(int i = 2; i < tmp.Length; i++)
+        {
+            param2 += tmp[i] + " ";
+        }
     }
     
     public bool satisfied(Unit unit) {
