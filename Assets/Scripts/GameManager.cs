@@ -8,6 +8,7 @@ using System.Text;
 
 public class GameManager : MonoBehaviour
 {
+    public static char separator = Path.DirectorySeparatorChar;
     [Header("Game Settings")]
     public string _gameName;
     public string gamepath;
@@ -51,8 +52,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveGameFile()
     {
-        Debug.Log("BLBLBLBLBLBL" +Application.streamingAssetsPath);
-        string path = Application.streamingAssetsPath + "/Warbot/" + _gameName + ".gameset";
+        /*string path = Application.streamingAssetsPath +"/Warbot/" + _gameName + ".gameset";
         //Write some text to the test.txt file
         StreamWriter writer = new StreamWriter(path, false);
 
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject unit in _listUnitGameObject)
         {
-            writer.WriteLine("<");
+            /writer.WriteLine("<");
             writer.WriteLine(unit.GetComponent<Stats>()._unitType);
 
             // Recuperer les percepts
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
 
         writer.Close();
 
-        print("Done !");
+        print("Done !");*/
     }
 
     public void SetSetting()
