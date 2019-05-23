@@ -400,12 +400,8 @@ GameObject:
   - component: {fileID: 4757824811718262}
   - component: {fileID: 135396562117327844}
   - component: {fileID: 114268845566462440}
-  - component: {fileID: 114902426276640464}
-  - component: {fileID: 114565466221491422}
-  - component: {fileID: 114932620864123128}
   - component: {fileID: 64423190320421150}
   - component: {fileID: 54502745028969666}
-  - component: {fileID: 114245209861344868}
   - component: {fileID: 2051343530621071764}
   m_Layer: 10
   m_Name: WarLight
@@ -458,62 +454,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
-  _waitingMessages: []
-  _currentMessages: []
-  _messageType:
-  - MESSAGE_HELP
-  - MESSAGE_POSITION
-  - MESSAGE_ATTACK
-  - MESSAGE_POSITION_RESOURCE
-  _messageLineObject: {fileID: 1570930958659960, guid: 369a6c66779f7494fbf20cd2d86e12f7,
-    type: 3}
---- !u!114 &114902426276640464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614182584709684}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b5839e1a637834a999058e8d33fb21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _messageDestinataire: 
-  _tmpMessage:
-    _titre: 
-    _contenu: {fileID: 0}
-    _sender: {fileID: 0}
-    _receiver: {fileID: 0}
-    heading: 0
---- !u!114 &114565466221491422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614182584709684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a7494b5ae4798b4f8f5dbe1da132f77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _listOfStartPoint:
-  - {fileID: 4540684522323684}
-  _weapon: {fileID: 1952912338639534, guid: 243e29f1aac51844eb695a557e051e78, type: 3}
-  reloadTick: 0
---- !u!114 &114932620864123128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614182584709684}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1b43c83d2d9f014da9bf66f69979c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  waitingMessages: []
+  currentMessages: []
+  messageType: []
+  messageLineObject: {fileID: 0}
 --- !u!64 &64423190320421150
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -544,19 +488,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &114245209861344868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614182584709684}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62845bc220e81b348af4c8e59311d420, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Unit: 
 --- !u!114 &2051343530621071764
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class WarHeavyScript : UnitScript
     // Start is called before the first frame update
     void Start()
     {
-        unit = new WarHeavy(gameObject.GetComponentInParent<UnitScript>().Unit.Team, 0.0f)
+        unit = new WarHeavy(gameObject.GetComponentInParent<TeamScript>().Team)
         {
             Unit_go = gameObject
         };
@@ -16,6 +16,7 @@ public class WarHeavyScript : UnitScript
         switch (unit.Team.name)
         {
             case "Red":
+                //TODO : à la place de changer la couleur il faut load le bon asset
                 color = Color.red;
                 break;
             case "Blue":

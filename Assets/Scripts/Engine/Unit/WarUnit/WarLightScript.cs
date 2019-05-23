@@ -14,6 +14,7 @@ public class WarLightScript : UnitScript
         switch (unit.Team.name)
         {
             case "Red":
+                //TODO : à la place de changer la couleur il faut load le bon asset
                 color = Color.red;
                 break;
             case "Blue":
@@ -21,6 +22,7 @@ public class WarLightScript : UnitScript
                 break;
         }
 
+        gameObject.transform.Rotate(Quaternion.Euler(0, ((WarLight)unit).Heading, 0).eulerAngles);
         foreach (MeshRenderer meshRenderer in gameObject.GetComponentsInChildren<MeshRenderer>())
         {
             meshRenderer.material.color = color;
