@@ -60,7 +60,7 @@ public class EndGameManager : MonoBehaviour {
     }
 
     public void InitEnds()
-    {
+    {/*
         _ends["TestBot"] = delegate ()
         {
             Traducteur t = new Traducteur();
@@ -70,11 +70,11 @@ public class EndGameManager : MonoBehaviour {
             trad = t.traduction;
             textWinnerTeam.GetComponent<Text>().text = trad + " : " + winnername;
             print("after Winnerteam");
-           /* GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
-            foreach (GameObject u in units)
-            {
-                Destroy(u);
-            }*/
+            //GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+            //foreach (GameObject u in units)
+            //{
+                //Destroy(u);
+            //}
             anim.SetTrigger("GameOver");
             print("after TextGO");
             if (!written)
@@ -117,12 +117,12 @@ public class EndGameManager : MonoBehaviour {
 
             Score.GetComponent<Text>().text = "Score : " + scorewinner;
             print("after Winnerteam");
-        /*    GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
-            foreach (GameObject u in units)
-            {
-                Destroy(u);
-            }
-            print("DEBUG END RESSOURCERACE apres destrcution unités");*/
+            //GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+            //foreach (GameObject u in units)
+            //{
+               // Destroy(u);
+            //}
+            //print("DEBUG END RESSOURCERACE apres destrcution unités");
             anim.SetTrigger("GameOver");
             print("after TextGO");
             if (!written && !equals && scorewinner != -1)
@@ -146,7 +146,7 @@ public class EndGameManager : MonoBehaviour {
                 written = true;
             }
             Time.timeScale = 0;
-        };
+        };*/
     }
 
     public void InitTests()
@@ -211,7 +211,8 @@ public class EndGameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (_wincondition != gm.GetComponent<GameManager>().wincondition)
+        //TODO : VOIR COMMENT FAIRE
+        /*if (_wincondition != gm.GetComponent<GameManager>().wincondition)
         {
             _wincondition = gm.GetComponent<GameManager>().wincondition;
 
@@ -234,6 +235,6 @@ public class EndGameManager : MonoBehaviour {
         {
             print("Dans IF ");
             _ends[_wincondition]();
-        }
+        }*/
     }
 }
