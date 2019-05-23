@@ -16,4 +16,20 @@
         <condition>enemiesCount > 0</condition>
       </instruction>
     </WarLight>
+    <WarHeavy>
+      <instruction>
+        <action>
+          <methode>Shoot</methode>
+        </action>
+        <condition>enemiesCount > 0</condition>
+      </instruction>
+    </WarHeavy>
+    <WarExplorer>
+      <instruction>
+        <action>
+          <methode>Shoot</methode>
+        </action>
+        <condition>enemiesCount > 0</condition>
+      </instruction>
+    </WarExplorer>
 </behavior>
