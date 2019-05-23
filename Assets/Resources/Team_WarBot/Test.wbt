@@ -27,9 +27,7 @@
     <WarExplorer>
       <instruction>
         <action>
-          <methode>Shoot</methode>
         </action>
-        <condition>enemiesCount > 0</condition>
       </instruction>
     </WarExplorer>
 </behavior>
