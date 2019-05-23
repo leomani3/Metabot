@@ -22,7 +22,7 @@ public class CreatorUnit : MonoBehaviour
 		
 	}
 
-    public void Create(string name, GameObject team, GameObject color, int teamId)
+    public void Create(string name, GameObject team, int teamId)
     {
         //Debug.Log("Unit " + name + " créée");
         //Debug.Log(name);
@@ -37,17 +37,20 @@ public class CreatorUnit : MonoBehaviour
 
         Vector3 positionUnit = new Vector3(positionBase.x + 1 + random, 1, positionBase.z + 5 + random);
 
+        MetaTeam mTeam = team.GetComponent<TeamScript>().Team;
+
+        
         if (name.Equals("Base"))
         {
             GameObject preloadB = Resources.Load<GameObject>("Prefab/Unit/WarBase");
             preloadB.SetActive(true);
-            color = Instantiate(preloadB, positionBase, Quaternion.identity, team.transform);
+            GameObject created = Instantiate(preloadB, positionBase, Quaternion.identity, team.transform);
         }
         else
         {
             GameObject preload = Resources.Load<GameObject>("Prefab/Unit/War" + name);
             preload.SetActive(true);
-            color = Instantiate(preload, positionUnit, Quaternion.identity, team.transform);
+            GameObject created = Instantiate(preload, positionUnit, Quaternion.identity, team.transform);
         }
     }
 
