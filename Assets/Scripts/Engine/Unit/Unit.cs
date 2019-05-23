@@ -115,7 +115,7 @@ public abstract class Unit
         if(other.collider.tag != "Ground")
         {
             collisionObject = other.collider.transform.gameObject;
-            Heading = (Heading + Random.Range(90, 270)) % 360;
+            Heading = (Heading + Random.Range(160, 340)) % 360;
 
         }
         //--source--
