@@ -23,7 +23,9 @@ public class Weapon : Feature
             timeBeforeReload -= Time.fixedDeltaTime;
             if (timeBeforeReload <= 0)
             {
-                Object.Instantiate(projectile_go, unit.Unit_go.transform.GetChild(2).position, Quaternion.Euler(0, unit.Heading, 0));
+                //Object.Instantiate(projectile_go, unit.Unit_go.transform.GetChild(2).position, Quaternion.Euler(0, unit.Heading, 0));
+                float angle = Quaternion.Angle(unit.Unit_go.transform.rotation, Quaternion.AngleAxis(unit.Heading, Vector3.up));
+                Object.Instantiate(projectile_go, unit.Unit_go.transform.GetChild(2).position, Quaternion.AngleAxis(angle, Vector3.up));
                 timeBeforeReload = timeReload;
             }
         }
