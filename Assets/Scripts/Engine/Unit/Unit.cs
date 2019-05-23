@@ -37,8 +37,14 @@ public abstract class Unit
     {
         this.heading = heading;
         this.team = team;
-        this.brain = team.brains[this.GetType().ToString()];
-        this.maxHealth = maxHealth;
+        if (team.brains.ContainsKey(this.GetType().ToString())) {
+            this.brain = team.brains[this.GetType().ToString()];
+        }
+        else {
+            //Ajouter un comportement par defaut à l'unit ?
+        }
+
+            this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
         this.distanceSight = distanceSight;
         this.angleSight = angleSight;
