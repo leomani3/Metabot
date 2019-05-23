@@ -156,12 +156,13 @@ public class EndGameManager : MonoBehaviour {
             List<int> teams = new List<int>();
             GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
             foreach (GameObject u in units)
-            {
+            {/*TODO: CONDITION DE VICTOIRE
                 if (u.GetComponent<Stats>()._unitType.Equals("Base"))
                 {
                     if (!teams.Contains(u.GetComponent<Stats>()._teamIndex))
                         teams.Add(u.GetComponent<Stats>()._teamIndex);
                 }
+                */
             }
 
             if (teams.Count == 1)
