@@ -21,8 +21,37 @@ public class CreatorUnit : MonoBehaviour
 		
 	}
 
+    public void Create(string name, MetaTeam team)
+    {
+        Debug.Log("Unit " + name + " créée");
+        
+        switch (name)
+        {
+            case "Light":
+                WarLight wl = new WarLight(team);
+                break;
+            case "Explorer":
+                WarExplorer we = new WarExplorer(team);
+                break;
+            case "Heavy":
+                WarHeavy wh = new WarHeavy(team,angleSpawn);
+                break;
+            case "Engineer":
+                WarEngineer weg = new WarEngineer(team);
+                break;
+            case "Base":
+                WarBase wb = new WarBase(team);
+                break;
+            default:
+                break;
+        }
+        
+    }
+
     public void Create(string name)
     {
+        
+        
         GameObject target = null;
         foreach (GameObject _unit in _unitsToCreate)
         {
@@ -49,5 +78,6 @@ public class CreatorUnit : MonoBehaviour
         unit.transform.position = new Vector3(unit.transform.position.x, _spawnPoint[0].position.y, unit.transform.position.z);
         transform.parent.GetComponent<TeamPlayManagerScript>().UpdateUnit();
         unit.GetComponent<Stats>()._teamIndex = GetComponent<Stats>()._teamIndex;
+        
     }
 }
