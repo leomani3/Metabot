@@ -151,10 +151,7 @@ public abstract class Unit
                 {
                     perceptsInSight.Add(collider.gameObject);
                     if (collider.gameObject.GetComponentInParent<TeamScript>().Team.name != Team.name)
-                    {
                         enemiesInSight.Add(collider.gameObject);
-                        Debug.Log("ENEMY");
-                    }
                 }
             }
         }
