@@ -14,12 +14,6 @@ public class PlayButton : MonoBehaviour
     public Color[] playerColor;
     public int nbPlayers;
 
-    protected GameObject red;
-    protected GameObject blue;
-    protected GameObject green;
-    protected GameObject yellow;
-
-
     public void StartGame()
     {
         
@@ -43,7 +37,7 @@ public class PlayButton : MonoBehaviour
                 GameObject TeamBlue = GameObject.Find("TeamRed");
                 TeamBlue.GetComponent<TeamScript>().Team = new MetaTeam(name, gamePath + name + ".wbt");
 
-                createUnitStart(TeamBlue, blue, gameManager, 1);
+                createUnitStart(TeamBlue, gameManager, 1);
 
                 DontDestroyOnLoad(TeamBlue);
             }
@@ -52,7 +46,7 @@ public class PlayButton : MonoBehaviour
                 GameObject TeamRed = GameObject.Find("TeamBlue");
                 TeamRed.GetComponent<TeamScript>().Team = new MetaTeam(name, gamePath + name + ".wbt");
 
-                createUnitStart(TeamRed, red, gameManager, 2);
+                createUnitStart(TeamRed, gameManager, 2);
 
                 DontDestroyOnLoad(TeamRed);
             }
@@ -61,7 +55,7 @@ public class PlayButton : MonoBehaviour
                 GameObject TeamGreen = GameObject.Find("TeamGreen");
                 TeamGreen.GetComponent<TeamScript>().Team = new MetaTeam(name, gamePath + name + ".wbt");
 
-                createUnitStart(TeamGreen, green, gameManager, 3);
+                createUnitStart(TeamGreen, gameManager, 3);
 
                 DontDestroyOnLoad(TeamGreen);
             }
@@ -70,7 +64,7 @@ public class PlayButton : MonoBehaviour
                 GameObject TeamYellow = GameObject.Find("TeamYellow");
                 TeamYellow.GetComponent<TeamScript>().Team = new MetaTeam(name, gamePath + name + ".wbt");
 
-                createUnitStart(TeamYellow, yellow, gameManager, 4);
+                createUnitStart(TeamYellow, gameManager, 4);
 
                 DontDestroyOnLoad(TeamYellow);
             }
@@ -104,17 +98,17 @@ public class PlayButton : MonoBehaviour
         }
     }
 
-    void createUnitStart(GameObject team, GameObject color, GameManager gameManager, int teamId)
+    void createUnitStart(GameObject team, GameManager gameManager, int teamId)
     {
         //la base
-        gameObject.AddComponent<CreatorUnit>().Create("Base", team, color, teamId);
+        gameObject.AddComponent<CreatorUnit>().Create("Base", team, teamId);
         //Créer les unités au début de la partie.
         foreach (KeyValuePair<string, int> unit in gameManager._gameSettings._initStartUnit)
         {
             for (int j = 0; j < unit.Value; j++)
             {
                 //Les unités
-                gameObject.AddComponent<CreatorUnit>().Create(unit.Key, team, color, teamId);
+                gameObject.AddComponent<CreatorUnit>().Create(unit.Key, team, teamId);
             }
         }
         

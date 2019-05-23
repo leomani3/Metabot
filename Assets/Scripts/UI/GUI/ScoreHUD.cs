@@ -25,7 +25,8 @@ public class ScoreHUD : MonoBehaviour
         float total = 0;
         foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
         {
-            int teamUnit = unit.GetComponent<Stats>()._teamIndex;
+            //TODO : voir comment faire
+            /*int teamUnit = unit.GetComponent<Stats>()._teamIndex;
             int scoreUnit = unit.GetComponent<Stats>().GetHealth();
             if (_score.ContainsKey(teamUnit))
             {
@@ -35,7 +36,7 @@ public class ScoreHUD : MonoBehaviour
             {
                 _score[teamUnit] = scoreUnit;
             }
-            total += scoreUnit;
+            total += scoreUnit;*/
         }
 
         float currentValue = 0;
