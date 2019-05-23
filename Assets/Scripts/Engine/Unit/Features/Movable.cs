@@ -14,8 +14,6 @@ public class Movable : Feature
     public void Move()
     {
         unit.Unit_go.transform.position += speed * Utility.vectorFromAngle(unit.Heading).normalized * 0.2f;
-        float angle = Quaternion.Angle(unit.Unit_go.transform.rotation, Quaternion.AngleAxis(unit.Heading, Vector3.up));
-        unit.Unit_go.transform.Rotate(Quaternion.AngleAxis(angle,Vector3.up).eulerAngles);
     }
 
 }
