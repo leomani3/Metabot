@@ -114,7 +114,7 @@ public abstract class Unit
         if(other.collider.tag != "Ground")
         {
             collisionObject = other.collider.transform.gameObject;
-            heading = (heading + 180) % 360;// (Utility.getAngle(unit_go, other.collider.gameObject)) % 360;
+            Heading = (Utility.getAngle(unit_go, other.collider.gameObject)) % 360;
         }
         //--source--
         //if (other.gameObject.tag != "Ground")
@@ -236,6 +236,8 @@ public abstract class Unit
         set
         {
             heading = value;
+            float angle = Quaternion.Angle(Unit_go.transform.rotation, Quaternion.AngleAxis(Heading, Vector3.up));
+            Unit_go.transform.Rotate(Quaternion.AngleAxis(angle, Vector3.up).eulerAngles);
         }
     }
 
