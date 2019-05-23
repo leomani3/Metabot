@@ -14,6 +14,12 @@ public class PlayButton : MonoBehaviour
     public Color[] playerColor;
     public int nbPlayers;
 
+    protected GameObject red;
+    protected GameObject blue;
+    protected GameObject green;
+    protected GameObject yellow;
+
+
     public void StartGame()
     {
         
@@ -31,26 +37,46 @@ public class PlayButton : MonoBehaviour
         for (int i = 0; i < nbPlayers; i++)
         {
             string name = DropDownList[i]._teamName;
-            //Léo : J'ai mis la ligne ci dessous en commentaire car l'appel du constructeur de MetaTeam n'est pas correct
-            //22/05 path mis a jour
-            //23/05 en commentaire a cause d'une erreur a la ligne 37 de la classe MetaTeam pour un nullReferenceExeption, problème réglé en utilisant le team Test.abt
-            MetaTeam team = new MetaTeam(name,gamePath + name + ".wbt" );
 
-            //Créer les unités au début de la partie.
-            foreach (KeyValuePair<string, int> unit in gameManager._gameSettings._initStartUnit)
+            if (i == 0)
             {
-                for (int j = 0; j < unit.Value; j++)
-                {
-                    //Les unités
-                    gameObject.AddComponent<CreatorUnit>().Create(unit.Key,team);
-                }
-            }
-            //la base
-            gameObject.AddComponent<CreatorUnit>().Create("Base", team);
+                GameObject TeamBlue = GameObject.Find("TeamRed");
+                TeamBlue.GetComponent<TeamScript>().Team = new MetaTeam(name, gamePath + name + ".wbt");
 
+                createUnitStart(TeamBlue, blue, gameManager, 1);
+
+                DontDestroyOnLoad(TeamBlue);
+            }
+            else if(i == 1)
+            {
+                GameObject TeamRed = GameObject.Find("TeamBlue");
+                TeamRed.GetComponent<TeamScript>().Team = new MetaTeam(name, gamePath + name + ".wbt");
+
+                createUnitStart(TeamRed, red, gameManager, 2);
+
+                DontDestroyOnLoad(TeamRed);
+            }
+            else if (i == 2)
+            {
+                GameObject TeamGreen = GameObject.Find("TeamGreen");
+                TeamGreen.GetComponent<TeamScript>().Team = new MetaTeam(name, gamePath + name + ".wbt");
+
+                createUnitStart(TeamGreen, green, gameManager, 3);
+
+                DontDestroyOnLoad(TeamGreen);
+            }
+            else if (i == 3)
+            {
+                GameObject TeamYellow = GameObject.Find("TeamYellow");
+                TeamYellow.GetComponent<TeamScript>().Team = new MetaTeam(name, gamePath + name + ".wbt");
+
+                createUnitStart(TeamYellow, yellow, gameManager, 4);
+
+                DontDestroyOnLoad(TeamYellow);
+            }
         }
         Debug.Log("teams créée");
-
+        
         StartCoroutine(AsynchronousLoad(gameManager._gameSettings._indexSceneMap));
     }
 
@@ -76,5 +102,21 @@ public class PlayButton : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    void createUnitStart(GameObject team, GameObject color, GameManager gameManager, int teamId)
+    {
+        //la base
+        gameObject.AddComponent<CreatorUnit>().Create("Base", team, color, teamId);
+        //Créer les unités au début de la partie.
+        foreach (KeyValuePair<string, int> unit in gameManager._gameSettings._initStartUnit)
+        {
+            for (int j = 0; j < unit.Value; j++)
+            {
+                //Les unités
+                gameObject.AddComponent<CreatorUnit>().Create(unit.Key, team, color, teamId);
+            }
+        }
+        
     }
 }
