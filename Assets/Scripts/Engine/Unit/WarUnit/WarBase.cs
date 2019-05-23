@@ -7,7 +7,7 @@ public class WarBase : WarUnit
     public WarBase(MetaTeam team,
         float maxHealth = 200, float distanceSight = 20.0f, float angleSight = 180.0f,
         int maxBagSize = 10, float armor = 1.0f)
-        : base(team, maxHealth, distanceSight, angleSight, maxBagSize, armor)
+        : base(team, 0, maxHealth, distanceSight, angleSight, maxBagSize, armor)
     {
         //On créé l'AgentList qui contient tous les type d'unité que je peux créer
         List<System.Type> al = new List<System.Type>();

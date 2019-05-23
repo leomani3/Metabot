@@ -3,9 +3,9 @@
 	    <instruction>
 	        <action>
 		        <methode>Create</methode>
-            <parametre>WarLight</parametre>
+            		<parametre>WarLight</parametre>
 	        </action>
-	        <condition>currentHealth > 75</condition>
+	        <condition>currentHealth > 200</condition>
 	    </instruction>
     </WarBase>
     <WarLight>
@@ -13,7 +13,6 @@
         <action>
             <methode>Move</methode>
         </action>
-        <condition>currentHealth > 75</condition>
       </instruction>
     </WarLight>
 </behavior>
