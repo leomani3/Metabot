@@ -25,7 +25,7 @@ public abstract class Unit
     protected int currentBagSize;
     protected ArrayList bag;
 
-    protected ArrayList perpeptsInSight;
+    protected ArrayList perceptsInSight;
 
     protected MetaBrain brain;
     protected Action nextAction;
@@ -51,6 +51,7 @@ public abstract class Unit
         this.maxBagSize = maxBagSize;
         this.currentBagSize = 0;
         this.bag = new ArrayList(maxBagSize);
+        this.perceptsInSight = new ArrayList();
         dico = new Dictionary<string, float>
         {
             { "maxHealth", MaxHealth },
@@ -59,9 +60,9 @@ public abstract class Unit
             { "angleSight", AngleSight },
             { "maxBagSize", MaxBagSize },
             { "currentBagSize", CurrentBagSize },
-            { "heading", Heading }
+            { "heading", Heading },
+            { "perceptsCount", perceptsInSight.Count }
         };
-        this.perpeptsInSight = new ArrayList();
     }
 
     public void RunAction()
@@ -137,27 +138,51 @@ public abstract class Unit
 
     public void GetAllPerceptsInRadius()
     {
-        perpeptsInSight.Clear();
+        perceptsInSight.Clear();
         Collider[] colliders = Physics.OverlapSphere(unit_go.transform.position, distanceSight);
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
             {
                 float angle = Utility.getAngle(unit_go, collider.gameObject);
-                if (angle < angleSight/2 && angle > (360-(angle/2)))
-                    perpeptsInSight.Add(collider);
+                if (angle > (heading - angleSight/2) && angle < (heading+(angleSight / 2)))
+                    perceptsInSight.Add(collider.gameObject);
             }
         }
+        dico["perceptsCount"] = perceptsInSight.Count;
     }
 
     public float LookUp(string key)
     {
-        float tmp;
-        if(float.TryParse(key, out tmp))
+        string[] res = key.Split((" ").ToCharArray());
+        float tmp = 0.0f;
+        if(res.Length > 1)
         {
-            return tmp;
+            switch (res[1])
+            {
+                case "*":
+                    tmp = LookUp(res[0]) * LookUp(res[2]);
+                    break;
+                case "/":
+                    tmp = LookUp(res[0]) / LookUp(res[2]);
+                    break;
+                case "+":
+                    tmp = LookUp(res[0]) + LookUp(res[2]);
+                    break;
+                case "-":
+                    tmp = LookUp(res[0]) - LookUp(res[2]);
+                    break;
+            }
         }
-        return dico[key];
+        else
+        {
+            if (float.TryParse(key, out tmp))
+            {
+                return tmp;
+            }
+            tmp = dico[key];
+        }
+        return tmp;
 
     }
 

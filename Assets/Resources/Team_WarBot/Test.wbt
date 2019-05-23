@@ -5,7 +5,7 @@
 		        <methode>Create</methode>
             		<parametre>WarLight</parametre>
 	        </action>
-	        <condition>currentHealth > 200</condition>
+	        <condition>currentHealth > 0.75 * maxHealth</condition>
 	    </instruction>
     </WarBase>
     <WarLight>
