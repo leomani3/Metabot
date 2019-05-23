@@ -9,8 +9,9 @@ public class CreatorUnit : MonoBehaviour
     private float angleSpawn;
     private int distanceSpawn;
 
-	// Use this for initialization
-	void Awake () {
+
+    // Use this for initialization
+    void Awake () {
         angleSpawn = Random.Range(0f, 360f);
         distanceSpawn = Random.Range(8, 15);
 
@@ -21,32 +22,33 @@ public class CreatorUnit : MonoBehaviour
 		
 	}
 
-    public void Create(string name, MetaTeam team)
+    public void Create(string name, GameObject team, GameObject color, int teamId)
     {
         //Debug.Log("Unit " + name + " créée");
         //Debug.Log(name);
-        
-        switch (name)
+        Vector3 positionBase = new Vector3(-36.2f, 4f, -37.4f);
+        if (teamId == 2)
+            positionBase = new Vector3(35.8f, 4f, 40f);
+        if (teamId == 3)
+            positionBase = new Vector3(40f, 4f, -23.9f);
+        if (teamId == 4)
+            positionBase = new Vector3(-35.6f, 4f, 31.7f);
+        int random = Random.Range(0, 5);
+
+        Vector3 positionUnit = new Vector3(positionBase.x + 1 + random, 1, positionBase.z + 5 + random);
+
+        if (name.Equals("Base"))
         {
-            case "Light":
-                WarLight wl = new WarLight(team);
-                break;
-            case "Explorer":
-                WarExplorer we = new WarExplorer(team);
-                break;
-            case "Heavy":
-                WarHeavy wh = new WarHeavy(team,angleSpawn);
-                break;
-            case "Engineer":
-                WarEngineer weg = new WarEngineer(team);
-                break;
-            case "Base":
-                WarBase wb = new WarBase(team);
-                break;
-            default:
-                break;
+            GameObject preloadB = Resources.Load<GameObject>("Prefab/Unit/WarBase");
+            preloadB.SetActive(true);
+            color = Instantiate(preloadB, positionBase, Quaternion.identity, team.transform);
         }
-        
+        else
+        {
+            GameObject preload = Resources.Load<GameObject>("Prefab/Unit/War" + name);
+            preload.SetActive(true);
+            color = Instantiate(preload, positionUnit, Quaternion.identity, team.transform);
+        }
     }
 
     public void Create(string name)
