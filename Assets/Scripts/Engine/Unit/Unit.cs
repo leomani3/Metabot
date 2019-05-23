@@ -44,7 +44,7 @@ public abstract class Unit
             //Ajouter un comportement par defaut à l'unit ?
         }
 
-            this.maxHealth = maxHealth;
+        this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
         this.distanceSight = distanceSight;
         this.angleSight = angleSight;

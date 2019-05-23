@@ -40,7 +40,7 @@ public class WorldTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(System.IO.Path.DirectorySeparatorChar);
+        //Debug.Log(System.IO.Path.DirectorySeparatorChar);
     }
 
     public GameObject TeamRed
