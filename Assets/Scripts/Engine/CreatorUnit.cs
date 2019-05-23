@@ -23,7 +23,8 @@ public class CreatorUnit : MonoBehaviour
 
     public void Create(string name, MetaTeam team)
     {
-        Debug.Log("Unit " + name + " créée");
+        //Debug.Log("Unit " + name + " créée");
+        //Debug.Log(name);
         
         switch (name)
         {

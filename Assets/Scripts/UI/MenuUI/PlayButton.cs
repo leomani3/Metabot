@@ -33,26 +33,25 @@ public class PlayButton : MonoBehaviour
             string name = DropDownList[i]._teamName;
             //Léo : J'ai mis la ligne ci dessous en commentaire car l'appel du constructeur de MetaTeam n'est pas correct
             //22/05 path mis a jour
-            //23/05 en commentaire a cause d'une erreur a la ligne 37 de la classe MetaTeam pour un nullReferenceExeption
-            //MetaTeam team = new MetaTeam(name,gamePath + name + ".wbt" );
+            //23/05 en commentaire a cause d'une erreur a la ligne 37 de la classe MetaTeam pour un nullReferenceExeption, problème réglé en utilisant le team Test.abt
+            MetaTeam team = new MetaTeam(name,gamePath + name + ".wbt" );
 
             //Créer les unités au début de la partie.
             foreach (KeyValuePair<string, int> unit in gameManager._gameSettings._initStartUnit)
             {
                 for (int j = 0; j < unit.Value; j++)
                 {
-                    Debug.Log("Unit " + unit.Key + " créée");
-                    //En commentaire puisque la team est en commentaire
-                    //gameObject.AddComponent<CreatorUnit>().Create(unit.Key,team);
+                    //Les unités
+                    gameObject.AddComponent<CreatorUnit>().Create(unit.Key,team);
                 }
             }
-            //idem
-            //gameObject.AddComponent<CreatorUnit>().Create("Base", team);
+            //la base
+            gameObject.AddComponent<CreatorUnit>().Create("Base", team);
 
         }
         Debug.Log("teams créée");
 
-        //StartCoroutine(AsynchronousLoad(gameManager._gameSettings._indexSceneMap));
+        StartCoroutine(AsynchronousLoad(gameManager._gameSettings._indexSceneMap));
     }
 
     IEnumerator AsynchronousLoad(int scene)
