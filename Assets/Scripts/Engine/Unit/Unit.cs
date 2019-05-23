@@ -224,11 +224,11 @@ public abstract class Unit
         }
     }
 
-    public ArrayList PerpeptsInSight
+    public ArrayList PerceptsInSight
     {
         get
         {
-            return perpeptsInSight;
+            return perceptsInSight;
         }
     }
 
