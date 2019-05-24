@@ -20,6 +20,7 @@ public class MetaBrain
             if (i.satisfied(unit))
             {
                 i.Action.setup(unit);
+                break;
             }
         }
 		
