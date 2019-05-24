@@ -262,7 +262,7 @@ public abstract class Unit
         }
     }
 
-    public float Heading
+    public virtual float Heading
     {
         get
         {

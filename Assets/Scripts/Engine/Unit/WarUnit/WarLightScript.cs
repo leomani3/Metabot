@@ -9,7 +9,6 @@ public class WarLightScript : UnitScript
             Unit_go = gameObject
         };
         gameObject.transform.Rotate(Quaternion.Euler(0, ((WarLight)unit).Heading, 0).eulerAngles);
-        Debug.Log(gameObject.GetComponent<Collider>().bounds.min - gameObject.GetComponent<Collider>().bounds.center);
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.GetComponent<Collider>().bounds.center.y - gameObject.GetComponent<Collider>().bounds.min.y - gameObject.GetComponent<Collider>().bounds.center.y, gameObject.transform.position.z);
 
         Color color = Color.white;
@@ -28,7 +27,6 @@ public class WarLightScript : UnitScript
         foreach (MeshRenderer meshRenderer in gameObject.GetComponentsInChildren<MeshRenderer>())
         {
             meshRenderer.material.color = color;
-            Debug.Log(meshRenderer.material.color.ToString());
         }
     }
 }
