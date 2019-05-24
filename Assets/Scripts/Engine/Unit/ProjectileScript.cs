@@ -30,4 +30,12 @@ public class ProjectileScript : MonoBehaviour {
     {
         OnCollisionExit(other);
     }
+
+    public Projectile Projectile
+    {
+        get
+        {
+            return projectile;
+        }
+    }
 }
