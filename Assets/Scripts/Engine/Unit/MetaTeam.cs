@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class MetaTeam
 {
-	public string name;
+	public string teamName;
 	public Dictionary<string, MetaBrain> brains;
     public ArrayList unitsList;
 
 	public MetaTeam(string n, string fileName){
-		name = n;
+		teamName = n;
         brains = new Dictionary<string, MetaBrain>();
         loadXML(fileName);
         unitsList = new ArrayList();

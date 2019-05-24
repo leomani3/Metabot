@@ -11,7 +11,7 @@ public class WarEngineerScript : UnitScript
         gameObject.transform.Rotate(Quaternion.Euler(0, ((WarEngineer)unit).Heading, 0).eulerAngles);
 
         Color color = Color.white;
-        switch (unit.Team.name)
+        switch (unit.Team.teamName)
         {
             case "Red":
                 //TODO : à la place de changer la couleur il faut load le bon asset

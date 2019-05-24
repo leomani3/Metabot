@@ -14,7 +14,7 @@ public class UnitScript : MonoBehaviour
         Unit.GetAllPerceptsInRadius();
         if (Unit.PerceptsInSight.Count > 0)
         {
-            Color MyColour = Color.clear; ColorUtility.TryParseHtmlString(Unit.Team.name, out MyColour);
+            Color MyColour = Color.clear; ColorUtility.TryParseHtmlString(Unit.Team.teamName, out MyColour);
             //Debug.DrawLine(gameObject.transform.position, ((GameObject)Unit.PerceptsInSight[0]).transform.position, MyColour, 1);
         }
         unit.Brain.decide(unit);
