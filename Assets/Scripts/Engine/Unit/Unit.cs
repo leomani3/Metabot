@@ -141,6 +141,7 @@ public abstract class Unit
     public void GetAllPerceptsInRadius()
     {
         perceptsInSight.Clear();
+        enemiesInSight.Clear();
         Collider[] colliders = Physics.OverlapSphere(unit_go.transform.position, distanceSight);
         foreach (Collider collider in colliders)
         {
@@ -150,8 +151,11 @@ public abstract class Unit
                 if (angle > (heading - angleSight / 2) && angle < (heading + (angleSight / 2)))
                 {
                     perceptsInSight.Add(collider.gameObject);
-                    if (collider.gameObject.GetComponentInParent<TeamScript>().Team.name != Team.name)
+                    if (collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.name != Team.name)
+                    {
                         enemiesInSight.Add(collider.gameObject);
+                        Heading = angle;
+                    }
                 }
             }
         }
@@ -258,7 +262,7 @@ public abstract class Unit
         }
     }
 
-    public float Heading
+    public virtual float Heading
     {
         get
         {

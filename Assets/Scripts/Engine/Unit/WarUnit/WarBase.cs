@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class WarBase : WarUnit
 {
@@ -25,5 +26,18 @@ public class WarBase : WarUnit
     public Creator CreatorFeature
     {
         get { return creatorFeature; }
+    }
+
+    public override float Heading
+    {
+        get
+        {
+            return heading;
+        }
+
+        set
+        {
+            heading = value;
+        }
     }
 }

@@ -23,7 +23,7 @@ public class WarBaseScript : UnitScript
         }
 
         //TODO : voir si'l faut pas lui donner une orientation aléatoire au début
-        gameObject.transform.Rotate(Quaternion.Euler(0, ((WarBase)unit).Heading, 0).eulerAngles);
+        //gameObject.transform.Rotate(Quaternion.Euler(0, ((WarBase)unit).Heading, 0).eulerAngles);
         foreach (MeshRenderer meshRenderer in gameObject.GetComponentsInChildren<MeshRenderer>())
         {
             meshRenderer.material.color = color;

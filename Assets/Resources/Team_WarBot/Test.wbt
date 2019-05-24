@@ -15,5 +15,30 @@
         </action>
         <condition>enemiesCount > 0</condition>
       </instruction>
+      <instruction>
+        <action>
+          <methode>Move</methode>
+        </action>
+      </instruction>
     </WarLight>
+    <WarHeavy>
+      <instruction>
+        <action>
+          <methode>Shoot</methode>
+        </action>
+        <condition>enemiesCount > 0</condition>
+      </instruction>
+      <instruction>
+        <action>
+          <methode>Move</methode>
+        </action>
+      </instruction>
+    </WarHeavy>
+    <WarExplorer>
+      <instruction>
+        <action>
+          <methode>Move</methode>
+        </action>
+      </instruction>
+    </WarExplorer>
 </behavior>
