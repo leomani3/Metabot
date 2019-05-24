@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour
 
     public void SaveGameFile()
     {
-        Debug.Log("BLBL 1  : " + Application.streamingAssetsPath);
-        Debug.Log("BLBL 2 :" + Application.dataPath +"StreamingAssets");
+        Debug.Log("BLBL 1  : " + Constants.langDirectory);
+        Debug.Log("BLBL 2 :" + Application.dataPath + "/StreamingAssets/language/francais.txt");
         /*string path = Application.streamingAssetsPath +"/Warbot/" + _gameName + ".gameset";
         //Write some text to the test.txt file
         StreamWriter writer = new StreamWriter(path, false);
