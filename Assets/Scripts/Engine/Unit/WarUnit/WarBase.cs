@@ -26,4 +26,17 @@ public class WarBase : WarUnit
     {
         get { return creatorFeature; }
     }
+
+    public new float Heading
+    {
+        get
+        {
+            return heading;
+        }
+
+        set
+        {
+            heading = value;
+        }
+    }
 }

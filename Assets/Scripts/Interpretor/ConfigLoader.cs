@@ -14,7 +14,6 @@ public class ConfigLoader : MonoBehaviour {
     void getAllStats()
     {
         string[] lines = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/proprietes.cfg");
-        print("lignes recuperees");
         int cpt = 0;
         foreach (string line in lines)
         {
@@ -30,7 +29,6 @@ public class ConfigLoader : MonoBehaviour {
                 //stats++;
                 while (!lines[stats].Contains(";"))
                 {
-                    print("dans while");
                     Stat s = new Stat();
                     string lign2 = lines[stats].Replace("\t", "");
                     string[] lignetmp = lign2.Split(':');
@@ -39,9 +37,7 @@ public class ConfigLoader : MonoBehaviour {
                     u.stats.Add(s);
                     stats++;
                 }
-                print("avant dadd dans la config");
                 configuration.Add(u);
-                print("unit ajouté a la config");
             }
         }
     }	
