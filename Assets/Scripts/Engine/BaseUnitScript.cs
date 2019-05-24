@@ -20,16 +20,17 @@ public class BaseUnitScript : MonoBehaviour {
     }
 
     
-    void OnDestroy()
+    /*void OnDestroy()
     {
         foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
         {
+            
             if (unit.GetComponent<Stats>()._teamIndex == GetComponent<Stats>()._teamIndex)
             {
                 unit.GetComponent<Stats>().SetHealth(0);
             }
         }
-    }
+    }*/
 
 
 }

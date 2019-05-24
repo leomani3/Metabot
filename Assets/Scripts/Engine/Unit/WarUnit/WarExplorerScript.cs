@@ -4,7 +4,7 @@ public class WarExplorerScript : UnitScript
 {
     void Start()
     {
-        unit = new WarExplorer(gameObject.GetComponentInParent<UnitScript>().Unit.Team)
+        unit = new WarExplorer(gameObject.GetComponentInParent<TeamScript>().Team)
         {
             Unit_go = gameObject
         };
@@ -13,6 +13,7 @@ public class WarExplorerScript : UnitScript
         switch (unit.Team.name)
         {
             case "Red":
+                //TODO : à la place de changer la couleur il faut load le bon asset
                 color = Color.red;
                 break;
             case "Blue":

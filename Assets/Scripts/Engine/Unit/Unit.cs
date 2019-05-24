@@ -26,6 +26,7 @@ public abstract class Unit
     protected ArrayList bag;
 
     protected ArrayList perceptsInSight;
+    protected ArrayList enemiesInSight;
 
     protected MetaBrain brain;
     protected Action nextAction;
@@ -52,6 +53,7 @@ public abstract class Unit
         this.currentBagSize = 0;
         this.bag = new ArrayList(maxBagSize);
         this.perceptsInSight = new ArrayList();
+        this.enemiesInSight = new ArrayList();
         dico = new Dictionary<string, float>
         {
             { "maxHealth", MaxHealth },
@@ -61,7 +63,8 @@ public abstract class Unit
             { "maxBagSize", MaxBagSize },
             { "currentBagSize", CurrentBagSize },
             { "heading", Heading },
-            { "perceptsCount", perceptsInSight.Count }
+            { "perceptsCount", perceptsInSight.Count },
+            { "enemiesCount", enemiesInSight.Count }
         };
     }
 
@@ -115,7 +118,7 @@ public abstract class Unit
         if(other.collider.tag != "Ground")
         {
             collisionObject = other.collider.transform.gameObject;
-            Heading = (Utility.getAngle(unit_go, other.collider.gameObject)) % 360;
+            Heading = (Heading + Random.Range(160, 340)) % 360;
         }
         //--source--
         //if (other.gameObject.tag != "Ground")
@@ -138,17 +141,26 @@ public abstract class Unit
     public void GetAllPerceptsInRadius()
     {
         perceptsInSight.Clear();
+        enemiesInSight.Clear();
         Collider[] colliders = Physics.OverlapSphere(unit_go.transform.position, distanceSight);
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
             {
                 float angle = Utility.getAngle(unit_go, collider.gameObject);
-                if (angle > (heading - angleSight/2) && angle < (heading+(angleSight / 2)))
+                if (angle > (heading - angleSight / 2) && angle < (heading + (angleSight / 2)))
+                {
                     perceptsInSight.Add(collider.gameObject);
+                    if (collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.name != Team.name)
+                    {
+                        enemiesInSight.Add(collider.gameObject);
+                        Heading = angle;
+                    }
+                }
             }
         }
         dico["perceptsCount"] = perceptsInSight.Count;
+        dico["enemiesCount"] = enemiesInSight.Count;
     }
 
     public float LookUp(string key)
@@ -182,7 +194,6 @@ public abstract class Unit
             tmp = dico[key];
         }
         return tmp;
-
     }
 
     public void OnCollisionExit(Collision other)
@@ -223,7 +234,7 @@ public abstract class Unit
         }
     }
 
-    public ArrayList PerpeptsInSight
+    public ArrayList PerceptsInSight
     {
         get
         {

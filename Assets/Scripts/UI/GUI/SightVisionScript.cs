@@ -22,7 +22,8 @@ public class SightVisionScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if (GameObject.Find("GameManager") && !done && target.GetComponent<Stats>()._teamIndex < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count)
+        //TODO : Léo : J'ai mis en commentaire en attendant. Voir comment gérer ça.
+		/*if (GameObject.Find("GameManager") && !done && target.GetComponent<Stats>()._teamIndex < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count)
         {
             float angle = target.GetComponent<Sight>()._angle;
             float distance = target.GetComponent<Sight>()._distance;
@@ -35,12 +36,12 @@ public class SightVisionScript : MonoBehaviour
             maskL.transform.localEulerAngles = new Vector3(maskL.transform.localEulerAngles.x, maskL.transform.localEulerAngles.y, angleL);
             maskR.transform.localEulerAngles = new Vector3(maskR.transform.localEulerAngles.x, maskR.transform.localEulerAngles.y, angleR);
             transform.localScale = new Vector3(distance, distance, 1);
-            done = true;
+            done = true;*/
         }
        /* if (maskR.transform.eulerAngles.z != angleR || maskL.transform.eulerAngles.z != angleL)
         {
             maskL.transform.localEulerAngles = new Vector3(maskL.transform.localEulerAngles.x, maskL.transform.localEulerAngles.y, angleL);
             maskR.transform.localEulerAngles = new Vector3(maskR.transform.localEulerAngles.x, maskR.transform.localEulerAngles.y, angleR);
-        }*/
-	}
+        }
+	}*/
 }
