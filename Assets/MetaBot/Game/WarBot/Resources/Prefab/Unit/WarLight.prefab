@@ -398,15 +398,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4757824811718262}
-  - component: {fileID: 135396562117327844}
   - component: {fileID: 114268845566462440}
-  - component: {fileID: 114902426276640464}
-  - component: {fileID: 114565466221491422}
-  - component: {fileID: 114932620864123128}
-  - component: {fileID: 64423190320421150}
   - component: {fileID: 54502745028969666}
   - component: {fileID: 114245209861344868}
   - component: {fileID: 2051343530621071764}
+  - component: {fileID: 6952891228925371022}
   m_Layer: 10
   m_Name: WarLight
   m_TagString: Unit
@@ -422,7 +418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614182584709684}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.42, y: 1.52, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4241339737323866}
@@ -432,19 +428,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &135396562117327844
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614182584709684}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.67, z: 0}
 --- !u!114 &114268845566462440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,76 +441,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sender: {fileID: 0}
-  _waitingMessages: []
-  _currentMessages: []
-  _messageType:
-  - MESSAGE_HELP
-  - MESSAGE_POSITION
-  - MESSAGE_ATTACK
-  - MESSAGE_POSITION_RESOURCE
-  _messageLineObject: {fileID: 1570930958659960, guid: 369a6c66779f7494fbf20cd2d86e12f7,
-    type: 3}
---- !u!114 &114902426276640464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614182584709684}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b5839e1a637834a999058e8d33fb21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _messageDestinataire: 
-  _tmpMessage:
-    _titre: 
-    _contenu: {fileID: 0}
-    _sender: {fileID: 0}
-    _receiver: {fileID: 0}
-    heading: 0
---- !u!114 &114565466221491422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614182584709684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a7494b5ae4798b4f8f5dbe1da132f77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _listOfStartPoint:
-  - {fileID: 4540684522323684}
-  _weapon: {fileID: 1952912338639534, guid: 243e29f1aac51844eb695a557e051e78, type: 3}
-  reloadTick: 0
---- !u!114 &114932620864123128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614182584709684}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1b43c83d2d9f014da9bf66f69979c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!64 &64423190320421150
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614182584709684}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: -1
-  m_Mesh: {fileID: 4300000, guid: 8f110f93e55149b4a941c36aef3c7809, type: 3}
+  waitingMessages: []
+  currentMessages: []
+  messageType: []
+  messageLineObject: {fileID: 0}
 --- !u!54 &54502745028969666
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -569,6 +486,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0633a77c38fd3644fb9682cd1bccd32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6952891228925371022
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614182584709684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4124918, y: 2.068392, z: 2.1415}
+  m_Center: {x: 0, y: 0.1349403, z: 0}
 --- !u!1 &1682339993896010
 GameObject:
   m_ObjectHideFlags: 0

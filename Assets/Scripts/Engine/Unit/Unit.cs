@@ -227,7 +227,7 @@ public abstract class Unit
     {
         get
         {
-            return perpeptsInSight;
+            return perceptsInSight;
         }
     }
 
