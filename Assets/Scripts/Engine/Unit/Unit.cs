@@ -89,17 +89,6 @@ public abstract class Unit
         return currentBagSize == 0;
     }
 
-    public void Take()
-    {
-        GameObject nearestRessources = GetNearestRessource();
-        if (!IsFullBag() && Vector3.Distance(unit_go.transform.position, nearestRessources.transform.position) < MAX_DISTANCE_TAKE)
-        {
-            bag.Add(nearestRessources);
-            currentBagSize++;
-            Object.Destroy(nearestRessources);
-        }
-    }
-
     public bool Use(string nameRessource)
     {
         if (!IsEmptyBag())
@@ -111,7 +100,7 @@ public abstract class Unit
                 {
                     bag.RemoveAt(i);
                     currentBagSize--;
-                    r.UseRessource();
+                    r.UseRessource(this);
                     return true;
                 }
             }
@@ -391,5 +380,10 @@ public abstract class Unit
         {
             this.currentBagSize = value;
         }
+    }
+
+    public ArrayList Bag
+    {
+        get { return this.bag; }
     }
 }
