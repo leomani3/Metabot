@@ -287,6 +287,7 @@ public abstract class Unit
         set
         {
             heading = value;
+            Unit_go.transform.rotation = Quaternion.AngleAxis(Heading, Vector3.up);
         }
     }
 
