@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Unit
 {
-    readonly static float MAX_DISTANCE_GIVE = 5.0f;
-    readonly static float MAX_DISTANCE_TAKE = 5.0f;
+    protected readonly static float MAX_DISTANCE_GIVE = 5.0f;
+    protected readonly static float MAX_DISTANCE_TAKE = 5.0f;
 
     public delegate void Action();
 
@@ -87,16 +87,6 @@ public abstract class Unit
     public bool IsEmptyBag()
     {
         return currentBagSize == 0;
-    }
-
-    public void Take(Ressource r)
-    {
-        if (!IsFullBag() && Vector3.Distance(unit_go.transform.position, r.Ressource_go.transform.position) < MAX_DISTANCE_TAKE)
-        {
-            bag.Add(r);
-            currentBagSize++;
-            Object.Destroy(r.Ressource_go);
-        }
     }
 
     public bool Use(string nameRessource)
