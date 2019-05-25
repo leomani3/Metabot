@@ -14,6 +14,7 @@ public class UnitScript : MonoBehaviour
         Debug.DrawRay(unit.Unit_go.transform.position, Utility.vectorFromAngle(unit.Heading).normalized * unit.DistanceSight, Color.red, 0.1f);
         Debug.DrawRay(unit.Unit_go.transform.position, Utility.vectorFromAngle(unit.Heading - unit.AngleSight / 2).normalized * unit.DistanceSight, Color.red, 0.1f);
         Debug.DrawRay(unit.Unit_go.transform.position, Utility.vectorFromAngle(unit.Heading + unit.AngleSight / 2).normalized * unit.DistanceSight, Color.red, 0.1f);
+
         
         Unit.GetAllPerceptsInRadius();
         unit.Brain.decide(unit);

@@ -5,7 +5,6 @@ using UnityEngine;
 public class RandomBasePosition : MonoBehaviour
 {
     public GameObject[] teamPositions;
-    public GameObject[] startUnitsPositions;
 
     //La fonction awake est appelée avant toutes les autres fonctions (avant Start par exemple)
     void Awake()
@@ -15,22 +14,20 @@ public class RandomBasePosition : MonoBehaviour
             GameObject TeamBlue = GameObject.Find("TeamBlue");
             TeamBlue.transform.position = teamPositions[0].transform.position;
 
+            //on récupère les positions de spawn de la team
+            List<Vector3> spawnPoints = TeamBlue.GetComponent<TeamScript>().spawnPoints;
+
             foreach (Transform child in TeamBlue.transform)
             {
-                if (!child.name.Contains("WarBase"))
+            if (!child.name.Contains("WarBase"))
                 {
-                    float x, y, z;
-                    do
+                    if (spawnPoints.Count > 0)
                     {
-                        x = Random.Range(0, 20);
-                        y = 0;
-                        z = Random.Range(0, 20);
-                    } while (x + z < 13);
-
-                    Debug.Log("POSITION : " + x + " " + y + " " + z);
-                    child.transform.localPosition = new Vector3(x, y, z);
+                        child.transform.position = spawnPoints[0];
+                        spawnPoints.RemoveAt(0);
+                    }
                 }
-            }
+            }   
         }
         if (GameObject.Find("TeamRed") != null)
         {
