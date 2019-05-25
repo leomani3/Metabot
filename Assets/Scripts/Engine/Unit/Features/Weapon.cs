@@ -26,6 +26,7 @@ public class Weapon : Feature
             timeBeforeReload -= Time.fixedDeltaTime;
             if (timeBeforeReload <= 0)
             {
+                GameObject nearestEnemie = unit.GetNearestEnemie();
                 Object.Instantiate(projectile_go, unit.Unit_go.transform.GetChild(2).position, Quaternion.Euler(0, unit.Heading, 0));
                 timeBeforeReload = timeReload;
             }
