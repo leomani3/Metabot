@@ -182,6 +182,22 @@ public abstract class Unit
         dico["enemiesCount"] = enemiesInSight.Count;
     }
 
+    public GameObject GetNearestEnemie()
+    {
+        GameObject go = (GameObject)enemiesInSight[0];
+        float distMin = 0.0f;
+        for (int i = 1; i < enemiesInSight.Count; i++)
+        {
+            float dist = Vector3.Distance(unit_go.transform.position, ((GameObject)enemiesInSight[i]).transform.position);
+            if (dist < distMin)
+            {
+                go = (GameObject)enemiesInSight[i];
+                distMin = dist;
+            }
+        }
+        return go;
+    }
+
     public float LookUp(string key)
     {
         string[] res = key.Split((" ").ToCharArray());
