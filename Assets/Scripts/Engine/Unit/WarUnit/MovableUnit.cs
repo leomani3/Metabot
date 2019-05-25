@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using UnityEngine;
 
 public abstract class MovableUnit : WarUnit
 {
@@ -20,6 +17,16 @@ public abstract class MovableUnit : WarUnit
     public void Move()
     {
         movableFeature.Move();
+    }
+
+    public void Take(Ressource r)
+    {
+        if (!IsFullBag() && Vector3.Distance(unit_go.transform.position, r.Ressource_go.transform.position) < Unit.MAX_DISTANCE_TAKE)
+        {
+            bag.Add(r);
+            currentBagSize++;
+            Object.Destroy(r.Ressource_go);
+        }
     }
 
     public Movable MovableFeature

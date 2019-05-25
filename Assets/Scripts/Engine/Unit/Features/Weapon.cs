@@ -18,12 +18,16 @@ public class Weapon : Feature
 
     public void Shoot()
     {
+
         if (projectile_go != null)
         {
             timeBeforeReload -= Time.fixedDeltaTime;
             if (timeBeforeReload <= 0)
             {
                 GameObject nearestEnemie = unit.GetNearestEnemie();
+                float angle = Utility.getAngle(unit.Unit_go.transform.position, nearestEnemie.transform.position);
+                unit.Heading = angle;
+
                 Object.Instantiate(projectile_go, unit.Unit_go.transform.GetChild(2).position, Quaternion.Euler(0, unit.Heading, 0));
                 timeBeforeReload = timeReload;
             }
