@@ -10,7 +10,7 @@ public class WarExplorerScript : UnitScript
         };
 
         Color color = Color.white;
-        switch (unit.Team.name)
+        switch (unit.Team.teamName)
         {
             case "Red":
                 //TODO : à la place de changer la couleur il faut load le bon asset
