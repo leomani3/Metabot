@@ -61,7 +61,7 @@ public class Movable : Feature
         }
         if(go_target != null)
         {
-            float angle = Utility.getAngle(unit.Unit_go.transform.position, nearestEnemie.transform.position);
+            float angle = Utility.getAngle(unit.Unit_go.transform.position, unit.GetNearestEnemy().transform.position);
             unit.Heading = angle;
         }
 
