@@ -112,6 +112,11 @@ public abstract class Unit
         return false;
     }
 
+    public void OnCollisionEnter(Collision other)
+    {
+
+    }
+
     public void OnCollisionStay(Collision other)
     {
         collisionObject = null;
@@ -138,6 +143,11 @@ public abstract class Unit
         //}
     }
 
+    public void OnCollisionExit(Collision other)
+    {
+        collisionObject = null;
+    }
+
     public void GetAllPerceptsInRadius()
     {
         perceptsInSight.Clear();
@@ -147,14 +157,15 @@ public abstract class Unit
         {
             if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
             {
-                float angle = Utility.getAngle(unit_go, collider.gameObject);
-                if (angle > (heading - angleSight / 2) && angle < (heading + (angleSight / 2)))
+                float angle = Utility.getAngle(unit_go.transform.position, collider.gameObject.transform.position);
+                
+                if (angle > (heading - (angleSight / 2)) && angle < (heading + (angleSight / 2)))
                 {
                     perceptsInSight.Add(collider.gameObject);
                     if (collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.teamName != Team.teamName)
                     {
                         enemiesInSight.Add(collider.gameObject);
-                        Heading = angle;
+                        Heading = angle;                        
                     }
                 }
             }
@@ -194,11 +205,6 @@ public abstract class Unit
             tmp = dico[key];
         }
         return tmp;
-    }
-
-    public void OnCollisionExit(Collision other)
-    {
-        collisionObject = null;
     }
 
     public bool IsBlocked()
@@ -272,8 +278,6 @@ public abstract class Unit
         set
         {
             heading = value;
-            float angle = Quaternion.Angle(Unit_go.transform.rotation, Quaternion.AngleAxis(Heading, Vector3.up));
-            Unit_go.transform.Rotate(Quaternion.AngleAxis(angle, Vector3.up).eulerAngles);
         }
     }
 
