@@ -12,7 +12,7 @@ public class WarBaseScript : UnitScript
         gameObject.transform.Rotate(Quaternion.Euler(0, 0, 0).eulerAngles);
 
         Color color = Color.white;
-        switch (unit.Team.name)
+        switch (unit.Team.teamName)
         {
             case "Red":
                 color = Color.red;

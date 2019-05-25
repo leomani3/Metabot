@@ -8,11 +8,10 @@ public class WarLightScript : UnitScript
         {
             Unit_go = gameObject
         };
-        gameObject.transform.Rotate(Quaternion.Euler(0, ((WarLight)unit).Heading, 0).eulerAngles);
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.GetComponent<Collider>().bounds.center.y - gameObject.GetComponent<Collider>().bounds.min.y - gameObject.GetComponent<Collider>().bounds.center.y, gameObject.transform.position.z);
-
+        
         Color color = Color.white;
-        switch (unit.Team.name.ToLower())
+        switch (unit.Team.teamName.ToLower())
         {
             case "red":
                 //TODO : à la place de changer la couleur il faut load le bon asset
