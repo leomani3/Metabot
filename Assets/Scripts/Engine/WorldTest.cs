@@ -19,15 +19,15 @@ public class WorldTest : MonoBehaviour
 
         /*GameObject TeamRed = GameObject.Find("TeamRed");
         TeamRed.GetComponent<TeamScript>().Team = new MetaTeam("Red", "Assets/Resources/Team_Warbot/Test.wbt");*/
-
-        GameObject preloadRed = Resources.Load<GameObject>("Prefab/Unit/WarBase" +TeamRed.name);
-        red = Instantiate(preloadRed, new Vector3(30, 3, 30), Quaternion.identity, TeamRed.transform);
+        
+        GameObject preloadRed = Resources.Load<GameObject>("Prefab/Unit/WarBase" + TeamRed.GetComponent<TeamScript>().Team.teamName);
+        red = Instantiate(preloadRed, new Vector3(30, 0.1f, 30), Quaternion.identity, TeamRed.transform);
 
         /*GameObject preloadGreen = Resources.Load<GameObject>("Prefab/Unit/WarBase");
         green = Instantiate(preloadGreen, new Vector3(0, 0, 0), Quaternion.identity, gameObject.transform);*/
 
-        GameObject preloadBlue = Resources.Load<GameObject>("Prefab/Unit/WarBase");
-        blue = Instantiate(preloadBlue, new Vector3(-30, 3, -30), Quaternion.identity, TeamBlue.transform);
+        GameObject preloadBlue = Resources.Load<GameObject>("Prefab/Unit/WarBase" + TeamBlue.GetComponent<TeamScript>().Team.teamName);
+        blue = Instantiate(preloadBlue, new Vector3(-30, 0.1f, -30), Quaternion.identity, TeamBlue.transform);
 
         /*GameObject preloadPink = Resources.Load<GameObject>("Prefab/Unit/WarBase");
         pink = Instantiate(preloadPink, new Vector3(0, 0, 0), Quaternion.identity, gameObject.transform);*/

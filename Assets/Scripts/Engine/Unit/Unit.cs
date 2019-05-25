@@ -126,7 +126,7 @@ public abstract class Unit
     public void OnCollisionStay(Collision other)
     {
         collisionObject = null;
-        if(other.collider.tag != "Ground")
+        if(other.collider.tag != "Ground" && this.GetType() != typeof(WarBase))
         {
             collisionObject = other.collider.transform.gameObject;
             Heading = (Heading + Random.Range(160, 340)) % 360;

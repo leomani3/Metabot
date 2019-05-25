@@ -3,7 +3,7 @@
 	    <instruction>
 	        <action>
 		        <methode>Create</methode>
-            		<parametre>WarLight</parametre>
+            <parametre>WarLight</parametre>
 	        </action>
 	        <condition>currentHealth > 0.75 * maxHealth</condition>
 	    </instruction>
