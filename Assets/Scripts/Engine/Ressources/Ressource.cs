@@ -26,7 +26,7 @@ public abstract class Ressource
         get { return ressouce_go; }
     }
 
-    public abstract void UseRessource();
+    public abstract void UseRessource(Unit unit);
 
 }
 

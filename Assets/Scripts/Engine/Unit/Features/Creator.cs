@@ -21,6 +21,7 @@ public class Creator : Feature
             //Debug.Log(go.GetComponent<Collider>().bounds.size);
             GameObject created = UnityEngine.Object.Instantiate(go, new Vector3(unit.Unit_go.transform.position.x + 1, go.GetComponent<BoxCollider>().bounds.min.y, unit.Unit_go.transform.position.z + 5), Quaternion.identity, unit.Unit_go.GetComponentInParent<TeamScript>().gameObject.transform);
             unit.CurrentHealth -= 150; //Pour la perte de vie il faudrait regarder le cout d'une unité
+            unit.Team.unitsList.Add(go);
         }
     }
 
