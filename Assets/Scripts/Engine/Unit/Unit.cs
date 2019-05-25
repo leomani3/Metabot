@@ -173,8 +173,7 @@ public abstract class Unit
                     {
                         enemiesInSight.Add(collider.gameObject);
                         Heading = angle;
-                    } 
-                    else if(collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.teamName == Team.teamName)
+                    } else if(collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.teamName == Team.teamName)
                     {
                         alliesInSight.Add(collider.gameObject);
                     }
