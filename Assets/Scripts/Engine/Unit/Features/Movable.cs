@@ -13,7 +13,7 @@ public class Movable : Feature
 
     public void Move()
     {
-        unit.Unit_go.transform.position += speed * Utility.vectorFromAngle(unit.Heading).normalized * 0.2f;
+        unit.Unit_go.transform.position += speed * Utility.vectorFromAngle(unit.Heading).normalized * 0.1f; //*0.2f normalement
     }
 
 }
