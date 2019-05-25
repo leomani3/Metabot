@@ -89,13 +89,14 @@ public abstract class Unit
         return currentBagSize == 0;
     }
 
-    public void Take(Ressource r)
+    public void Take()
     {
-        if (!IsFullBag() && Vector3.Distance(unit_go.transform.position, r.Ressource_go.transform.position) < MAX_DISTANCE_TAKE)
+        GameObject nearestRessources = GetNearestRessource();
+        if (!IsFullBag() && Vector3.Distance(unit_go.transform.position, nearestRessources.transform.position) < MAX_DISTANCE_TAKE)
         {
-            bag.Add(r);
+            bag.Add(nearestRessources);
             currentBagSize++;
-            Object.Destroy(r.Ressource_go);
+            Object.Destroy(nearestRessources);
         }
     }
 
@@ -168,19 +169,73 @@ public abstract class Unit
                 if (angle > (heading - (angleSight / 2)) && angle < (heading + (angleSight / 2)))
                 {
                     perceptsInSight.Add(collider.gameObject);
-                    if (collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.name != Team.name)
+                    if (collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.teamName != Team.teamName)
                     {
                         enemiesInSight.Add(collider.gameObject);
                         Heading = angle;
-                    } else if(collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.name == Team.name)
+                    } 
+                    else if(collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.teamName == Team.teamName)
                     {
                         alliesInSight.Add(collider.gameObject);
+                    }
+                    else if(collider.gameObject.tag == "Item") {
+                        ressourcesInSight.Add(collider.gameObject);
                     }
                 }
             }
         }
         dico["perceptsCount"] = perceptsInSight.Count;
         dico["enemiesCount"] = enemiesInSight.Count;
+        dico["alliesCount"] = alliesInSight.Count;
+        dico["ressourceCount"] = ressourcesInSight.Count;
+    }
+
+    public GameObject GetNearestEnemie()
+    {
+        GameObject go = (GameObject) enemiesInSight[0];
+        float distMin = 0.0f;
+        for(int i = 1; i < enemiesInSight.Count; i++)
+        {
+            float dist = Vector3.Distance(unit_go.transform.position, ((GameObject)enemiesInSight[i]).transform.position);
+            if (dist < distMin)
+            {
+                go = (GameObject)enemiesInSight[i];
+                distMin = dist;
+            }
+        }
+        return go;
+    }
+
+    public GameObject GetNearestAllies()
+    {
+        GameObject go = (UnityEngine.GameObject)alliesInSight[0];
+        float distMin = 0.0f;
+        for (int i = 1; i < alliesInSight.Count; i++)
+        {
+            float dist = Vector3.Distance(unit_go.transform.position, ((GameObject)alliesInSight[i]).transform.position);
+            if (dist < distMin)
+            {
+                go = (GameObject)alliesInSight[i];
+                distMin = dist;
+            }
+        }
+        return go;
+    }
+
+    public GameObject GetNearestRessource()
+    {
+        GameObject go = (UnityEngine.GameObject)ressourcesInSight[0];
+        float distMin = 0.0f;
+        for (int i = 1; i < ressourcesInSight.Count; i++)
+        {
+            float dist = Vector3.Distance(unit_go.transform.position, ((GameObject)ressourcesInSight[i]).transform.position);
+            if (dist < distMin)
+            {
+                go = (GameObject)ressourcesInSight[i];
+                distMin = dist;
+            }
+        }
+        return go;
     }
 
     public float LookUp(string key)
