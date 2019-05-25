@@ -149,6 +149,7 @@ public abstract class Unit
         perceptsInSight.Clear();
         enemiesInSight.Clear();
         Collider[] colliders = Physics.OverlapSphere(unit_go.transform.position, distanceSight);
+
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
