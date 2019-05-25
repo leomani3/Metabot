@@ -99,9 +99,9 @@ public class PlayButton : MonoBehaviour
 
     void createUnitStart(GameObject team, GameManager gameManager, int teamId)
     {
-        //la base
+        //Créer la base
         GameObject gameobject_base = Resources.Load<GameObject>("Prefab/Unit/WarBase" + team.GetComponent<TeamScript>().Team.teamName);
-        Instantiate(gameobject_base, new Vector3(30, 3, 30), Quaternion.identity, team.transform);
+        Instantiate(gameobject_base, team.transform.position, Quaternion.identity, team.transform);
         //Créer les unités au début de la partie.
         foreach (KeyValuePair<string, int> unit in gameManager._gameSettings._initStartUnit)
         {
@@ -109,7 +109,7 @@ public class PlayButton : MonoBehaviour
             {
                 //Les unités
                 GameObject gameobject_unit = Resources.Load<GameObject>("Prefab/Unit/War" + unit.Key + team.GetComponent<TeamScript>().Team.teamName);
-                Instantiate(gameobject_unit, new Vector3(30, 3, 30), Quaternion.identity, team.transform);
+                Instantiate(gameobject_unit, team.transform.position, Quaternion.identity, team.transform);
             }
         }
         

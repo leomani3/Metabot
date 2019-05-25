@@ -15,17 +15,20 @@ public class RandomBasePosition : MonoBehaviour
             GameObject TeamBlue = GameObject.Find("TeamBlue");
             TeamBlue.transform.position = teamPositions[0].transform.position;
 
-            TeamBlue.GetComponentInChildren<WarBaseScript>().transform.position = TeamBlue.transform.position;
-
             foreach (Transform child in TeamBlue.transform)
             {
                 if (!child.name.Contains("WarBase"))
                 {
-                    Debug.Log("BLBLBL    " + child.name);
-                    float x = Random.Range(-startUnitsPositions[0].GetComponent<BoxCollider>().size.x, startUnitsPositions[0].GetComponent<BoxCollider>().size.x);
-                    float y = TeamBlue.transform.position.y;
-                    float z = Random.Range(-startUnitsPositions[0].GetComponent<BoxCollider>().size.z, startUnitsPositions[0].GetComponent<BoxCollider>().size.z);
-                    child.transform.position = new Vector3(x, y, z);
+                    float x, y, z;
+                    do
+                    {
+                        x = Random.Range(0, 20);
+                        y = 0;
+                        z = Random.Range(0, 20);
+                    } while (x + z < 13);
+
+                    Debug.Log("POSITION : " + x + " " + y + " " + z);
+                    child.transform.localPosition = new Vector3(x, y, z);
                 }
             }
         }
@@ -33,6 +36,17 @@ public class RandomBasePosition : MonoBehaviour
         {
             GameObject TeamRed = GameObject.Find("TeamRed");
             TeamRed.transform.position = teamPositions[1].transform.position;
+
+            foreach (Transform child in TeamRed.transform)
+            {
+                if (!child.name.Contains("WarBase"))
+                {
+                    float x = -7;
+                    float y = 0;
+                    float z = 7;
+                    child.transform.localPosition = new Vector3(x, y, z);
+                }
+            }
         }
         if (GameObject.Find("TeamGreen") != null)
         {
@@ -44,21 +58,5 @@ public class RandomBasePosition : MonoBehaviour
             GameObject TeamYellow = GameObject.Find("TeamYellow");
             TeamYellow.transform.position = teamPositions[3].transform.position;
         }
-        /*for (int i = 0; i < teams.Length; i ++)
-        {
-            int j = Random.Range(0, teams.Length);
-
-            GameObject t = teams[i];
-            teams[i] = teams[j];
-            teams[j] = t;
-        }
-
-        for (int i = 0; i < teams.Length; i++)
-        {
-            int j = Random.Range(0, teams.Length);
-            teams[i].GetComponent<TeamPlayManagerScript>().teamIndex = i;
-        }*/
-
-
     }
 }
