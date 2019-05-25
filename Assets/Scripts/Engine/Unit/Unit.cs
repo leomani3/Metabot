@@ -27,6 +27,8 @@ public abstract class Unit
 
     protected ArrayList perceptsInSight;
     protected ArrayList enemiesInSight;
+    protected ArrayList alliesInSight;
+    protected ArrayList ressourcesInSight;
 
     protected MetaBrain brain;
     protected Action nextAction;
@@ -54,6 +56,8 @@ public abstract class Unit
         this.bag = new ArrayList(maxBagSize);
         this.perceptsInSight = new ArrayList();
         this.enemiesInSight = new ArrayList();
+        this.alliesInSight = new ArrayList();
+        this.ressourcesInSight = new ArrayList();
         dico = new Dictionary<string, float>
         {
             { "maxHealth", MaxHealth },
@@ -64,7 +68,9 @@ public abstract class Unit
             { "currentBagSize", CurrentBagSize },
             { "heading", Heading },
             { "perceptsCount", perceptsInSight.Count },
-            { "enemiesCount", enemiesInSight.Count }
+            { "enemiesCount", enemiesInSight.Count },
+            { "ressourceCount", ressourcesInSight.Count},
+            { "alliesCount", alliesInSight.Count}
         };
     }
 
@@ -155,6 +161,9 @@ public abstract class Unit
                     {
                         enemiesInSight.Add(collider.gameObject);
                         Heading = angle;
+                    } else if(collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.name == Team.name)
+                    {
+                        alliesInSight.Add(collider.gameObject);
                     }
                 }
             }
