@@ -49,16 +49,22 @@ public class Movable : Feature
                 go_target = unit.GetNearestAllies();
                 break;
             case "enemie":
-                go_target = unit.GetNearestEnemie();
+                go_target = unit.GetNearestEnemy(); 
                 break;
             case "resource":
                 go_target = unit.GetNearestRessource();
                 break;
-            case "base":
+            case "base": //Base alliée
                 break;
-            case "baseEnemie":
+            case "baseEnemie": //Base enemie la plus proche (plusieurs base à 4 joueur)
                 break;
         }
+        if(go_target != null)
+        {
+            float angle = Utility.getAngle(unit.Unit_go.transform.position, nearestEnemie.transform.position);
+            unit.Heading = angle;
+        }
+
         unit.Unit_go.transform.position += speed * Utility.vectorFromAngle(unit.Heading).normalized * 0.1f; //*0.2f normalement
     }
 

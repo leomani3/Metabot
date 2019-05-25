@@ -170,9 +170,11 @@ public abstract class Unit
         }
         dico["perceptsCount"] = perceptsInSight.Count;
         dico["enemiesCount"] = enemiesInSight.Count;
+        dico["alliesCount"] = alliesInSight.Count;
+        dico["ressourceCount"] = ressourcesInSight.Count;
     }
 
-    public GameObject GetNearestEnemie()
+    public GameObject GetNearestEnemy()
     {
         GameObject go = (GameObject)enemiesInSight[0];
         float distMin = 0.0f;
@@ -182,6 +184,38 @@ public abstract class Unit
             if (dist < distMin)
             {
                 go = (GameObject)enemiesInSight[i];
+                distMin = dist;
+            }
+        }
+        return go;
+    }
+
+    public GameObject GetNearestAllies()
+    {
+        GameObject go = (UnityEngine.GameObject)alliesInSight[0];
+        float distMin = 0.0f;
+        for (int i = 1; i < alliesInSight.Count; i++)
+        {
+            float dist = Vector3.Distance(unit_go.transform.position, ((GameObject)alliesInSight[i]).transform.position);
+            if (dist < distMin)
+            {
+                go = (GameObject)alliesInSight[i];
+                distMin = dist;
+            }
+        }
+        return go;
+    }
+
+    public GameObject GetNearestRessource()
+    {
+        GameObject go = (UnityEngine.GameObject)ressourcesInSight[0];
+        float distMin = 0.0f;
+        for (int i = 1; i < ressourcesInSight.Count; i++)
+        {
+            float dist = Vector3.Distance(unit_go.transform.position, ((GameObject)ressourcesInSight[i]).transform.position);
+            if (dist < distMin)
+            {
+                go = (GameObject)ressourcesInSight[i];
                 distMin = dist;
             }
         }
