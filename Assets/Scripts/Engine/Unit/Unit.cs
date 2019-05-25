@@ -168,11 +168,11 @@ public abstract class Unit
                 if (angle > (heading - (angleSight / 2)) && angle < (heading + (angleSight / 2)))
                 {
                     perceptsInSight.Add(collider.gameObject);
-                    if (collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.name != Team.name)
+                    if (collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.teamName != Team.teamName)
                     {
                         enemiesInSight.Add(collider.gameObject);
                         Heading = angle;
-                    } else if(collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.name == Team.name)
+                    } else if(collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.teamName == Team.teamName)
                     {
                         alliesInSight.Add(collider.gameObject);
                     }

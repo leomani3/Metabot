@@ -1,0 +1,100 @@
+<WarLight>
+	<methodes>
+		<methode>Shoot</methode>
+		<methode>Heal</methode>
+		<methode>Give</methode>
+		<methode>Move</methode>
+		<methode>Pick</methode>
+		<methode>Random Move</methode>
+		<methode>TurnAround Move</methode>
+		<methode>Back to base</methode>
+	</methodes>
+	<conditions>
+		<condition>Max health</condition>
+		<condition>Health > 75%</condition>
+		<condition>Health > 50%</condition>
+		<condition>Health > 25%</condition>
+		<condition>Bag full</condition>
+		<condition>Bag empty</condition>
+		<condition>Not empty</condition>
+		<condition>Ally near</condition>
+		<condition>Enemy near</condition>
+		<condition>Ally Base near</condition>
+		<condition>Can Give</condition>
+		<condition>Ressource near</condition>
+	</conditions>
+
+</WarLight>
+<WarHeavy>
+	<methodes>
+    		<methode>Shoot</methode>
+    		<methode>Heal</methode>
+    		<methode>Give</methode>
+    		<methode>Move</methode>
+   		<methode>Pick</methode>
+    		<methode>Random Move</methode>
+     		<methode>TurnAround Move</methode>
+    		<methode>Back to base</methode>
+	</methodes>
+	<conditions>
+		<condition>Max health</condition>
+		<condition>Health > 75%</condition>
+		<condition>Health > 50%</condition>
+		<condition>Health > 25%</condition>
+		<condition>Bag full</condition>
+		<condition>Bag empty</condition>
+		<condition>Not empty</condition>
+		<condition>Ally near</condition>
+		<condition>Enemy near</condition>
+		<condition>Ally Base near</condition>
+		<condition>Can Give</condition>
+		<condition>Ressource near</condition>
+	</conditions>
+</WarHeavy>
+<WarExplorer>
+	<methodes>
+    		<methode>Heal</methode>
+    		<methode>Give</methode>
+    		<methode>Move</methode>
+    		<methode>Pick</methode>
+    		<methode>Random Move</methode>
+     		<methode>TurnAround Move</methode>
+    		<methode>Back to base</methode>
+	</methodes>
+	<conditions>
+		<condition>Max health</condition>
+		<condition>Health > 75%</condition>
+		<condition>Health > 50%</condition>
+		<condition>Health > 25%</condition>
+		<condition>Bag full</condition>
+		<condition>Bag empty</condition>
+		<condition>Not empty</condition>
+		<condition>Ally near</condition>
+		<condition>Enemy near</condition>
+		<condition>Ally Base near</condition>
+		<condition>Can Give</condition>
+		<condition>Ressource near</condition>
+	</conditions>
+
+</WarExplorer>
+<WarBase>
+	<methodes>
+    		<methode>Heal</methode>
+    		<methode>Give</methode>
+    		<methode>Create Light</methode>
+    		<methode>Create heavy</methode>
+    		<methode>Create Explorer</methode>
+	</methodes>
+	<conditions>
+		<condition>Max health</condition>
+		<condition>Health > 75%</condition>
+		<condition>Health > 50%</condition>
+		<condition>Health > 25%</condition>
+		<condition>Bag full</condition>
+		<condition>Bag empty</condition>
+		<condition>Not empty</condition>
+		<condition>Ally near</condition>
+		<condition>Enemy near</condition>
+		<condition>Can Give</condition>
+	</conditions>
+</WarBase>
