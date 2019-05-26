@@ -152,7 +152,7 @@ public abstract class Unit
 
         foreach (Collider collider in colliders)
         {
-            if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
+            if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("WarUnit")) && !collider.gameObject.Equals(unit_go))
             {
                 float angle = Utility.getAngle(unit_go.transform.position, collider.gameObject.transform.position);
                 

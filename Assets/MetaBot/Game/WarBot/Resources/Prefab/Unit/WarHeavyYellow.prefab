@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2255294527155444992}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2255294527155444994}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2255294527155444996}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: transform1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 2255294527155444998}
   - component: {fileID: 2255294527152577826}
   - component: {fileID: 2255294527153545186}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 2255294527155570566}
   - component: {fileID: 2255294527155570567}
   - component: {fileID: 2255294527155570560}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: WarHeavyYellow
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &2255294527155570567
 BoxCollider:
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2255294527155445002}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: transform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

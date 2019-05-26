@@ -6,15 +6,6 @@ public class TeamScript : MonoBehaviour
 {
 
     MetaTeam team;
-    public List<Vector3> spawnPoints;
-
-    private void Start()
-    {
-        foreach(Transform child in transform.GetChild(0))
-        {
-            spawnPoints.Add(child.transform.position);
-        }
-    }
 
     public MetaTeam Team
     {
