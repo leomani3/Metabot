@@ -9,14 +9,7 @@ public class TeamScript : MonoBehaviour
 
     public MetaTeam Team
     {
-        get
-        {
-            return team;
-        }
-
-        set
-        {
-            team = value;
-        }
+        get {return team;}
+        set{team = value;}
     }
 }

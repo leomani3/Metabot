@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3604377433422261262}
   - component: {fileID: 3604377433422261263}
   - component: {fileID: 3604377433422261260}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: WarHeavyGreen
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3604377433422228128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.36, y: 0, z: 0}
-  m_LocalScale: {x: 70, y: 70, z: 70}
+  m_LocalScale: {x: 60, y: 60, z: 60}
   m_Children:
   - {fileID: 3604377433422657162}
   - {fileID: 3604377433422657160}
@@ -50,7 +50,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &3604377433422261263
 BoxCollider:
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3604377433422657154}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: transform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3604377433422657160}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3604377433422657162}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3604377433422657164}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: transform1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 3604377433422657166}
   - component: {fileID: 3604377433423427242}
   - component: {fileID: 3604377433424426090}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -24,8 +24,8 @@ public class Weapon : Feature
             timeBeforeReload -= Time.fixedDeltaTime;
             if (timeBeforeReload <= 0)
             {
-                GameObject nearestEnemie = unit.GetNearestEnemie();
-                float angle = Utility.getAngle(unit.Unit_go.transform.position, nearestEnemie.transform.position);
+                GameObject nearestEnemy = unit.GetNearestEnemy();
+                float angle = Utility.getAngle(unit.Unit_go.transform.position, nearestEnemy.transform.position);
                 unit.Heading = angle;
 
                 Object.Instantiate(projectile_go, unit.Unit_go.transform.GetChild(2).position, Quaternion.Euler(0, unit.Heading, 0));
