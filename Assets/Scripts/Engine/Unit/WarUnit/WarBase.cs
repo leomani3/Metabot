@@ -13,13 +13,12 @@ public class WarBase : WarUnit
         //On créé l'AgentList qui contient tous les type d'unité que je peux créer
         List<System.Type> al = new List<System.Type>();
         al.Add(typeof(WarLight));
-        al.Add(typeof(WarEngineer));
+        al.Add(typeof(WarExplorer));
         creatorFeature = new Creator(this, al);    //permet à l'unite de pouvoir créer d'autre unités. Il faut lui passer une AL en paramètres.
     }
 
     public void Create()
     {
-        creatorFeature.Type = typeof(WarLight); //TODO : cette ligne à était mise pour les tests
         creatorFeature.Create();
     }
 

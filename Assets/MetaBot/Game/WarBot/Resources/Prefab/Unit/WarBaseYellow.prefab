@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3812529246259385858}
   - component: {fileID: 1160010584093633385}
   - component: {fileID: 187928250289493480}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: WarBaseYellow
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3313119904255925898}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: transform5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3313119904255925900}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: transform4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3313119904255925902}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: transform3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3313119904255925904}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: transform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3313119904255925906}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: transform1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 3313119904255925908}
   - component: {fileID: 3313119904253025982}
   - component: {fileID: 3313119904254024830}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: pCylinder5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3313119904255925910}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: pCylinder4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3313119904255925912}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3313119904255925914}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3313119904255925916}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3313119904255925918}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

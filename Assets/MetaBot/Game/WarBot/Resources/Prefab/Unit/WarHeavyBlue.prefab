@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4167558953706718449}
   - component: {fileID: 4167558953703851221}
   - component: {fileID: 4167558953704949269}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4167558953706718451}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: transform1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4167558953706718453}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4167558953706718455}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4167558953706718461}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: transform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 4167558953707118185}
   - component: {fileID: 4167558953707118184}
   - component: {fileID: 4167558953707118187}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: WarHeavyBlue
   m_TagString: Unit
   m_Icon: {fileID: 0}

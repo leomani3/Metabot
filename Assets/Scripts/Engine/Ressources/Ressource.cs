@@ -10,10 +10,11 @@ public abstract class Ressource
     public static float respawnTime;
     GameObject ressouce_go;
 
-    public Ressource(string name, int weight)
+    public Ressource(string name, int weight, GameObject go)
     {
         this.name = name;
         this.weight = weight;
+        this.ressouce_go = go;
     }
 
     public string Name
