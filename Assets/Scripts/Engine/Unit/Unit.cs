@@ -411,12 +411,4 @@ public abstract class Unit
             }
         }
     }
-
-    public float DistanceBase
-    {
-        get
-        {
-            Vector3.Distance(Unit_go.transform.position, baseAllie.transform.position);
-        }
-    }
 }
