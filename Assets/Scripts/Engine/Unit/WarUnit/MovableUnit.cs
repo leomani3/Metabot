@@ -45,8 +45,7 @@ public abstract class MovableUnit : WarUnit
         if (other.collider.tag != "Ground" && other.collider.gameObject.tag != "Item")
         {
             collisionObject = other.collider.transform.gameObject;
-            float angle = Utility.getAngle(Unit_go.transform.position, other.collider.transform.position);
-            Heading = (angle + 180) % 360;
+            Heading = (Heading + Random.Range(135, 215)) % 360;
             movableFeature.Move();
         }
     }

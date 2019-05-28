@@ -228,7 +228,7 @@ public class EndGameManager : MonoBehaviour {
             }
         }
 
-        Debug.Log("Il reste encore " + basesEnVie.Count + " bases encore en vie !");
+        //Debug.Log("Il reste encore " + basesEnVie.Count + " bases encore en vie !");
 
 
         //S'il ne reste plus qu'une base en vie la dernière base en vie gagne la partie ! 
