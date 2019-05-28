@@ -32,7 +32,7 @@ public class EndGameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        gm = GameObject.Find("GameManager");
+        /*gm = GameObject.Find("GameManager");
         anim = GetComponent<Animator>();
         InitTests();
         InitEnds();
@@ -56,8 +56,10 @@ public class EndGameManager : MonoBehaviour {
         else
         {
             timeLimit.text = "";
-        }
+        }*/
     }
+
+    
 
     public void InitEnds()
     {/*
@@ -151,18 +153,18 @@ public class EndGameManager : MonoBehaviour {
 
     public void InitTests()
     {
-        _tests["TestBot"] = delegate ()
+        /*_tests["TestBot"] = delegate ()
         {
             List<int> teams = new List<int>();
             GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
             foreach (GameObject u in units)
-            {/*TODO: CONDITION DE VICTOIRE
+            {TODO: CONDITION DE VICTOIRE
                 if (u.GetComponent<Stats>()._unitType.Equals("Base"))
                 {
                     if (!teams.Contains(u.GetComponent<Stats>()._teamIndex))
                         teams.Add(u.GetComponent<Stats>()._teamIndex);
                 }
-                */
+                
             }
 
             if (teams.Count == 1)
@@ -205,12 +207,41 @@ public class EndGameManager : MonoBehaviour {
             }
 
             return (timer.GetComponent<TimerScriptHUD>().timePassed > timeLimitSeconds || nbRessources >= ressourceLimit);
-        };
+        };*/
     }
 
     // Update is called once per frame
     void Update()
     {
+        List<GameObject> basesEnVie = new List<GameObject>();
+        
+        //On stock toutes les unités de la scène
+        GameObject[] sceneGameObjects = GameObject.FindGameObjectsWithTag("Unit");
+
+        //On parcour toutes les unités 
+        foreach(GameObject go in sceneGameObjects)
+        {
+            //On compte le noombre de base
+            if(go.GetComponent<WarBaseScript>() != null)
+            {
+                basesEnVie.Add(go);
+            }
+        }
+
+        Debug.Log("Il reste encore " + basesEnVie.Count + " bases encore en vie !");
+
+
+        //S'il ne reste plus qu'une base en vie la dernière base en vie gagne la partie ! 
+        if(basesEnVie.Count == 1)
+        {
+            Debug.Log("VICTOIRE DE LA TEAM " +basesEnVie[0].GetComponentInParent<TeamScript>().Team.teamName);
+        }
+
+
+
+
+
+
         //TODO : VOIR COMMENT FAIRE
         /*if (_wincondition != gm.GetComponent<GameManager>().wincondition)
         {

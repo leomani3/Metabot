@@ -12,10 +12,10 @@ public class WorldTest : MonoBehaviour
     {
 
         GameObject TeamRed = GameObject.Find("TeamRed");
-        TeamRed.GetComponent<TeamScript>().Team = new MetaTeam("Red", "Assets/Resources/Team_Warbot/Test.wbt");
+        TeamRed.GetComponent<TeamScript>().Team = new MetaTeam("Assets/Resources/Team_Warbot/Test.wbt", "Test", "Red");
 
         GameObject TeamBlue = GameObject.Find("TeamBlue");
-        TeamBlue.GetComponent<TeamScript>().Team = new MetaTeam("Blue", "Assets/Resources/Team_Warbot/Test.wbt");
+        TeamBlue.GetComponent<TeamScript>().Team = new MetaTeam("Assets/Resources/Team_Warbot/Test.wbt", "Test", "Blue");
 
         /*GameObject TeamRed = GameObject.Find("TeamRed");
         TeamRed.GetComponent<TeamScript>().Team = new MetaTeam("Red", "Assets/Resources/Team_Warbot/Test.wbt");*/
