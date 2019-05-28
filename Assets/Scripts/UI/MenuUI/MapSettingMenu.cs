@@ -20,9 +20,9 @@ public class MapSettingMenu : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        print("A " + GameObject.Find("GameManager"));
-        print("B " + GameObject.Find("GameManager").GetComponent<GameManager>());
-        print("C " + GameObject.Find("GameManager").GetComponent<GameManager>()._gameSettings);
+        //print("A " + GameObject.Find("GameManager"));
+        //print("B " + GameObject.Find("GameManager").GetComponent<GameManager>());
+        //print("C " + GameObject.Find("GameManager").GetComponent<GameManager>()._gameSettings);
         _indexMap = GameObject.Find("GameManager").GetComponent<GameManager>()._gameSettings._indexListMap;
         UpdateVisual();
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class WarLightScript : UnitScript
+public class WarLightScript : MovableUnitScript
 {
     void Start()
     {
