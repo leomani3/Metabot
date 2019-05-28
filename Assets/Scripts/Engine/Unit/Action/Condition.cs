@@ -17,18 +17,20 @@ public class Condition
     }
     
     public bool satisfied(Unit unit) {
+        //Debug.Log(param1 + " = " + unit.LookUp(param1.Trim()) + " " + operateur + " " + param2 + " = " + unit.LookUp(param2.Trim()));
+        //Debug.Log("currentBagSize = " + unit.LookUp("currentBagSize"));
         switch (operateur)
         {
             case ">":
-                return unit.LookUp(param1) > unit.LookUp(param2);
+                return unit.LookUp(param1.Trim()) > unit.LookUp(param2.Trim());
             case ">=":
-                return unit.LookUp(param1) >= unit.LookUp(param2);
+                return unit.LookUp(param1.Trim()) >= unit.LookUp(param2.Trim());
             case "==":
-                return unit.LookUp(param1) == unit.LookUp(param2);
+                return unit.LookUp(param1.Trim()) == unit.LookUp(param2.Trim());
             case "<":
-                return unit.LookUp(param1) < unit.LookUp(param2);
+                return unit.LookUp(param1.Trim()) < unit.LookUp(param2.Trim());
             case "<=":
-                return unit.LookUp(param1) <= unit.LookUp(param2);
+                return unit.LookUp(param1.Trim()) <= unit.LookUp(param2.Trim());
         }
         return false;
     }

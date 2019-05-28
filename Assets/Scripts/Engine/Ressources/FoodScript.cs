@@ -6,6 +6,6 @@ public class FoodScript : ResourcesScript
     // Use this for initialization
     void Start()
     {
-        Ressource = new Food();
+        Ressource = new Food(gameObject);
     }
 }

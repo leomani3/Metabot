@@ -67,7 +67,7 @@ public class PlayButton : MonoBehaviour
 
                 DontDestroyOnLoad(TeamYellow);
             }
-        }        
+        } 
         StartCoroutine(AsynchronousLoad(gameManager._gameSettings._indexSceneMap));
     }
 

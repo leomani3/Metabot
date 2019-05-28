@@ -17,6 +17,7 @@ public class MetaBrain
         //ORDONNER LES INSTRUCTIONS PAR PRIORITES
         foreach (MetaInstruction i in instructions)
         {
+            //Debug.Log(unit.GetType().ToString() + " : cond = " + i.ToString() + " = " + i.satisfied(unit));
             if (i.satisfied(unit))
             {
                 i.Action.setup(unit);
