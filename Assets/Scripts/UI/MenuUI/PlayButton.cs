@@ -21,7 +21,8 @@ public class PlayButton : MonoBehaviour
         //XMLWarbotInterpreter interpreter = new XMLWarbotInterpreter();
 
         GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        string gamePath = Application.dataPath + "/Resources/Team_WarBot/";
+        //string gamePath = Application.dataPath + "/Resources/Team_WarBot/";
+        string gamePath = Application.streamingAssetsPath + "/teams/";
 
         //set les settings
         gameManager.SetSetting();

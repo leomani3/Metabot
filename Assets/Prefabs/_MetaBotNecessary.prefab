@@ -4924,7 +4924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ac1a4bf4bb6fd4486868234a235aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 0}
+  cameraUnit: {fileID: 0}
   _healthText: {fileID: 114721206881962480}
   _healthFillImage: {fileID: 114370069570712826}
   _bagFillImage: {fileID: 114158841900713894}

@@ -29,7 +29,7 @@ public class RandomBasePosition : MonoBehaviour
                 if (!child.name.Contains("WarBase"))
                 {
                     float x = distance * Mathf.Cos(Mathf.Deg2Rad * angle);
-                    float y = 0;
+                    float y = TeamBlue.transform.position.y;
                     float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle);
 
                     child.localPosition = new Vector3(x, y, z);
