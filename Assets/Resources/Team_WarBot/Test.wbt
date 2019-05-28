@@ -47,7 +47,14 @@
           <methode>Give</methode>
         </action>
         <condition>currentBagSize > 0</condition>
-        <condition>alliesCount > 0</condition>
+        <condition>nearBaseAllie == 1</condition>
+      </instruction>
+      <instruction>
+        <action>
+          <methode>MoveTo</methode>
+          <parametre>base</parametre>
+        </action>
+        <condition>currentBagSize > 0</condition>
       </instruction>
       <instruction>
         <action>
