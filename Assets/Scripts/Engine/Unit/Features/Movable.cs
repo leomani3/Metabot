@@ -24,10 +24,16 @@ public class Movable : Feature
         {
             if (Vector3.Distance(unit.Unit_go.transform.position, nearestRessources.transform.position) <= MAX_DISTANCE_TAKE_GIVE)
             {
-                unit.Bag.Add(nearestRessources.GetComponent<ResourcesScript>().Ressource);
-                unit.CurrentBagSize += 1;
-                unit.RessourcesInSight.Remove(nearestRessources);
-                Object.Destroy(nearestRessources);
+                if (nearestRessources != null)
+                {
+                    lock (nearestRessources)
+                    {
+                        unit.Bag.Add(nearestRessources.GetComponent<ResourcesScript>().Ressource);
+                        unit.CurrentBagSize += 1;
+                        unit.RessourcesInSight.Remove(nearestRessources);
+                        Object.Destroy(nearestRessources);
+                    }
+                }
             }
             else
             {
@@ -81,7 +87,7 @@ public class Movable : Feature
         }
         if(go_target != null)
         {
-            float angle = Utility.getAngle(unit.Unit_go.transform.position, unit.GetNearestEnemy().transform.position);
+            float angle = Utility.getAngle(unit.Unit_go.transform.position, go_target.transform.position);
             unit.Heading = angle;
         }
 
