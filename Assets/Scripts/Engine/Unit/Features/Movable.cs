@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using UnityEngine;
 
 public class Movable : Feature
 {
@@ -24,16 +25,13 @@ public class Movable : Feature
         {
             if (Vector3.Distance(unit.Unit_go.transform.position, nearestRessources.transform.position) <= MAX_DISTANCE_TAKE_GIVE)
             {
-                lock (nearestRessources)
+                if (nearestRessources.GetComponent<ResourcesScript>() != null)
                 {
-                    if (nearestRessources != null)
-                    {
-                        unit.Bag.Add(nearestRessources.GetComponent<ResourcesScript>().Ressource);
-                        unit.CurrentBagSize += 1;
-                        unit.RessourcesInSight.Remove(nearestRessources);
-                        Object.Destroy(nearestRessources);
-                    }
-                }
+                    unit.Bag.Add(nearestRessources.GetComponent<ResourcesScript>().Ressource);
+                    unit.CurrentBagSize += 1;
+                    unit.RessourcesInSight.Remove(nearestRessources);
+                    Object.Destroy(nearestRessources);
+                }  
             }
             else
             {
@@ -46,7 +44,6 @@ public class Movable : Feature
 
     public void Give()
     {
-        Debug.Log("GIVE ME THAT");
         GameObject nearestAllie = unit.BaseAllie;//A changer par allié qui a le moins de vie 
         if (nearestAllie != null && !unit.IsEmptyBag() && !nearestAllie.GetComponent<UnitScript>().Unit.IsFullBag())
         {
@@ -56,7 +53,6 @@ public class Movable : Feature
                 nearestAllie.GetComponent<UnitScript>().Unit.CurrentBagSize += 1;
                 unit.Bag.RemoveAt(0);
                 unit.CurrentBagSize -= 1;
-                Debug.Log("GIVE");
             }
             else
             {
