@@ -29,6 +29,7 @@ public class EndGameManager : MonoBehaviour {
     public float timeLimitSeconds;
     public bool written;
     public bool equals;
+    public GameObject endGamePanel;
 
     // Use this for initialization
     void Start () {
@@ -234,7 +235,10 @@ public class EndGameManager : MonoBehaviour {
         //S'il ne reste plus qu'une base en vie la dernière base en vie gagne la partie ! 
         if(basesEnVie.Count == 1)
         {
-            Debug.Log("VICTOIRE DE LA TEAM " +basesEnVie[0].GetComponentInParent<TeamScript>().Team.teamName);
+            endGamePanel.SetActive(true);
+            textWinnerTeam.GetComponent<Text>().text = "Vainqueur : " + basesEnVie[0].GetComponentInParent<TeamScript>().Team.teamName;
+            anim = GetComponent<Animator>();
+            anim.SetTrigger("GameOver");
         }
 
 
