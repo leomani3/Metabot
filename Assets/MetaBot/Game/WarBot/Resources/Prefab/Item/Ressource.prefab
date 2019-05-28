@@ -4846,10 +4846,10 @@ GameObject:
   - component: {fileID: 4812932975543330}
   - component: {fileID: 33519130321449690}
   - component: {fileID: 23855168969714602}
-  - component: {fileID: 135769837960741682}
+  - component: {fileID: 800882469211764128}
   m_Layer: 10
   m_Name: Heal (1)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4913,7 +4913,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &135769837960741682
+--- !u!135 &800882469211764128
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,7 +11,7 @@ public abstract class MovableUnit : WarUnit
         : base(team, heading, maxHealth, distanceSight, angleSight, maxBagSize, armor)
     {
         this.heading = heading;
-        this.movableFeature = new Movable(this, speed);    //permet à l'unité de bouger
+        this.movableFeature = new Movable(this, speed);
     }
 
     public void Move()
@@ -32,5 +32,17 @@ public abstract class MovableUnit : WarUnit
     public Movable MovableFeature
     {
         get { return movableFeature; }
+    }
+
+    public new void OnCollisionStay(Collision other)
+    {
+        collisionObject = null;
+        if (other.collider.tag != "Ground" && other.collider.gameObject.tag != "Item")
+        {
+            collisionObject = other.collider.transform.gameObject;
+            float angle = Utility.getAngle(Unit_go.transform.position, other.collider.transform.position);
+            Heading = (angle + 180) % 360;
+            movableFeature.Move();
+        }
     }
 }
