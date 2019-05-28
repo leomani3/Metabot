@@ -3,15 +3,8 @@
 public class UnitScript : MonoBehaviour
 {
     protected Unit unit;
+    bool hpBarSpawn = false;
 
-    public Unit Unit
-    {
-        get { return unit; }
-    }
-    private void Start()
-    {
-        GameObject.Find("CanvasHUD").GetComponent<HUDManager>().CreateHUD(gameObject);
-    }
 
     void Update()
     {
@@ -19,7 +12,7 @@ public class UnitScript : MonoBehaviour
         //Debug.DrawRay(unit.Unit_go.transform.position, Utility.vectorFromAngle(unit.Heading - unit.AngleSight / 2).normalized * unit.DistanceSight, Color.red, 0.1f);
         //Debug.DrawRay(unit.Unit_go.transform.position, Utility.vectorFromAngle(unit.Heading + unit.AngleSight / 2).normalized * unit.DistanceSight, Color.red, 0.1f);
 
-        Unit.GetAllPerceptsInRadius();
+        unit.GetAllPerceptsInRadius();
         unit.Brain.decide(unit);
 
         if(unit.NextAction != null)
@@ -37,6 +30,11 @@ public class UnitScript : MonoBehaviour
     void OnCollisionStay(Collision other)
     {
         unit.OnCollisionStay(other);
+    }
+
+    public Unit Unit
+    {
+        get { return unit; }
     }
 }
 
