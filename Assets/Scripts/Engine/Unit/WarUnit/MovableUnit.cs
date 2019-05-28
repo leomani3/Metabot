@@ -39,7 +39,7 @@ public abstract class MovableUnit : WarUnit
         get { return movableFeature; }
     }
 
-    public new void OnCollisionStay(Collision other)
+    public new void OnCollisionEnter(Collision other)
     {
         collisionObject = null;
         if (other.collider.tag != "Ground" && other.collider.gameObject.tag != "Item")
