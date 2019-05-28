@@ -113,12 +113,12 @@ public abstract class Unit
 
     public void OnCollisionStay(Collision other)
     {
-        collisionObject = null;
-        if(other.collider.tag != "Ground" && this.GetType() != typeof(WarBase))
-        {
-            collisionObject = other.collider.transform.gameObject;
-            Heading = (Heading + Random.Range(160, 340)) % 360;
-        }
+        //collisionObject = null;
+        //if (other.collider.tag != "Ground" && this.GetType() != typeof(WarBase))
+        //{
+        //    collisionObject = other.collider.transform.gameObject;
+        //    Heading = (Heading + Random.Range(160, 340)) % 360;
+        //}
         //--source--
         //if (other.gameObject.tag != "Ground")
         //{
@@ -145,11 +145,10 @@ public abstract class Unit
     public void GetAllPerceptsInRadius()
     {
         enemiesInSight.Clear();
-        ressourcesInSight.Clear();
         alliesInSight.Clear();
+        ressourcesInSight.Clear();
 
         Collider[] colliders = Physics.OverlapSphere(unit_go.transform.position, distanceSight);
-
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))

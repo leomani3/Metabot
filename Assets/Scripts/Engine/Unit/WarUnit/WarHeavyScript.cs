@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarHeavyScript : UnitScript
+public class WarHeavyScript : MovableUnitScript
 {
-    // Start is called before the first frame update
     void Start()
     {
         unit = new WarHeavy(gameObject.GetComponentInParent<TeamScript>().Team, gameObject);

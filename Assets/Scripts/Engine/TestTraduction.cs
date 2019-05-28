@@ -12,28 +12,28 @@ public class TestTraduction : MonoBehaviour
     // called first
     void OnEnable()
     {
-        Debug.Log("OnEnable called");
+        //Debug.Log("OnEnable called");
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
-        Debug.Log(mode);
+        //Debug.Log("OnSceneLoaded: " + scene.name);
+        //Debug.Log(mode);
         listOfObject = Resources.FindObjectsOfTypeAll<Text>();
     }
 
     // called third
     void Start()
     {
-        Debug.Log("Start");
+        //Debug.Log("Start");
     }
 
     // called when the game is terminated
     void OnDisable()
     {
-        Debug.Log("OnDisable");
+        //Debug.Log("OnDisable");
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

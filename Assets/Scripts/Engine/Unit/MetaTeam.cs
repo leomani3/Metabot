@@ -8,9 +8,12 @@ public class MetaTeam
 	public string teamName;
 	public Dictionary<string, MetaBrain> brains;
     public ArrayList unitsList;
+    public string teamColor;
 
-	public MetaTeam(string n, string fileName){
-		teamName = n;
+	public MetaTeam(string fileName, string name, string color)
+    {
+        teamColor = color;
+        teamName = name;
         brains = new Dictionary<string, MetaBrain>();
         loadXML(fileName);
         unitsList = new ArrayList();
