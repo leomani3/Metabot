@@ -33,7 +33,7 @@ public class RandomBasePosition : MonoBehaviour
                     float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle);
 
                     child.localPosition = new Vector3(x, y, z);
-                    angle += 30;
+                    angle += 35;
 
                     //Si on a compléter un tour complet autours de la base, on augmente la distance et on refait un tour
                     if(angle >= 360)
