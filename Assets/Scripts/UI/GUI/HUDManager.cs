@@ -111,11 +111,22 @@ public class HUDManager : MonoBehaviour
 
     public void RestartScene()
     {
+        SceneManager.UnloadScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void QuitToMenu()
     {
+        GameObject[] sceneGameObjects = GameObject.FindGameObjectsWithTag("Unit");
+        foreach(GameObject go in sceneGameObjects)
+        {
+            if(!go.name.Contains("Team"))
+            {
+                Destroy(go);
+            }
+        }
+
+        SceneManager.UnloadScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(0);
         audioSource.clip = gameManager.GetComponent<GameManager>().audioMenu;
         audioSource.Play();
