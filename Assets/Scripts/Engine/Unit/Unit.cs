@@ -172,6 +172,7 @@ public abstract class Unit
                 }
             }
         }
+        dico["nearBaseAllie"] = alliesInSight.Contains(baseAllie) ? 1 : 0;
         dico["enemiesCount"] = enemiesInSight.Count;
         dico["alliesCount"] = alliesInSight.Count;
         dico["ressourceCount"] = ressourcesInSight.Count;
@@ -410,5 +411,10 @@ public abstract class Unit
                 return 0;
             }
         }
+    }
+
+    public ArrayList AlliesInSight
+    {
+        get { return this.alliesInSight; }
     }
 }
