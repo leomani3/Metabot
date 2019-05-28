@@ -7,8 +7,8 @@ public class HP_HUDManager : MonoBehaviour
 {
     public GameObject _target;
 
-    public int _value;
-    public int _maxValue;
+    public float _value;
+    public float _maxValue;
     public Text _HPText;
     public Image _HPImage;
     public Vector3 _delta;
@@ -22,10 +22,11 @@ public class HP_HUDManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (_target)
+        //Léo : J'ai commenté ça car nos unités n'implémentent pas encore les contrats
+        /*if (_target)
         {
             targetIcon.SetActive(_target.gameObject.GetComponent<Stats>().HaveContrat());
-        }
+        }*/
 
         if (!_target)
         {
@@ -33,8 +34,30 @@ public class HP_HUDManager : MonoBehaviour
         }
         else
         {
-            _value = _target.gameObject.GetComponent<Stats>().GetHealth();
-            _maxValue = _target.gameObject.GetComponent<Stats>().GetMaxHealth(); 
+            if (_target.name.Contains("WarBase"))
+            {
+                _value = _target.GetComponent<WarBaseScript>().Unit.CurrentHealth;
+                _maxValue = _target.GetComponent<WarBaseScript>().Unit.MaxHealth;
+            }
+
+            if (_target.name.Contains("WarLight"))
+            {
+                _value = _target.GetComponent<WarLightScript>().Unit.CurrentHealth;
+                _maxValue = _target.GetComponent<WarLightScript>().Unit.MaxHealth;
+            }
+
+            if (_target.name.Contains("WarHeavy"))
+            {
+                _value = _target.GetComponent<WarHeavyScript>().Unit.CurrentHealth;
+                _maxValue = _target.GetComponent<WarHeavyScript>().Unit.MaxHealth;
+            }
+
+            if (_target.name.Contains("WarExplorer"))
+            {
+                _value = _target.GetComponent<WarExplorerScript>().Unit.CurrentHealth;
+                _maxValue = _target.GetComponent<WarExplorerScript>().Unit.MaxHealth;
+            }
+            
             _value = Mathf.Max(0, Mathf.Min(_maxValue, _value));
             _HPImage.fillAmount = (1.0f * _value) / _maxValue;
             _HPImage.color = HPColorUpdate(_HPImage.fillAmount);
@@ -43,7 +66,7 @@ public class HP_HUDManager : MonoBehaviour
             
             transform.position = Camera.main.WorldToScreenPoint(_target.transform.position );
             transform.position += _delta;
-            if (_target.GetComponent<Inventory>()._objets.ContainsKey(ressource) && _target.GetComponent<Inventory>()._objets[ressource] > 0 )
+            /*if (_target.GetComponent<Inventory>()._objets.ContainsKey(ressource) && _target.GetComponent<Inventory>()._objets[ressource] > 0 )
             {
                 _ressourceImage.gameObject.SetActive(true);
                 _ressourceText.gameObject.SetActive(true);
@@ -55,10 +78,11 @@ public class HP_HUDManager : MonoBehaviour
                 _ressourceText.text = "" + _target.GetComponent<Inventory>()._objets[ressource];
             }
             else
-            {
+            {*/
+
                 _ressourceImage.gameObject.SetActive(false);
                 _ressourceText.gameObject.SetActive(false);
-            }
+            //}
         }
 
         

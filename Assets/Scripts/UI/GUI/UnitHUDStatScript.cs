@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UnitHUDStatScript : MonoBehaviour
 {
-    public GameObject unit;
+    public GameObject cameraUnit;
 
     public Text _healthText;
     public Image _healthFillImage;
@@ -23,17 +23,18 @@ public class UnitHUDStatScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        unit = Camera.main.GetComponent<SubjectiveCamera>().unit;
-        if (unit != null)
+        cameraUnit = Camera.main.GetComponent<SubjectiveCamera>().unit;
+        if (cameraUnit != null)
         {
-            Stats unitStats = unit.GetComponent<Stats>();
-            _healthText.text = "" + unitStats.GetHealth() + "/" + unitStats.GetMaxHealth();
-            _itemText.text = "" + unitStats.GetComponent<Inventory>()._actualSize + "/" + unitStats.GetComponent<Inventory>()._maxSize;
-            _headingText.text = "" + (int)unitStats.GetHeading() + "°";
-            headingShower.angle = unitStats.GetHeading();
+            Unit unit = cameraUnit.GetComponent<UnitScript>().Unit;
+            Debug.Log("BLBLBLBL" +unit);
+            _healthText.text = "" + unit.CurrentHealth + "/" + unit.MaxHealth;
+            _itemText.text = "" + unit.CurrentBagSize + "/" + unit.MaxBagSize;
+            _headingText.text = "" + (int)unit.Heading + "°";
+            headingShower.angle = unit.Heading;
 
-            _healthFillImage.fillAmount = 1.0f * unitStats.GetHealth() / unitStats.GetMaxHealth();
-            _bagFillImage.fillAmount = 1.0f * unitStats.GetComponent<Inventory>()._actualSize / unitStats.GetComponent<Inventory>()._maxSize;
+            _healthFillImage.fillAmount = 1.0f * unit.CurrentHealth / unit.MaxHealth;
+            _bagFillImage.fillAmount = 1.0f * unit.CurrentBagSize / unit.MaxBagSize;
         }
     }
 }

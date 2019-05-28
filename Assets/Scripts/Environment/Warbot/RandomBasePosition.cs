@@ -19,7 +19,7 @@ public class RandomBasePosition : MonoBehaviour
 
             //stratégie : on place les unités autours de la base à un angle "angle" et une distance "distance"
             float angle = 0;
-            float distance = 8;
+            float distance = 10;
             for (int i=0; i<TeamBlue.transform.childCount; i++)
             {
                 //Tous les enfants de la team (aka les unités de début)
@@ -50,7 +50,7 @@ public class RandomBasePosition : MonoBehaviour
             TeamRed.transform.position = teamPositions[1].transform.position;
 
             float angle = 0;
-            float distance = 8;
+            float distance = 10;
             for (int i = 0; i < TeamRed.transform.childCount; i++)
             {
                 Transform child = TeamRed.transform.GetChild(i);
@@ -62,7 +62,7 @@ public class RandomBasePosition : MonoBehaviour
                     float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle);
 
                     child.localPosition = new Vector3(x, y, z);
-                    angle += 30;
+                    angle += 35;
 
                     if (angle >= 360)
                     {
@@ -78,7 +78,7 @@ public class RandomBasePosition : MonoBehaviour
             TeamGreen.transform.position = teamPositions[2].transform.position;
 
             float angle = 0;
-            float distance = 8;
+            float distance = 10;
             for (int i = 0; i < TeamGreen.transform.childCount; i++)
             {
                 Transform child = TeamGreen.transform.GetChild(i);
@@ -90,7 +90,7 @@ public class RandomBasePosition : MonoBehaviour
                     float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle);
 
                     child.localPosition = new Vector3(x, y, z);
-                    angle += 30;
+                    angle += 35;
 
                     if (angle >= 360)
                     {
@@ -106,7 +106,7 @@ public class RandomBasePosition : MonoBehaviour
             TeamYellow.transform.position = teamPositions[3].transform.position;
 
             float angle = 0;
-            float distance = 8;
+            float distance = 10;
             for (int i = 0; i < TeamYellow.transform.childCount; i++)
             {
                 Transform child = TeamYellow.transform.GetChild(i);
@@ -118,7 +118,7 @@ public class RandomBasePosition : MonoBehaviour
                     float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle);
 
                     child.localPosition = new Vector3(x, y, z);
-                    angle += 30;
+                    angle += 35;
 
                     if (angle >= 360)
                     {
