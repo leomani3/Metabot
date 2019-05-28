@@ -3,7 +3,7 @@
 public class Movable : Feature
 {
     protected readonly float speed;
-    private string Target { get; set; }
+    public string Target { get; set; }
     private float MAX_DISTANCE_TAKE_GIVE = 10.0f;
 
     public Movable(Unit unit, float speed) : base(unit)
@@ -72,7 +72,8 @@ public class Movable : Feature
             case "resource":
                 go_target = unit.GetNearestRessource();
                 break;
-            case "base": //Base alliée
+            case "base":
+                go_target = unit.BaseAllie;
                 break;
             case "baseEnemie": //Base enemie la plus proche (plusieurs base à 4 joueur)
                 break;

@@ -19,6 +19,9 @@ public class MetaAction
             case "Create":
                 ((WarBase)unit).CreatorFeature.Type = Type.GetType(parametre);
                 break;
+            case "MoveTo":
+                ((MovableUnit)unit).MovableFeature.Target = parametre;
+                break;
             default :
                 break;
         }
