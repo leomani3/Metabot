@@ -9,12 +9,13 @@ public abstract class Projectile
     GameObject projectile_go;
     Vector3 direction;
 
-    protected Projectile(float speed, float damage, float explosionRadius, float autonomy)
+    protected Projectile(GameObject go, float speed, float damage, float explosionRadius, float autonomy)
     {
         this.speed = speed;
         this.damage = damage;
         this.explosionRadius = explosionRadius;
         this.autonomy = autonomy;
+        this.projectile_go = go;
     }
 
     public GameObject Projectile_go
@@ -45,9 +46,4 @@ public abstract class Projectile
         other.GetComponent<UnitScript>().Unit.CurrentHealth -= damage;
         Object.Destroy(Projectile_go);
     }
-}
-
-public class LightBullet : Projectile
-{
-    public LightBullet(float speed = 10.0f, float damage = 20.0f, float explosionRadius = 0.5f, float autonomy = 3.0f) : base(speed, damage, explosionRadius, autonomy) { }
 }

@@ -1,17 +1,8 @@
 ﻿using UnityEngine;
 
-public class ProjectileScript : MonoBehaviour {
+public abstract class ProjectileScript : MonoBehaviour {
 
-    Projectile projectile;
-	// Use this for initialization
-	void Start () 
-    {
-        projectile = new LightBullet()
-        {
-            Projectile_go = gameObject
-        };
-        projectile.Direction = Utility.vectorFromAngle(projectile.Projectile_go.transform.eulerAngles.y);
-    }
+    protected Projectile projectile;
 
     // Update is called once per frame
     void FixedUpdate() 
