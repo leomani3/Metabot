@@ -28,7 +28,7 @@ public class Weapon : Feature
                 float angle = Utility.getAngle(unit.Unit_go.transform.position, nearestEnemy.transform.position);
                 unit.Heading = angle;
 
-                Object.Instantiate(projectile_go, unit.Unit_go.transform.GetChild(2).position, Quaternion.Euler(0, unit.Heading, 0));
+                Object.Instantiate(projectile_go, unit.Unit_go.transform.Find("BulletSpawn").position, Quaternion.Euler(0, unit.Heading, 0));
                 timeBeforeReload = timeReload;
             }
         }

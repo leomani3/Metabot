@@ -13,6 +13,11 @@ public class Movable : Feature
 
     public void Move()
     {
+        unit.Unit_go.transform.position += speed * Utility.vectorFromAngle(unit.Heading).normalized * 0.1f; //*0.2f normalement
+    }
+
+    public void RandomMove()
+    {
         unit.Heading = (unit.Heading + Random.Range(-5, 5)) % 360;
         unit.Unit_go.transform.position += speed * Utility.vectorFromAngle(unit.Heading).normalized * 0.1f; //*0.2f normalement
     }
