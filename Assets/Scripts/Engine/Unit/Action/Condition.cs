@@ -18,7 +18,7 @@ public class Condition
     
     public bool satisfied(Unit unit) {
         //Debug.Log(param1 + " = " + unit.LookUp(param1.Trim()) + " " + operateur + " " + param2 + " = " + unit.LookUp(param2.Trim()));
-        //Debug.Log("currentBagSize = " + unit.LookUp("currentBagSize"));
+        //Debug.Log("nearBaseAllie = " + unit.LookUp("nearBaseAllie"));
         switch (operateur)
         {
             case ">":
