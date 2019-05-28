@@ -21,22 +21,42 @@ public class Movable : Feature
     public void Take()
     {
         GameObject nearestRessources = unit.GetNearestRessource();
-        if (!unit.IsFullBag() && Vector3.Distance(unit.Unit_go.transform.position, nearestRessources.transform.position) < MAX_DISTANCE_TAKE_GIVE)
+        if (nearestRessources != null && !unit.IsFullBag())
         {
-            unit.Bag.Add(nearestRessources);
-            unit.CurrentBagSize++;
-            Object.Destroy(nearestRessources);
+            if (Vector3.Distance(unit.Unit_go.transform.position, nearestRessources.transform.position) <= MAX_DISTANCE_TAKE_GIVE)
+            {
+                unit.Bag.Add(nearestRessources.GetComponent<ResourcesScript>().Ressource);
+                unit.CurrentBagSize += 1;
+                unit.RessourcesInSight.Remove(nearestRessources);
+                Object.Destroy(nearestRessources);
+            }
+            else
+            {
+                float angle = Utility.getAngle(unit.Unit_go.transform.position, nearestRessources.transform.position);
+                unit.Heading = angle;
+                Move();
+            }
         }
     }
 
     public void Give()
     {
-        GameObject nearestRessources = unit.GetNearestRessource();//A changer par allié qui a le moins de vie 
-        if (!unit.IsFullBag() && Vector3.Distance(unit.Unit_go.transform.position, nearestRessources.transform.position) < MAX_DISTANCE_TAKE_GIVE)
+        GameObject nearestAllie = unit.GetNearestAllies();//A changer par allié qui a le moins de vie 
+        if (nearestAllie != null && !unit.IsEmptyBag() && !nearestAllie.GetComponent<UnitScript>().Unit.IsFullBag())
         {
-            unit.Bag.Add(nearestRessources);
-            unit.CurrentBagSize++;
-            Object.Destroy(nearestRessources);
+            if(Vector3.Distance(unit.Unit_go.transform.position, nearestAllie.transform.position) < MAX_DISTANCE_TAKE_GIVE)
+            {
+                nearestAllie.GetComponent<UnitScript>().Unit.Bag.Add(unit.Bag[0]);
+                nearestAllie.GetComponent<UnitScript>().Unit.CurrentBagSize += 1;
+                unit.Bag.RemoveAt(0);
+                unit.CurrentBagSize -= 1;
+            }
+            else
+            {
+                float angle = Utility.getAngle(unit.Unit_go.transform.position, nearestAllie.transform.position);
+                unit.Heading = angle;
+                Move();
+            }
         }
     }
 

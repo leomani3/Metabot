@@ -68,7 +68,6 @@ public class PlayButton : MonoBehaviour
                 DontDestroyOnLoad(TeamYellow);
             }
         }
-        Debug.Log("teams créée");
         
         StartCoroutine(AsynchronousLoad(gameManager._gameSettings._indexSceneMap));
     }

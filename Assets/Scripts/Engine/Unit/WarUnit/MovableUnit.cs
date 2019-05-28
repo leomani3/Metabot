@@ -19,14 +19,14 @@ public abstract class MovableUnit : WarUnit
         movableFeature.Move();
     }
 
-    public void Take(Ressource r)
+    public void Take()
     {
-        if (!IsFullBag() && Vector3.Distance(unit_go.transform.position, r.Ressource_go.transform.position) < Unit.MAX_DISTANCE_TAKE)
-        {
-            bag.Add(r);
-            currentBagSize++;
-            Object.Destroy(r.Ressource_go);
-        }
+        movableFeature.Take();
+    }
+
+    public void Give()
+    {
+        movableFeature.Give();
     }
 
     public Movable MovableFeature

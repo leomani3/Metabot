@@ -14,6 +14,14 @@ public class MetaAction
 	
 	public void setup(Unit unit){
 		unit.NextAction = (Unit.Action)Delegate.CreateDelegate(typeof(Unit.Action), unit, methode);
+        switch (methode)
+        {
+            case "Create":
+                ((WarBase)unit).CreatorFeature.Type = Type.GetType(parametre);
+                break;
+            default :
+                break;
+        }
 	}
     
     override

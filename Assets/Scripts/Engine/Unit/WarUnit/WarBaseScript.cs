@@ -29,13 +29,4 @@ public class WarBaseScript : UnitScript
             meshRenderer.material.color = color;
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            GameObject gameobject_unit = Resources.Load<GameObject>("Prefab/Unit/WarLightBlue");
-            Instantiate(gameobject_unit, transform);
-        }
-    }
 }

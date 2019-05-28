@@ -28,7 +28,7 @@ public abstract class Unit
     protected ArrayList perceptsInSight;
     protected ArrayList enemiesInSight;
     protected ArrayList alliesInSight;
-    protected ArrayList ressourcesInSight;
+    private ArrayList ressourcesInSight;
 
     protected MetaBrain brain;
     protected Action nextAction;
@@ -89,23 +89,22 @@ public abstract class Unit
         return currentBagSize == 0;
     }
 
-    public bool Use(string nameRessource)
+    public void Use()
     {
         if (!IsEmptyBag())
         {
             for (int i = 0; i < currentBagSize; i++)
             {
-                Ressource r = (Ressource)bag[i];
-                if (r.Name.Equals(nameRessource))
+                Ressource r = (Food)bag[i];
+                if (r.Name.Equals("Food"))
                 {
                     bag.RemoveAt(i);
-                    currentBagSize--;
+                    CurrentBagSize -= 1;
                     r.UseRessource(this);
-                    return true;
+                    break;
                 }
             }
         }
-        return false;
     }
 
     public void OnCollisionEnter(Collision other)
@@ -148,11 +147,14 @@ public abstract class Unit
     {
         perceptsInSight.Clear();
         enemiesInSight.Clear();
+        ressourcesInSight.Clear();
+        alliesInSight.Clear();
+
         Collider[] colliders = Physics.OverlapSphere(unit_go.transform.position, distanceSight);
 
         foreach (Collider collider in colliders)
         {
-            if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("WarUnit")) && !collider.gameObject.Equals(unit_go))
+            if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("Percepts")) && !collider.gameObject.Equals(unit_go))
             {
                 float angle = Utility.getAngle(unit_go.transform.position, collider.gameObject.transform.position);
                 
@@ -162,9 +164,14 @@ public abstract class Unit
                     if (collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.teamName != Team.teamName)
                     {
                         enemiesInSight.Add(collider.gameObject);
-                    } else if(collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.teamName == Team.teamName)
+                    }
+                    else if(collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.teamName == Team.teamName)
                     {
                         alliesInSight.Add(collider.gameObject);
+                    }
+                    else if (collider.gameObject.tag == "Item")
+                    {
+                        ressourcesInSight.Add(collider.gameObject);
                     }
                 }
             }
@@ -193,7 +200,7 @@ public abstract class Unit
 
     public GameObject GetNearestAllies()
     {
-        GameObject go = (UnityEngine.GameObject)alliesInSight[0];
+        GameObject go = (GameObject)alliesInSight[0];
         float distMin = 0.0f;
         for (int i = 1; i < alliesInSight.Count; i++)
         {
@@ -209,18 +216,22 @@ public abstract class Unit
 
     public GameObject GetNearestRessource()
     {
-        GameObject go = (UnityEngine.GameObject)ressourcesInSight[0];
-        float distMin = 0.0f;
-        for (int i = 1; i < ressourcesInSight.Count; i++)
+        if (RessourcesInSight.Count > 0)
         {
-            float dist = Vector3.Distance(unit_go.transform.position, ((GameObject)ressourcesInSight[i]).transform.position);
-            if (dist < distMin)
+            GameObject go = (GameObject)ressourcesInSight[0];
+            float distMin = 0.0f;
+            for (int i = 1; i < ressourcesInSight.Count; i++)
             {
-                go = (GameObject)ressourcesInSight[i];
-                distMin = dist;
+                float dist = Vector3.Distance(unit_go.transform.position, ((GameObject)ressourcesInSight[i]).transform.position);
+                if (dist < distMin)
+                {
+                    go = (GameObject)ressourcesInSight[i];
+                    distMin = dist;
+                }
             }
+            return go;
         }
-        return go;
+        return null;
     }
 
     public float LookUp(string key)
@@ -374,15 +385,23 @@ public abstract class Unit
         {
             return this.currentBagSize;
         }
-
         set
         {
             this.currentBagSize = value;
+            dico["currentBagSize"] = value;
         }
     }
 
     public ArrayList Bag
     {
         get { return this.bag; }
+    }
+
+    public ArrayList RessourcesInSight
+    {
+        get
+        {
+            return ressourcesInSight;
+        }
     }
 }
