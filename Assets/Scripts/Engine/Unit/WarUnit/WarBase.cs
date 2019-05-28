@@ -5,10 +5,10 @@ public class WarBase : WarUnit
 {
     private Creator creatorFeature;
 
-    public WarBase(MetaTeam team,
+    public WarBase(MetaTeam team, GameObject go,
         float maxHealth = 300, float distanceSight = 20.0f, float angleSight = 180.0f,
         int maxBagSize = 10, float armor = 1.0f)
-        : base(team, 0, maxHealth, distanceSight, angleSight, maxBagSize, armor)
+        : base(team, 0, go, maxHealth, distanceSight, angleSight, maxBagSize, armor)
     {
         //On créé l'AgentList qui contient tous les type d'unité que je peux créer
         List<System.Type> al = new List<System.Type>();

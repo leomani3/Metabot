@@ -4,13 +4,11 @@ using UnityEngine;
 
 public abstract class Unit
 {
-    protected readonly static float MAX_DISTANCE_GIVE = 5.0f;
-    protected readonly static float MAX_DISTANCE_TAKE = 5.0f;
-
     public delegate void Action();
 
     protected GameObject collisionObject;
     protected GameObject unit_go;
+    protected GameObject baseAllie;
 
     protected MetaTeam team;
 
@@ -25,7 +23,6 @@ public abstract class Unit
     protected int currentBagSize;
     protected ArrayList bag;
 
-    protected ArrayList perceptsInSight;
     protected ArrayList enemiesInSight;
     protected ArrayList alliesInSight;
     private ArrayList ressourcesInSight;
@@ -35,7 +32,7 @@ public abstract class Unit
 
     protected Dictionary<string, float> dico;
 
-    protected Unit(MetaTeam team, float heading, float maxHealth, float distanceSight, float angleSight,
+    protected Unit(MetaTeam team, float heading, GameObject go, float maxHealth, float distanceSight, float angleSight,
         int maxBagSize)
     {
         this.heading = heading;
@@ -52,12 +49,14 @@ public abstract class Unit
         this.distanceSight = distanceSight;
         this.angleSight = angleSight;
         this.maxBagSize = maxBagSize;
+        this.unit_go = go;
+        this.baseAllie = unit_go.transform.parent.GetComponentInChildren<WarBaseScript>().gameObject;
         this.currentBagSize = 0;
         this.bag = new ArrayList(maxBagSize);
-        this.perceptsInSight = new ArrayList();
         this.enemiesInSight = new ArrayList();
         this.alliesInSight = new ArrayList();
         this.ressourcesInSight = new ArrayList();
+
         dico = new Dictionary<string, float>
         {
             { "maxHealth", MaxHealth },
@@ -67,10 +66,10 @@ public abstract class Unit
             { "maxBagSize", MaxBagSize },
             { "currentBagSize", CurrentBagSize },
             { "heading", Heading },
-            { "perceptsCount", perceptsInSight.Count },
             { "enemiesCount", enemiesInSight.Count },
             { "ressourceCount", ressourcesInSight.Count},
-            { "alliesCount", alliesInSight.Count}
+            { "alliesCount", alliesInSight.Count},
+            { "nearBaseAllie", NearBaseAllie}
         };
     }
 
@@ -145,7 +144,6 @@ public abstract class Unit
 
     public void GetAllPerceptsInRadius()
     {
-        perceptsInSight.Clear();
         enemiesInSight.Clear();
         ressourcesInSight.Clear();
         alliesInSight.Clear();
@@ -160,7 +158,6 @@ public abstract class Unit
                 
                 if (angle > (heading - (angleSight / 2)) && angle < (heading + (angleSight / 2)))
                 {
-                    perceptsInSight.Add(collider.gameObject);
                     if (collider.gameObject.tag == "Unit" && collider.gameObject.GetComponentInParent<TeamScript>().Team.teamName != Team.teamName)
                     {
                         enemiesInSight.Add(collider.gameObject);
@@ -176,7 +173,6 @@ public abstract class Unit
                 }
             }
         }
-        dico["perceptsCount"] = perceptsInSight.Count;
         dico["enemiesCount"] = enemiesInSight.Count;
         dico["alliesCount"] = alliesInSight.Count;
         dico["ressourceCount"] = ressourcesInSight.Count;
@@ -292,19 +288,16 @@ public abstract class Unit
         set { this.unit_go = value; }
     }
 
+    public GameObject BaseAllie
+    {
+        get { return baseAllie; }
+    }
+
     public float DistanceSight
     {
         get
         {
             return distanceSight;
-        }
-    }
-
-    public ArrayList PerceptsInSight
-    {
-        get
-        {
-            return perceptsInSight;
         }
     }
 
@@ -402,6 +395,29 @@ public abstract class Unit
         get
         {
             return ressourcesInSight;
+        }
+    }
+
+    public float NearBaseAllie
+    {
+        get
+        {
+            if (this.alliesInSight.Contains(this.baseAllie))
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
+
+    public float DistanceBase
+    {
+        get
+        {
+            Vector3.Distance(Unit_go.transform.position, baseAllie.transform.position);
         }
     }
 }
