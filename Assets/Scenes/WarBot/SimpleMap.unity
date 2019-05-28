@@ -987,6 +987,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1446684920544624, guid: c0f6da377ef5be04e9d750a3b2b6af6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1210994364850978, guid: c0f6da377ef5be04e9d750a3b2b6af6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079181253360722, guid: c0f6da377ef5be04e9d750a3b2b6af6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215350115733240, guid: c0f6da377ef5be04e9d750a3b2b6af6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114788505127360800, guid: c0f6da377ef5be04e9d750a3b2b6af6e,
         type: 3}
       propertyPath: _unitsToCreate.Array.data[2]

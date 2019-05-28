@@ -28,11 +28,11 @@ public class RandomBasePosition : MonoBehaviour
                 //On ne souhaite pas déplacere la base
                 if (!child.name.Contains("WarBase"))
                 {
-                    float x = distance * Mathf.Cos(Mathf.Deg2Rad * angle);
+                    float x = distance * Mathf.Cos(Mathf.Deg2Rad * angle) + TeamBlue.transform.position.x;
                     float y = TeamBlue.transform.position.y;
-                    float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle);
+                    float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle) + TeamBlue.transform.position.z;
 
-                    child.localPosition = new Vector3(x, y, z);
+                    child.position = new Vector3(x, y, z);
                     angle += 35;
 
                     //Si on a compléter un tour complet autours de la base, on augmente la distance et on refait un tour
@@ -57,11 +57,11 @@ public class RandomBasePosition : MonoBehaviour
 
                 if (!child.name.Contains("WarBase"))
                 {
-                    float x = distance * Mathf.Cos(Mathf.Deg2Rad * angle);
-                    float y = 0;
-                    float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle);
+                    float x = distance * Mathf.Cos(Mathf.Deg2Rad * angle) + TeamRed.transform.position.x;
+                    float y = TeamRed.transform.position.y;
+                    float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle) + TeamRed.transform.position.z;
 
-                    child.localPosition = new Vector3(x, y, z);
+                    child.position = new Vector3(x, y, z);
                     angle += 35;
 
                     if (angle >= 360)
@@ -85,11 +85,11 @@ public class RandomBasePosition : MonoBehaviour
 
                 if (!child.name.Contains("WarBase"))
                 {
-                    float x = distance * Mathf.Cos(Mathf.Deg2Rad * angle);
-                    float y = 0;
-                    float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle);
+                    float x = distance * Mathf.Cos(Mathf.Deg2Rad * angle) + TeamGreen.transform.position.x;
+                    float y = TeamGreen.transform.position.y;
+                    float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle) + TeamGreen.transform.position.z;
 
-                    child.localPosition = new Vector3(x, y, z);
+                    child.position = new Vector3(x, y, z);
                     angle += 35;
 
                     if (angle >= 360)
@@ -113,11 +113,11 @@ public class RandomBasePosition : MonoBehaviour
 
                 if (!child.name.Contains("WarBase"))
                 {
-                    float x = distance * Mathf.Cos(Mathf.Deg2Rad * angle);
-                    float y = 0;
-                    float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle);
+                    float x = distance * Mathf.Cos(Mathf.Deg2Rad * angle) + TeamYellow.transform.position.x;
+                    float y = TeamYellow.transform.position.y;
+                    float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle) + TeamYellow.transform.position.z;
 
-                    child.localPosition = new Vector3(x, y, z);
+                    child.position = new Vector3(x, y, z);
                     angle += 35;
 
                     if (angle >= 360)

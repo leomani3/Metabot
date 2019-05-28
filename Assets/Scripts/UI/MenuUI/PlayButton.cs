@@ -62,7 +62,7 @@ public class PlayButton : MonoBehaviour
             else if (i == 3)
             {
                 GameObject TeamYellow = GameObject.Find("TeamYellow");
-                TeamYellow.GetComponent<TeamScript>().Team = new MetaTeam(gamePath + name + ".wbt", name, "Green");
+                TeamYellow.GetComponent<TeamScript>().Team = new MetaTeam(gamePath + name + ".wbt", name, "Yellow");
 
                 createUnitStart(TeamYellow, gameManager, 4);
 
@@ -99,7 +99,8 @@ public class PlayButton : MonoBehaviour
     void createUnitStart(GameObject team, GameManager gameManager, int teamId)
     {
         //Créer la base
-        GameObject gameobject_base = Resources.Load<GameObject>("Prefab/Unit/WarBase" + team.GetComponent<TeamScript>().Team.teamColor); //CHANGER LA PAR LA COULEUR
+        GameObject gameobject_base = Resources.Load<GameObject>("Prefab/Unit/WarBase" + team.GetComponent<TeamScript>().Team.teamColor);
+        Debug.Log("BLBLBLBL         " + "Prefab/Unit/WarBase" + team.GetComponent<TeamScript>().Team.teamColor);
         Instantiate(gameobject_base, team.transform.position, Quaternion.identity, team.transform);
         //Créer les unités au début de la partie.
         foreach (KeyValuePair<string, int> unit in gameManager._gameSettings._initStartUnit)

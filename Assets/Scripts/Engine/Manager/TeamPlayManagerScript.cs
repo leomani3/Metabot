@@ -12,12 +12,12 @@ public class TeamPlayManagerScript : MonoBehaviour
 
     void Start ()
     {
-        UpdateUnit();
+        /*UpdateUnit();
 
         if(!(teamIndex < GameObject.Find("GameManager").GetComponent<TeamManager>()._teams.Count))
         {
             Destroy(gameObject);
-        }
+        }*/
         
     }
 	

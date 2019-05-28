@@ -111,7 +111,6 @@ public class HUDManager : MonoBehaviour
 
     public void CreateHUD(GameObject unit)
     {
-        Debug.Log("BLBLBLBL" +unit);
         GameObject _hud = Instantiate(_HUDObject, transform);
         _hud.GetComponent<HP_HUDManager>()._target = unit;
     }
