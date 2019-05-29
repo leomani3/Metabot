@@ -46,7 +46,8 @@ public abstract class MovableUnit : WarUnit
         {
             collisionObject = other.collider.transform.gameObject;
             Heading = (Heading + Random.Range(135, 215)) % 360;
-            movableFeature.Move();
+            Vector3 dir = Utility.vectorFromAngle(Heading);
+            Unit_go.GetComponent<Rigidbody>().MovePosition(Unit_go.transform.position + (dir * movableFeature.Speed * Time.deltaTime));
         }
     }
 }
