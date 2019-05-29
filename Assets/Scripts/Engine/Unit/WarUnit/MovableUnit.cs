@@ -73,4 +73,22 @@ public abstract class MovableUnit : WarUnit
             }
         }
     }
+
+    public new void OnCollisionStay(Collision other)
+    {
+        if(other.collider.tag != "Unit")
+        {
+            Vector3 res = Vector3.zero;
+            GameObject[] units = GameObject.FindGameObjectsWithTag("Unit");
+
+            foreach (GameObject go in units)
+            {
+                res += go.transform.position;
+            }
+            res *= 1f / (units.Length + 1);
+            float angle = Utility.getAngle(unit_go.transform.position, res);
+            this.Heading = angle;
+            Move();
+        }
+    }
 }
