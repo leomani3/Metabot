@@ -100,7 +100,7 @@ public class PlayButton : MonoBehaviour
     {
         //Créer la base
         GameObject gameobject_base = Resources.Load<GameObject>("Prefab/Unit/WarBase" + team.GetComponent<TeamScript>().Team.teamColor);
-        Debug.Log("BLBLBLBL         " + "Prefab/Unit/WarBase" + team.GetComponent<TeamScript>().Team.teamColor);
+
         Instantiate(gameobject_base, team.transform.position, Quaternion.identity, team.transform);
         //Créer les unités au début de la partie.
         foreach (KeyValuePair<string, int> unit in gameManager._gameSettings._initStartUnit)
