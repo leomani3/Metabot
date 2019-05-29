@@ -1,0 +1,72 @@
+<behavior>
+    <WarBase>
+      <instruction>
+        <action>
+          <methode>Use</methode>
+        </action>
+        <condition>currentHealth &lt; 0.75 * maxHealth</condition>
+        <condition>currentBagSize > 0</condition>
+      </instruction>
+	    <instruction>
+	        <action>
+		        <methode>Create</methode>
+            <parametre>WarExplorer</parametre>
+	        </action>
+	        <condition>currentHealth > 0.75 * maxHealth</condition>
+	    </instruction>
+    </WarBase>
+    <WarLight>
+      <instruction>
+        <action>
+          <methode>Shoot</methode>
+        </action>
+        <condition>enemiesCount > 0</condition>
+      </instruction>
+      <instruction>
+        <action>
+          <methode>Move</methode>
+        </action>
+      </instruction>
+    </WarLight>
+    <WarHeavy>
+      <instruction>
+        <action>
+          <methode>Shoot</methode>
+        </action>
+        <condition>enemiesCount > 0</condition>
+      </instruction>
+      <instruction>
+        <action>
+          <methode>Move</methode>
+        </action>
+      </instruction>
+    </WarHeavy>
+    <WarExplorer>
+      <instruction>
+        <action>
+          <methode>Give</methode>
+        </action>
+        <condition>currentBagSize > 0</condition>
+        <condition>nearBaseAllie == 1</condition>
+      </instruction>
+      <instruction>
+        <action>
+          <methode>MoveTo</methode>
+          <parametre>base</parametre>
+        </action>
+        <condition>currentBagSize > 0</condition>
+      </instruction>
+      <instruction>
+        <action>
+          <methode>Take</methode>
+        </action>
+        <condition>ressourceCount > 0</condition>
+        <condition>currentBagSize &lt; maxBagSize</condition>
+      </instruction>
+      <instruction>
+        <action>
+          <methode>Move</methode>
+        </action>
+      </instruction>
+    </WarExplorer>
+</behavior>

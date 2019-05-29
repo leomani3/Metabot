@@ -47,6 +47,11 @@ public class HUDManager : MonoBehaviour
             hud.transform.gameObject.SetActive(statsOn);
         }
 
+        foreach (MessageLineScript message in Resources.FindObjectsOfTypeAll<MessageLineScript>())
+        {
+            message.transform.gameObject.SetActive(messageOn);
+        }
+
         foreach (SightVisionScript sight in Resources.FindObjectsOfTypeAll<SightVisionScript>())
         {
             sight.transform.gameObject.SetActive(sightOn);
