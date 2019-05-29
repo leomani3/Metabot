@@ -9,7 +9,7 @@ public class TeamNameDisplayHUD : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        TeamManager tm = GameObject.Find("GameManager").GetComponent<TeamManager>();
+        /*TeamManager tm = GameObject.Find("GameManager").GetComponent<TeamManager>();
         if (indexTeam >= tm._teams.Count)
         {
             Destroy(gameObject);
@@ -18,7 +18,7 @@ public class TeamNameDisplayHUD : MonoBehaviour
         {
             GetComponent<Text>().text = tm._teams[indexTeam]._name;
             GetComponent<Text>().color = tm._teams[indexTeam]._color;
-        }
+        }*/
     }
 	
 	// Update is called once per frame

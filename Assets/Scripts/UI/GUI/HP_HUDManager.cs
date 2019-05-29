@@ -14,7 +14,6 @@ public class HP_HUDManager : MonoBehaviour
     public Vector3 _delta;
     public Text _ressourceText;
     public Image _ressourceImage;
-    public Objet ressource;
     public GameObject targetIcon;
 
     public HPColor[] _hpColor;
