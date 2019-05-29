@@ -44,11 +44,33 @@ public abstract class MovableUnit : WarUnit
         collisionObject = null;
         if (other.collider.tag != "Ground" && other.collider.gameObject.tag != "Item")
         {
-            collisionObject = other.collider.transform.gameObject;
-            Heading = (Heading + Random.Range(135, 215)) % 360;
-            Vector3 dir = Utility.vectorFromAngle(Heading);
-            Unit_go.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
-            Unit_go.GetComponent<Rigidbody>().MovePosition(Unit_go.transform.position + (dir * movableFeature.Speed * 0.2f));
+            if(other.collider.tag == "Unit")
+            {
+                collisionObject = other.collider.transform.gameObject;
+                Heading = (Heading + Random.Range(135, 215)) % 360;
+                Vector3 dir = Utility.vectorFromAngle(Heading);
+                Move();
+                /*Unit_go.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
+                Unit_go.GetComponent<Rigidbody>().MovePosition(Unit_go.transform.position + (dir * movableFeature.Speed * 0.2f));*/
+            }
+            else
+            {
+                Vector3 vecAxe;
+                if (other.collider.bounds.size.x > other.collider.bounds.size.z)
+                {
+                    vecAxe = new Vector3(other.collider.bounds.size.x, 0, 0);
+                }
+                else
+                {
+                    vecAxe = new Vector3(0, 0, other.collider.bounds.size.z);
+                }
+                Vector3 N = Vector3.Cross(Vector3.Normalize(vecAxe), Vector3.up);
+                Vector3 L = this.Unit_go.transform.position - other.transform.position;
+                Vector3 reflect = 2 * Vector3.Dot(N, L) * N - L;
+
+                Heading = Utility.getAngle(Unit_go.transform.position, Unit_go.transform.position + Vector3.Normalize(reflect));
+                Move();
+            }
         }
     }
 }
