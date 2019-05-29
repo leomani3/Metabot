@@ -18,8 +18,8 @@ public class ReturnButton : MonoBehaviour
 
     }
 
-    public void StartGame()
+    public void LoadMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(0);
     }
 }

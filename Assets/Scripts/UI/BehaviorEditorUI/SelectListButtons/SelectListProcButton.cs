@@ -5,25 +5,31 @@ using UnityEngine.UI;
 
 public class SelectListProcButton : SelectListButton
 {
+    //Color colour;
+
     override public void GenerateComponentButtons()
     {
         destroyButtons();
-
         colour = gameObject.GetComponent<Image>().color;
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < this.listProcedures.Count; i++)
         {
-            GameObject button = Instantiate(componentButtonTemplate) as GameObject;
-            button.SetActive(true);
-
-            button.GetComponent<ComponentButton>().SetText("Procedure " + i);
-
-            button.transform.SetParent(componentButtonTemplate.transform.parent, false);
-
-            button.GetComponent<Image>().color = this.colour;
-
-            ComponentButton bComponent = button.GetComponent<ComponentButton>();
-            bComponent.setType("PROC");
+            Generate(listProcedures[i]);
         }
+    }
+
+    private void Generate(string name)
+    {
+        GameObject button = Instantiate(componentButtonTemplate) as GameObject;
+        button.SetActive(true);
+
+        button.GetComponent<ComponentButton>().SetText(name);
+
+        button.transform.SetParent(componentButtonTemplate.transform.parent, false);
+
+        button.GetComponent<Image>().color = this.colour;
+
+        ComponentButton bComponent = button.GetComponent<ComponentButton>();
+        bComponent.setType("PROC");
     }
 }

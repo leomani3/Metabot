@@ -34,7 +34,9 @@ public class ComponentButton : MonoBehaviour
         switch (type)
         {
             case "PROC":
-                createPuzzlePiece(this.procedurePuzzlePiece);
+                SelectListProcButton[] slb = GameObject.FindObjectsOfType<SelectListProcButton>();
+                Debug.Log("Creating custom proc " + this.labelString);
+                CreateProc(slb[0].GetProcG(this.labelString));
                 Debug.Log("Procedure");
                 break;
             case "CONT":
@@ -61,7 +63,6 @@ public class ComponentButton : MonoBehaviour
                 Debug.Log("Not a legit type");
                 break;
         }
-        //Debug.Log("Type : " + type);
     }
 
     public string getType() { return this.type; }
@@ -79,5 +80,22 @@ public class ComponentButton : MonoBehaviour
 
         createdPiece.transform.SetParent(pieceTemplate.transform.parent, false);
         createdPiece.SetActive(true);
+        Debug.Log("Created piece");
+    }
+
+    private void CreateProc(ProcG pieceTemplate)
+    {
+        GameObject createdPiece = Instantiate(pieceTemplate.gameObject, pieceTemplate.transform.parent);
+
+        Color colour = gameObject.GetComponent<Image>().color;
+        createdPiece.GetComponent<Image>().color = colour;
+
+        Text textfield = createdPiece.GetComponentInChildren(typeof(Text)) as Text;
+        textfield.text = this.labelString;
+
+        createdPiece.SetActive(true);
+
+        ProcG proc = createdPiece.GetComponent<ProcG>();
+        proc.TakeAttributes(pieceTemplate);
     }
 }

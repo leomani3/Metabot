@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class ActionTG : ActionG
 {
-    protected override void AddToBlockInstruction()
+    public override void AddToBlockInstruction()
     {
         base.AddToBlockInstruction();
         this.blockinstruction.SetActionTG(this);
+    }
+
+    public override void DeleteFromList()
+    {
+        if (this.blockinstruction != null) this.blockinstruction.RemoveActionTG(this);
     }
 }

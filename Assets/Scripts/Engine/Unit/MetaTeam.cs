@@ -19,34 +19,63 @@ public class MetaTeam
         unitsList = new ArrayList();
     }
 
-    private void loadXML(string fileName)
-    {
-        XmlDocument xml = new XmlDocument();
-        xml.Load(fileName);
-        XmlNodeList units = xml.GetElementsByTagName("behavior")[0].ChildNodes;
-        foreach(XmlNode unit in units)
-        {
-            ArrayList tmp = new ArrayList();
-            XmlNodeList instructions = unit.ChildNodes;
-			foreach(XmlNode instruction in instructions){
-				tmp.Add(manageInstruction(instruction));
+    private void loadXML(string fileName){
+
+		XmlDocument doc = new XmlDocument();
+		doc.Load(fileName);
+
+		Dictionary<string, MetaProcedure> lprocs = new Dictionary<string, MetaProcedure>();
+		XmlNode behavior = doc.GetElementsByTagName("behavior")[0];
+
+		/** Gestion des procédures **/
+		//On récupère les procédures en 1er car important pour la suite
+		XmlNode procedures = doc.GetElementsByTagName("procedures")[0];
+		if (procedures != null) {
+			behavior.RemoveChild(procedures); //On retire des enfants de behavior ce noeud --> pour parcourir les unités plus simplement
+
+			foreach (XmlNode proc in procedures.ChildNodes)
+				lprocs.Add(proc.Attributes[0].Value, manageProcedure(proc));
+		}
+
+		/** Gestion des unités **/
+		XmlNodeList units = behavior.ChildNodes;
+		foreach (XmlNode unit in units) {
+			List<MetaComportement> tmp = new List<MetaComportement>();
+			XmlNodeList instructions = unit.ChildNodes;
+			foreach (XmlNode instruction in instructions) {
+				tmp.Add(manageComportement(instruction, lprocs));
 			}
 			brains.Add(unit.Name, new MetaBrain(tmp));
 		}
-    }
-	
-    public MetaInstruction manageInstruction(XmlNode instruction)
-    {
+
+	}
+
+	public MetaProcedure manageProcedure(XmlNode proc){
+		List<MetaComportement> lcomp = new List<MetaComportement>(proc.ChildNodes.Count);
+		foreach (XmlNode child in proc.ChildNodes) {
+			lcomp.Add(manageInstruction(child));
+		}
+		return new MetaProcedure(proc.Attributes[0].Value, lcomp);
+	}
+
+	public MetaComportement manageComportement(XmlNode comportement, Dictionary<string, MetaProcedure> lcomp){
+		if (comportement.Name.CompareTo("proc") == 0)
+			return lcomp[comportement.Attributes[0].Value];
+
+		return manageInstruction(comportement);
+	}
+
+	public MetaInstruction manageInstruction(XmlNode instruction){
         XmlNodeList action = instruction.ChildNodes[0].ChildNodes;
+
         string param = "", methode = "";
         methode = action[0].InnerText;
-        if (action.Count == 2)
-        {
+        if (action.Count == 2){
             param = action[1].InnerText;
         }
+
         MetaInstruction inst = new MetaInstruction(methode, param);
-        for (int i = 1; i < instruction.ChildNodes.Count; i++)
-        {
+        for (int i = 1; i < instruction.ChildNodes.Count; i++){
             inst.addCondition(new Condition(instruction.ChildNodes[i].InnerText));
         }
 

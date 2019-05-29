@@ -33,10 +33,10 @@ public class GraphicComponent : MonoBehaviour, IDragHandler, IEndDragHandler, IB
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 posChange = new Vector2(  - this.transform.position.x + eventData.position.x, - this.transform.position.y + eventData.position.y);
+        Vector2 posChange = new Vector2(-this.transform.position.x + eventData.position.x, -this.transform.position.y + eventData.position.y);
         foreach (GraphicComponent g in currentlySelected)
         {
-            g.transform.position = new Vector2( g.transform.position.x + posChange.x, g.transform.position.y + posChange.y);
+            g.transform.position = new Vector2(g.transform.position.x + posChange.x, g.transform.position.y + posChange.y);
         }
     }
 
@@ -48,16 +48,19 @@ public class GraphicComponent : MonoBehaviour, IDragHandler, IEndDragHandler, IB
     public void OnEndDrag(PointerEventData eventData)
     {
         magnet();
-        AddToBlockInstruction(); 
+        AddToBlockInstruction();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            DeleteSelected();
+        }
     }
 
-    private void magnet()
+    public void magnet()
     {
         float dx, dy;
 
@@ -83,7 +86,7 @@ public class GraphicComponent : MonoBehaviour, IDragHandler, IEndDragHandler, IB
         {
             dy = -mody;
         }
-        
+
         foreach (GraphicComponent g in currentlySelected)
         {
             float x, y;
@@ -94,19 +97,18 @@ public class GraphicComponent : MonoBehaviour, IDragHandler, IEndDragHandler, IB
     }
 
     // To be overridden in sub classses
-    protected virtual void AddToBlockInstruction()
+    public virtual void AddToBlockInstruction()
     {
 
     }
 
     public void OnSelect(BaseEventData eventData)
     {
-        if(!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.RightControl))
+        if (!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.RightControl))
         {
-            Debug.Log("Selected");
             DeselectAll(eventData);
         }
-
+        
         Select(this);
     }
 
@@ -141,7 +143,7 @@ public class GraphicComponent : MonoBehaviour, IDragHandler, IEndDragHandler, IB
 
         foreach (GraphicComponent g in currentlySelected)
         {
-            Vector3 offset = new Vector3(g.transform.parent.position.x+30, g.transform.parent.position.y + 30, g.transform.parent.position.z);
+            Vector3 offset = new Vector3(g.transform.parent.position.x + 30, g.transform.parent.position.y + 30, g.transform.parent.position.z);
 
             GraphicComponent gClone = Instantiate(g, g.transform.parent) as GraphicComponent;
             gClone.GetComponent<Image>().color = g.baseColour;
@@ -154,10 +156,39 @@ public class GraphicComponent : MonoBehaviour, IDragHandler, IEndDragHandler, IB
             toAdd.Add(gClone);
         }
 
-        Debug.Log("Deselecting");
-
         DeselectAll(eventData);
 
         foreach (GraphicComponent g in toAdd) Select(g);
+    }
+
+    void DeleteSelected()
+    {
+        foreach (GraphicComponent g in currentlySelected)
+        {
+            allMySelectables.Remove(g);
+            g.DeleteFromList();
+            Destroy(g.gameObject);
+        }
+        currentlySelected.Clear();
+    }
+
+    public void Delete()
+    {
+        allMySelectables.Remove(this);
+        this.DeleteFromList();
+        Destroy(this.gameObject);
+        currentlySelected.Clear();
+    }
+
+    // To be overridden in the sub classes
+    public virtual void DeleteFromList()
+    {
+
+    }
+
+    public string GetName()
+    {
+        Text textfield = gameObject.GetComponentInChildren(typeof(Text)) as Text;
+        return textfield.text;
     }
 }

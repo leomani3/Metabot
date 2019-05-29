@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class MessageG : ActionG
 {
-    protected override void AddToBlockInstruction()
+    public override void AddToBlockInstruction()
     {
         base.AddToBlockInstruction();
         this.blockinstruction.AddMessagesG(this);
+    }
+
+    public override void DeleteFromList()
+    {
+        if (this.blockinstruction != null) this.blockinstruction.RemoveMessagesG(this);
     }
 }

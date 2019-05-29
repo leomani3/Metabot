@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MetaInstruction
+public class MetaInstruction : MetaComportement
 {
 	private List<Condition> conditions;
-	private MetaAction action;
 	
 	public MetaInstruction(string meth, string param)
     {
@@ -24,15 +22,13 @@ public class MetaInstruction
         }
 	}
 	
+	override
 	public bool satisfied(Unit unit){
-        bool satisfied = true;
-        int i = 0;
-        while(satisfied && i < conditions.Count)
-        {
-            satisfied = conditions[i].satisfied(unit);
-            i++;
-        }
-        return satisfied;
+		for (int i = 0; i < conditions.Count; i++) {
+			if (!conditions[i].satisfied(unit))
+				return false;
+		}
+		return true;
 	}
 
     public void addCondition(Condition cond)

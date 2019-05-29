@@ -6,7 +6,7 @@ public class ActionG : GraphicComponent
 {
     private int priorityOrder;
 
-    protected override void AddToBlockInstruction()
+    public override void AddToBlockInstruction()
     {
         BlockInstruction[] blockInstructions = FindObjectsOfType(typeof(BlockInstruction)) as BlockInstruction[];
 
@@ -22,5 +22,6 @@ public class ActionG : GraphicComponent
                 break;
             }
         }
+      
     }
 }

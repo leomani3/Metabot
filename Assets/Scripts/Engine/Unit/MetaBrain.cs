@@ -1,26 +1,24 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MetaBrain
 {
-	private ArrayList instructions;
+	private List<MetaComportement> comportements;
 	
 	private delegate void ActionToReturn();
 
-    public MetaBrain(ArrayList instr)
-    {
-		instructions = instr;
+    public MetaBrain(List<MetaComportement> comps){
+		comportements = comps;
     }
 	
 	public void decide(Unit unit){
         //ORDONNER LES INSTRUCTIONS PAR PRIORITES
-        foreach (MetaInstruction i in instructions)
+        foreach (MetaComportement c in comportements)
         {
             //Debug.Log(unit.GetType().ToString() + " : cond = " + i.ToString() + " = " + i.satisfied(unit));
-            if (i.satisfied(unit))
-            {
-                i.Action.setup(unit);
+            if (c.satisfied(unit)) {
+                c.action.setup(unit);
                 break;
             }
         }
@@ -31,8 +29,8 @@ public class MetaBrain
     public string ToString()
     {
         string s = "";
-        foreach(MetaInstruction instr in instructions) {
-            s += instr.ToString() + "\n";
+        foreach(MetaComportement comp in comportements) {
+            s += comp.ToString() + "\n";
         }
         return s;
     }
