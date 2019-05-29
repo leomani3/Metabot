@@ -15,6 +15,7 @@ public class Movable : Feature
     public void Move()
     {
         unit.Unit_go.transform.position += speed * Utility.vectorFromAngle(unit.Heading).normalized * 0.1f; //*0.2f normalement
+        //unit.Unit_go.GetComponent<Rigidbody>().MovePosition(unit.Unit_go.transform.position + (Utility.vectorFromAngle(unit.Heading) * speed * 0.2f));
     }
 
     public void RandomMove()
