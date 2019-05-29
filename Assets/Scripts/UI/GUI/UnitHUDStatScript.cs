@@ -27,7 +27,6 @@ public class UnitHUDStatScript : MonoBehaviour
         if (cameraUnit != null)
         {
             Unit unit = cameraUnit.GetComponent<UnitScript>().Unit;
-            Debug.Log("BLBLBLBL" +unit);
             _healthText.text = "" + unit.CurrentHealth + "/" + unit.MaxHealth;
             _itemText.text = "" + unit.CurrentBagSize + "/" + unit.MaxBagSize;
             _headingText.text = "" + (int)unit.Heading + "°";

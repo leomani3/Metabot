@@ -32,7 +32,7 @@ public abstract class Projectile
 
     public void Move()
     {
-        autonomy -= Time.deltaTime;
+        autonomy -= Time.fixedDeltaTime;
         if (autonomy <= 0)
         {
             Object.Destroy(projectile_go);
