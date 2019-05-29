@@ -33,7 +33,7 @@ public class RandomBasePosition : MonoBehaviour
                     float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle) + TeamBlue.transform.position.z;
 
                     child.position = new Vector3(x, y, z);
-                    child.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                    //child.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
                     angle += 35;
 
                     //Si on a compléter un tour complet autours de la base, on augmente la distance et on refait un tour
@@ -62,7 +62,7 @@ public class RandomBasePosition : MonoBehaviour
                     float y = TeamRed.transform.position.y;
                     float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle) + TeamRed.transform.position.z;
 
-                    child.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                    //child.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
                     child.position = new Vector3(x, y, z);
                     angle += 35;
 
@@ -92,7 +92,7 @@ public class RandomBasePosition : MonoBehaviour
                     float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle) + TeamGreen.transform.position.z;
 
                     child.position = new Vector3(x, y, z);
-                    child.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                    //child.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
                     angle += 35;
 
                     if (angle >= 360)
@@ -121,7 +121,7 @@ public class RandomBasePosition : MonoBehaviour
                     float z = distance * Mathf.Sin(Mathf.Deg2Rad * angle) + TeamYellow.transform.position.z;
 
                     child.position = new Vector3(x, y, z);
-                    child.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                    //child.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
                     angle += 35;
 
                     if (angle >= 360)
