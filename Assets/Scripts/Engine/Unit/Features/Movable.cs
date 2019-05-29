@@ -97,4 +97,12 @@ public class Movable : Feature
         unit.Unit_go.transform.position += speed * Utility.vectorFromAngle(unit.Heading).normalized * 0.1f; //*0.2f normalement
     }
 
+
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+    }
 }

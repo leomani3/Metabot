@@ -11,12 +11,14 @@ public class SelectListConditionButton : SelectListButton
 
         colour = gameObject.GetComponent<Image>().color;
 
-        for (int i = 0; i < 20; i++)
+        remplissageLists();
+
+        for (int i = 0; i < this.listConditions.Count; i++)
         {
             GameObject button = Instantiate(componentButtonTemplate) as GameObject;
             button.SetActive(true);
 
-            button.GetComponent<ComponentButton>().SetText("Condition " + i);
+            button.GetComponent<ComponentButton>().SetText(listConditions[i]);
 
             button.transform.SetParent(componentButtonTemplate.transform.parent, false);
 

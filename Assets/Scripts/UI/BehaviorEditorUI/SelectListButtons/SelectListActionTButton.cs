@@ -11,12 +11,14 @@ public class SelectListActionTButton : SelectListButton
 
         colour = gameObject.GetComponent<Image>().color;
 
-        for (int i = 0; i < 20; i++)
+        remplissageLists();
+
+        for (int i = 0; i < this.listActionT.Count; i++)
         {
             GameObject button = Instantiate(componentButtonTemplate) as GameObject;
             button.SetActive(true);
 
-            button.GetComponent<ComponentButton>().SetText("ActionT " + i);
+            button.GetComponent<ComponentButton>().SetText(listActionT[i]);
 
             button.transform.SetParent(componentButtonTemplate.transform.parent, false);
 
