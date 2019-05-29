@@ -6,7 +6,7 @@ public class ConditionG : GraphicComponent
 {
     private int priorityOrder;
 
-    protected override void AddToBlockInstruction()
+    public override void AddToBlockInstruction()
     {
         BlockInstruction[] blockInstructions = FindObjectsOfType(typeof(BlockInstruction)) as BlockInstruction[];
 
@@ -23,5 +23,10 @@ public class ConditionG : GraphicComponent
                 break;
             }
         }
+    }
+
+    public override void DeleteFromList()
+    {
+        if (this.blockinstruction != null) this.blockinstruction.RemoveConditionG(this);
     }
 }
