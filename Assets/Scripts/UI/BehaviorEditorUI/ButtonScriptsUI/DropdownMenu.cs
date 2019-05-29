@@ -12,7 +12,7 @@ public class DropdownMenu : MonoBehaviour, IPointerClickHandler
 
     public void Start()
     {
-        path = Application.dataPath + "/StreamingAssets/teams/TestBot/";
+        path = Application.streamingAssetsPath + "/teams/TestBot/";
         this.dropDown = this.gameObject.GetComponent<Dropdown>();
         if (this.gameObject.tag == "TeamChoiceList") FillTeamList();
     }

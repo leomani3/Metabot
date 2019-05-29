@@ -74,7 +74,7 @@ public class LoadFromFile : MonoBehaviour
             Debug.Log("Deleted");
         }
 
-        if (File.Exists(Application.dataPath + "/StreamingAssets/teams/TestBot/" + teamName + ".wbt"))
+        if (File.Exists(Application.streamingAssetsPath + "/teams/TestBot/" + teamName + ".wbt"))
         {
             LoadInstructionBlocks();
         }
@@ -87,7 +87,7 @@ public class LoadFromFile : MonoBehaviour
     private void LoadInstructionBlocks()
     {
         this.xmlDocument = new XmlDocument();
-        this.xmlDocument.Load(Application.dataPath + "/StreamingAssets/teams/TestBot/" + teamName + ".wbt");
+        this.xmlDocument.Load(Application.streamingAssetsPath + "/teams/TestBot/" + teamName + ".wbt");
 
         XmlNode rootNode = this.xmlDocument.DocumentElement;
         XmlNodeList nodeUnits = rootNode.SelectNodes(unitName);

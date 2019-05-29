@@ -55,9 +55,9 @@ public class SaveToFile : MonoBehaviour
     {
         this.xmlDocument = new XmlDocument();
 
-        if(File.Exists(Application.dataPath + "/StreamingAssets/teams/TestBot/" + teamName + ".wbt"))
+        if(File.Exists(Application.streamingAssetsPath + "/teams/TestBot/" + teamName + ".wbt"))
         {
-            this.xmlDocument.Load(Application.dataPath + "/StreamingAssets/teams/TestBot/" + teamName + ".wbt");
+            this.xmlDocument.Load(Application.streamingAssetsPath + "/teams/TestBot/" + teamName + ".wbt");
             EraseExisting();
         }
         else
@@ -98,7 +98,7 @@ public class SaveToFile : MonoBehaviour
         }
         
 
-        xmlDocument.Save(Application.dataPath + "/StreamingAssets/teams/TestBot/" + teamName + ".wbt");
+        xmlDocument.Save(Application.streamingAssetsPath + "/teams/TestBot/" + teamName + ".wbt");
     }
 
     private XmlNode CreateInstructionNode(BlockInstruction b)

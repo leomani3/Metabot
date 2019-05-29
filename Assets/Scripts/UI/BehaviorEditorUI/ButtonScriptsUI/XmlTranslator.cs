@@ -54,7 +54,7 @@ public class XmlTranslator : MonoBehaviour
         FindTeamName();
         FindUnitName();
         FindInstructions();
-        this.path = Application.dataPath + "/StreamingAssets/teams/" + teamName + ".wbt";
+        this.path = Application.streamingAssetsPath + "/teams/" + teamName + ".wbt";
 
         WriteXML();
         Debug.Log("Saving Done XML");
